@@ -1,4 +1,6 @@
 
+import { supabase } from "@/integrations/supabase/client";
+
 export const assets = {
   images: {
     logo: "/lovable-uploads/7b7a503e-1812-4d7e-a1ca-71dc2fbb9c1c.png",
@@ -11,12 +13,17 @@ export const assets = {
       main: "/lovable-uploads/2c1302a3-ea6d-4bb1-ae2c-81e0afd81669.png",
       gallery: [
         "/lovable-uploads/2c1302a3-ea6d-4bb1-ae2c-81e0afd81669.png",
-        // Add more images as they become available
       ]
     },
-    // Add more projects as needed
   }
 };
 
 export type AssetKey = keyof typeof assets.images;
 export type ProjectKey = keyof typeof assets.projects;
+
+export async function getStorageUrl(path: string) {
+  const { data } = supabase.storage
+    .from('images')
+    .getPublicUrl(path);
+  return data.publicUrl;
+}
