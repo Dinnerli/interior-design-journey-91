@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -35,21 +34,19 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'bg-design-dark/95 backdrop-blur-md border-b border-design-gold/10' : 'bg-transparent'
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-white border-b border-gray-200"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center">
-            <Link to="/" className="flex items-center hover:text-design-gold transition-colors">
+            <Link to="/" className="flex items-center">
               <img 
-                src="/lovable-uploads/4de71902-664e-40a5-9e47-6bba44836771.png" 
-                alt="BEURANT DESIGN Logo" 
+                src="/Assets/DA-logo.png" 
+                alt="DESIGN ALCHEMY Logo" 
                 className="h-12 w-auto mr-3" 
               />
-              <span className="text-xl font-display font-semibold tracking-tight text-design-softgold">
-                BEURANT DESIGN
+              <span className="text-2xl font-didot font-semibold tracking-tight text-black">
+                DESIGN ALCHEMY
               </span>
             </Link>
           </div>
@@ -61,10 +58,10 @@ const Navbar = () => {
                 <Link
                   key={item.name}
                   to={item.path}
-                  className={`font-medium transition-all duration-200 hover:text-design-gold ${
+                  className={`font-medium transition-all duration-200 hover:text-black text-black ${
                     location.pathname === item.path
-                      ? 'text-design-gold border-b border-design-gold pb-1'
-                      : 'text-design-softgold'
+                      ? 'border-b border-black pb-1'
+                      : ''
                   }`}
                 >
                   {item.name}
@@ -77,7 +74,7 @@ const Navbar = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-design-softgold hover:text-design-gold focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md text-black hover:text-gray-700 focus:outline-none"
               aria-expanded="false"
             >
               <span className="sr-only">{isOpen ? 'Close menu' : 'Open menu'}</span>
@@ -89,17 +86,13 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden bg-design-darkgray backdrop-blur-md shadow-md animate-fade-in border-t border-design-gold/10">
+        <div className="md:hidden bg-white shadow-md animate-fade-in border-t border-gray-200">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`block px-3 py-4 text-base font-medium transition-all duration-200 ${
-                  location.pathname === item.path
-                    ? 'text-design-gold border-l-2 border-design-gold pl-4'
-                    : 'text-design-softgold border-l-2 border-transparent'
-                }`}
+                className={`block px-3 py-4 text-base font-medium transition-all duration-200 text-black border-l-2 border-transparent hover:border-black`}
               >
                 {item.name}
               </Link>
