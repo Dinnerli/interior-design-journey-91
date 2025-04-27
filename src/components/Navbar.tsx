@@ -44,7 +44,7 @@ const Navbar = () => {
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center hover:text-design-gold transition-colors">
               <img 
-                src="/lovable-uploads/4de71902-664e-40a5-9e47-6bba44836771.png" 
+                src="https://usbueyoxlcbsajndxumu.supabase.co/storage/v1/object/public/images//DA-logo.png" 
                 alt="BEURANT DESIGN Logo" 
                 className="h-12 w-auto mr-3" 
               />
