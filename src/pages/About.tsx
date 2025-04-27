@@ -91,6 +91,7 @@ const About = () => {
                   />
                 </div>
                 
+                
                 <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 animate-slide-up text-center md:text-left">
                   <h3 className="text-xl font-display font-medium mb-4">Dinnerli Fernando</h3>
                   <p className="text-primary mb-6">Bachelor in Architecture (Hons)</p>
