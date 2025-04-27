@@ -1,3 +1,4 @@
+
 import { ArrowDown } from 'lucide-react';
 
 const Hero = () => {
@@ -13,7 +14,7 @@ const Hero = () => {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
-          src="/Assets/modern-tranquility-1.png" 
+          src="/lovable-uploads/c1a8dbf9-c004-4f0e-b0a2-c7f579039621.png" 
           alt="Interior Design" 
           className="w-full h-full object-cover object-center" 
         />

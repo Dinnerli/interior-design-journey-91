@@ -131,8 +131,8 @@ const Index = () => {
             <div className="animate-slide-up">
               <div className="relative">
                 <img 
-                  src="/Assets/dinnerli-fernando-profile.jpg"
-                  alt="Dinnerli Fernando" 
+                  src="/lovable-uploads/c772d43b-48f1-4cf5-9532-17d29aa093d2.png"
+                  alt="Bevan Jonathan David" 
                   className="rounded-lg shadow-xl w-full h-auto object-cover" 
                 />
                 <div className="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg">
@@ -144,8 +144,8 @@ const Index = () => {
 
             <div className="animate-slide-up">
               <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-3">About Me</span>
-              <h2 className="text-3xl md:text-4xl font-display font-medium mb-2">Dinnerli Fernando</h2>
-              <h3 className="text-xl text-primary mb-6">Bachelor in Architecture (Hons)</h3>
+              <h2 className="text-3xl md:text-4xl font-display font-medium mb-2">Bevan Jonathan David</h2>
+              <h3 className="text-xl text-primary mb-6">BA(Hons.) Interior Design</h3>
               
               <div className="section-divider mb-8"></div>
               

@@ -1,3 +1,4 @@
+
 import { useEffect } from 'react';
 import { CheckCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
@@ -30,8 +31,8 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-16">
             {/* Main Content - 3 columns */}
             <div className="lg:col-span-3 order-2 lg:order-1">
-              <h2 className="text-3xl font-display font-medium mb-6 animate-slide-up">Dinnerli Fernando</h2>
-              <h3 className="text-xl text-primary mb-6 animate-slide-up">Bachelor in Architecture (Hons)</h3>
+              <h2 className="text-3xl font-display font-medium mb-6 animate-slide-up">Bevan Jonathan David</h2>
+              <h3 className="text-xl text-primary mb-6 animate-slide-up">BA(Hons.) Interior Design</h3>
               
               <div className="section-divider mb-8 animate-slide-up"></div>
               
@@ -85,16 +86,16 @@ const About = () => {
               <div className="sticky top-32">
                 <div className="relative mb-8 animate-slide-up">
                   <img 
-                    src="/Assets/dinnerli-fernando-profile.jpg" 
-                    alt="Dinnerli Fernando" 
+                    src="/lovable-uploads/c772d43b-48f1-4cf5-9532-17d29aa093d2.png" 
+                    alt="Bevan Jonathan David" 
                     className="rounded-full shadow-xl w-64 h-64 object-cover mx-auto" 
                   />
                 </div>
                 
                 
                 <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 animate-slide-up text-center md:text-left">
-                  <h3 className="text-xl font-display font-medium mb-4">Dinnerli Fernando</h3>
-                  <p className="text-primary mb-6">Bachelor in Architecture (Hons)</p>
+                  <h3 className="text-xl font-display font-medium mb-4">Bevan Jonathan David</h3>
+                  <p className="text-primary mb-6">BA(Hons.) Interior Design</p>
                   
                   <h4 className="text-lg font-display font-medium mb-4">Specializations</h4>
                   <ul className="space-y-3">
