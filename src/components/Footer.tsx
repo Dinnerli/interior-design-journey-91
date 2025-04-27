@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowRight, Linkedin, Instagram, Facebook } from 'lucide-react';
 
@@ -10,12 +11,12 @@ const Footer = () => {
           <div className="space-y-5">
             <Link to="/" className="flex items-center">
               <img 
-                src="/Assets/black-logo.png" 
-                alt="DESIGN ALCHEMY Logo" 
-                className="h-12 w-auto mr-3" 
+                src="/lovable-uploads/4de71902-664e-40a5-9e47-6bba44836771.png" 
+                alt="BEURANT DESIGN Logo" 
+                className="h-12 w-auto mr-3 filter brightness-0 invert" 
               />
-              <span className="text-2xl font-didot font-semibold tracking-tight">
-                DESIGN ALCHEMY
+              <span className="text-2xl font-display font-semibold tracking-tight">
+                BEURANT DESIGN
               </span>
             </Link>
             <p className="text-gray-300 mt-4 max-w-md">
@@ -72,7 +73,7 @@ const Footer = () => {
               <div className="flex items-start">
                 <Phone className="text-design-accent mr-3 mt-1 flex-shrink-0" size={18} />
                 <a href="tel:+94764052630" className="text-gray-300 hover:text-design-accent transition-colors">
-                  +94764052630
+                  +94 764 052 630
                 </a>
               </div>
             </div>
