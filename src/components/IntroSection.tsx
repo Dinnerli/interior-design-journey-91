@@ -3,7 +3,7 @@ import { AspectRatio } from './ui/aspect-ratio';
 const IntroSection = () => {
   return <section className="py-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center px-[16px] py-[72px] my-[31px] rounded-md">
           <div className="space-y-8">
             <div className="animate-slide-up">
               <h2 className="text-5xl xl:text-7xl font-display leading-tight mb-8 text-left font-medium mx-[7px] my-[31px] py-[18px] px-0 lg:text-5xl">
