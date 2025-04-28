@@ -1,7 +1,10 @@
+
 import { Link } from 'react-router-dom';
 import { AspectRatio } from './ui/aspect-ratio';
+
 const IntroSection = () => {
-  return <section className="py-24 px-4 sm:px-6">
+  return (
+    <section className="py-24 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="space-y-8">
@@ -14,15 +17,26 @@ const IntroSection = () => {
                 Step into a world where the art of Interior Design is meticulously crafted to bring together timeless elegance and cutting-edge modern Innovation, Allowing you to transform your living spaces into the epitome of luxury and sophistication
               </p>
             </div>
-            <Link to="/contact" className="inline-block px-8 py-4 bg-primary text-primary-foreground font-medium rounded-none hover:bg-primary/90 transition-colors duration-300 animate-slide-up">
+            <Link 
+              to="/contact" 
+              className="inline-block px-8 py-4 bg-primary text-primary-foreground font-medium rounded-none hover:bg-primary/90 transition-colors duration-300 animate-slide-up"
+            >
               Contact Us
             </Link>
           </div>
           <div className="relative animate-slide-up">
-            
+            <AspectRatio ratio={4/3} className="bg-muted">
+              <img
+                src="/lovable-uploads/1aca1f75-b100-4918-94ab-0a8e69784f35.png"
+                alt="Luxurious living room with modern furniture and natural lighting"
+                className="object-cover w-full h-full rounded-none transition-transform duration-300 hover:scale-105"
+              />
+            </AspectRatio>
           </div>
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default IntroSection;
