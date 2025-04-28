@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
@@ -48,6 +49,31 @@ const FeaturedProject = ({
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>
           </div>
+        </div>
+      </div>
+
+      {/* Small Project Gallery */}
+      <div className="mt-8 grid grid-cols-3 gap-4">
+        <div className="aspect-[16/9] rounded-lg overflow-hidden">
+          <img 
+            src="/lovable-uploads/9d46af33-0a63-4d14-bf8d-276f6384c956.png" 
+            alt={`${title} detail 1`}
+            className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
+          />
+        </div>
+        <div className="aspect-[16/9] rounded-lg overflow-hidden">
+          <img 
+            src="/lovable-uploads/69ee228e-2645-4900-ad10-280f93663bb4.png" 
+            alt={`${title} detail 2`}
+            className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
+          />
+        </div>
+        <div className="aspect-[16/9] rounded-lg overflow-hidden">
+          <img 
+            src="/lovable-uploads/365ff580-8bb9-48e2-ad90-144069bfad6d.png" 
+            alt={`${title} detail 3`}
+            className="w-full h-full object-cover transition-all duration-500 hover:scale-105"
+          />
         </div>
       </div>
 
