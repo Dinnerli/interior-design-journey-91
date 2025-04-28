@@ -1,6 +1,4 @@
-
 import { ArrowDown } from 'lucide-react';
-
 const Hero = () => {
   const scrollToContent = () => {
     window.scrollTo({
@@ -8,17 +6,11 @@ const Hero = () => {
       behavior: 'smooth'
     });
   };
-
-  return (
-    <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
+  return <div className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <img 
-          src="/lovable-uploads/c1a8dbf9-c004-4f0e-b0a2-c7f579039621.png" 
-          alt="Interior Design" 
-          className="w-full h-full object-cover object-center" 
-        />
-        <div className="absolute inset-0 bg-black/40"></div>
+        <img src="/lovable-uploads/c1a8dbf9-c004-4f0e-b0a2-c7f579039621.png" alt="Interior Design" className="w-full h-full object-cover object-center" />
+        
       </div>
 
       {/* Content */}
@@ -30,31 +22,19 @@ const Hero = () => {
           Creating timeless interiors that inspire and transform the way you live
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <a 
-            href="/projects" 
-            className="px-8 py-3 bg-white hover:bg-white/90 text-neutral-900 font-medium transition-colors duration-300 min-w-[200px]"
-          >
+          <a href="/projects" className="px-8 py-3 bg-white hover:bg-white/90 text-neutral-900 font-medium transition-colors duration-300 min-w-[200px]">
             View Projects
           </a>
-          <a 
-            href="/contact" 
-            className="px-8 py-3 bg-transparent hover:bg-white/10 text-white font-medium transition-colors duration-300 border border-white min-w-[200px]"
-          >
+          <a href="/contact" className="px-8 py-3 bg-transparent hover:bg-white/10 text-white font-medium transition-colors duration-300 border border-white min-w-[200px]">
             Get in Touch
           </a>
         </div>
       </div>
 
       {/* Scroll Down Indicator */}
-      <button 
-        onClick={scrollToContent}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 hover:text-white transition-colors duration-300 animate-bounce"
-        aria-label="Scroll Down"
-      >
+      <button onClick={scrollToContent} className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-white/80 hover:text-white transition-colors duration-300 animate-bounce" aria-label="Scroll Down">
         <ArrowDown size={24} />
       </button>
-    </div>
-  );
+    </div>;
 };
-
 export default Hero;
