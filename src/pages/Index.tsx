@@ -58,7 +58,7 @@ const Index = () => {
       <section className="py-24 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16 animate-slide-up">
-            <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-3">Our Services</span>
+            <span className="inline-block font-medium text-primary uppercase tracking-wider mb-3 text-lg">Our Services</span>
             <h2 className="text-3xl md:text-4xl font-display font-medium mb-6">Comprehensive Design Solutions</h2>
             <div className="w-24 h-1 bg-primary mx-auto"></div>
           </div>

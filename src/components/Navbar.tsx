@@ -39,7 +39,7 @@ const Navbar = () => {
         <div className="flex justify-between items-center h-20 bg-design-light">
           <div className="flex-shrink-0 flex items-center">
             <Link to="/" className="flex items-center hover:text-design-gold transition-colors">
-              <img src="https://usbueyoxlcbsajndxumu.supabase.co/storage/v1/object/public/images//DA-logo.png" alt="BEURANT DESIGN Logo" className="h-20 w-auto mr-1\n" />
+              <img src="https://usbueyoxlcbsajndxumu.supabase.co/storage/v1/object/public/images//DA-logo.png" alt="BEURANT DESIGN Logo" className="h-20 w-auto mr-1\\n object-cover" />
               <span className="text-xl font-display tracking-tight text-design-softgold mx-[240px] px-[6px] text-justify font-thin">                                                     DESIGN ALCHEMY </span>
             </Link>
           </div>
