@@ -1,23 +1,14 @@
-
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowRight, Linkedin, Instagram, Facebook } from 'lucide-react';
-
 const Footer = () => {
-  return (
-    <footer className="bg-design-dark text-white pt-16 pb-8">
+  return <footer className="bg-design-dark text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Column 1 - Logo and About */}
           <div className="space-y-5">
             <Link to="/" className="flex items-center">
-              <img 
-                src="/lovable-uploads/4de71902-664e-40a5-9e47-6bba44836771.png" 
-                alt="BEURANT DESIGN Logo" 
-                className="h-12 w-auto mr-3 filter brightness-0 invert" 
-              />
-              <span className="text-2xl font-display font-semibold tracking-tight">
-                BEURANT DESIGN
-              </span>
+              <img alt="BEURANT DESIGN Logo" src="/lovable-uploads/ab1cbd66-f34e-46b2-bc4f-532e66083588.png" className="h-12 w-auto mr-3 " />
+              <span className="text-2xl font-display tracking-tight font-light">DESIGN ALCHEMY</span>
             </Link>
             <p className="text-gray-300 mt-4 max-w-md">
               Creating appealing and unique spaces based on client requirements, budget and timeline. 
@@ -84,8 +75,6 @@ const Footer = () => {
           <p>&copy; {new Date().getFullYear()} BEURANT DESIGN. All rights reserved.</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;

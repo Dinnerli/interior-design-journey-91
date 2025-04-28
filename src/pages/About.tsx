@@ -1,16 +1,12 @@
-
 import { useEffect } from 'react';
 import { CheckCircle } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-
 const About = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* Page Header */}
@@ -32,7 +28,7 @@ const About = () => {
             {/* Main Content - 3 columns */}
             <div className="lg:col-span-3 order-2 lg:order-1">
               <h2 className="text-3xl font-display font-medium mb-6 animate-slide-up">Bevan Jonathan David</h2>
-              <h3 className="text-xl text-primary mb-6 animate-slide-up">BA(Hons.) Interior Design</h3>
+              <h3 className="text-xl text-primary mb-6 animate-slide-up">Bachelor of Architecture (Hons)</h3>
               
               <div className="section-divider mb-8 animate-slide-up"></div>
               
@@ -62,21 +58,10 @@ const About = () => {
                 <h3 className="text-2xl font-display font-medium mb-6 animate-slide-up">Core Values</h3>
                 <div className="section-divider mb-8 animate-slide-up"></div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 animate-slide-up">
-                  {[
-                    'Client-Centered Approach',
-                    'Attention to Detail',
-                    'Innovative Solutions',
-                    'Quality Materials',
-                    'Timely Delivery',
-                    'Budget Consciousness',
-                    'Environmental Awareness',
-                    'Collaborative Process'
-                  ].map((value, i) => (
-                    <div key={i} className="flex items-start">
+                  {['Client-Centered Approach', 'Attention to Detail', 'Innovative Solutions', 'Quality Materials', 'Timely Delivery', 'Budget Consciousness', 'Environmental Awareness', 'Collaborative Process'].map((value, i) => <div key={i} className="flex items-start">
                       <CheckCircle size={18} className="text-primary mr-2 mt-1 flex-shrink-0" />
                       <span>{value}</span>
-                    </div>
-                  ))}
+                    </div>)}
                 </div>
               </div>
             </div>
@@ -85,17 +70,13 @@ const About = () => {
             <div className="lg:col-span-2 order-1 lg:order-2">
               <div className="sticky top-32">
                 <div className="relative mb-8 animate-slide-up">
-                  <img 
-                    src="/lovable-uploads/c772d43b-48f1-4cf5-9532-17d29aa093d2.png" 
-                    alt="Bevan Jonathan David" 
-                    className="rounded-full shadow-xl w-64 h-64 object-cover mx-auto" 
-                  />
+                  <img alt="Bevan Jonathan David" className="rounded-full shadow-xl w-64 h-64 object-cover mx-auto" src="/lovable-uploads/e2561ec0-af9e-4f70-8226-5efc04263c03.jpg" />
                 </div>
                 
                 
                 <div className="bg-white p-8 rounded-lg shadow-sm border border-gray-100 animate-slide-up text-center md:text-left">
-                  <h3 className="text-xl font-display font-medium mb-4">Bevan Jonathan David</h3>
-                  <p className="text-primary mb-6">BA(Hons.) Interior Design</p>
+                  <h3 className="text-xl font-display font-medium mb-4">Dinnerli Fernando</h3>
+                  <p className="text-primary mb-6">Bachelor of Architecture (Hons)</p>
                   
                   <h4 className="text-lg font-display font-medium mb-4">Specializations</h4>
                   <ul className="space-y-3">
@@ -130,29 +111,20 @@ const About = () => {
       {/* CTA Section */}
       <section className="relative py-24 px-4 sm:px-6 bg-design-dark text-white overflow-hidden">
         <div className="absolute inset-0 opacity-10">
-          <img
-            src="/lovable-uploads/0c2291eb-05da-4f0e-83a1-239a723f73bc.png"
-            alt="Background"
-            className="w-full h-full object-cover"
-          />
+          <img src="/lovable-uploads/0c2291eb-05da-4f0e-83a1-239a723f73bc.png" alt="Background" className="w-full h-full object-cover" />
         </div>
         <div className="relative max-w-7xl mx-auto text-center z-10">
           <h2 className="text-3xl md:text-4xl font-display font-medium mb-6 animate-slide-up">Let's Work Together</h2>
           <p className="text-lg text-white/80 max-w-2xl mx-auto mb-10 animate-slide-up">
             Ready to transform your space? Get in touch to discuss your project needs and vision.
           </p>
-          <a
-            href="/contact"
-            className="px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-md transition-colors duration-300 inline-block animate-slide-up"
-          >
+          <a href="/contact" className="px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-md transition-colors duration-300 inline-block animate-slide-up">
             Contact Me
           </a>
         </div>
       </section>
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default About;
