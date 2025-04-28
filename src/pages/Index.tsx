@@ -104,7 +104,7 @@ const Index = () => {
           <div className="mb-16">
             <div className="flex flex-col md:flex-row gap-4 animate-slide-up">
               <div className="md:w-1/3 aspect-[3/4] overflow-hidden rounded-lg">
-                <img src="/lovable-uploads/84abdd82-b87e-4025-806e-48ae786b8756.png" alt="Interior Design Bedroom" className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="eager" />
+                <img alt="Interior Design Bedroom" className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="eager" src="/lovable-uploads/365ff580-8bb9-48e2-ad90-144069bfad6d.png" />
               </div>
               <div className="md:w-1/3 aspect-[3/4] overflow-hidden rounded-lg">
                 <img src="/lovable-uploads/69ee228e-2645-4900-ad10-280f93663bb4.png" alt="Interior Design Living Room" className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" loading="eager" />
