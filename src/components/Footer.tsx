@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowRight, Linkedin, Instagram, Facebook } from 'lucide-react';
 const Footer = () => {
-  return <footer className="bg-design-dark text-white pt-16 pb-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  return <footer className="text-white pt-16 pb-8 bg-black/[0.88]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#1c1d1c]">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {/* Column 1 - Logo and About */}
           <div className="space-y-5">
@@ -62,7 +62,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex items-start">
-                <Phone className="text-design-accent mr-3 mt-1 flex-shrink-0" size={18} />
+                <Phone size={18} className="text-design-accent mr-3 mt-1 flex-shrink-0 bg-transparent" />
                 <a href="tel:+94764052630" className="text-gray-300 hover:text-design-accent transition-colors">
                   +94 764 052 630
                 </a>
