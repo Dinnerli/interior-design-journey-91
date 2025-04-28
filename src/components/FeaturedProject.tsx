@@ -27,7 +27,7 @@ const FeaturedProject = ({
           <img src={image} alt={title} className="w-full h-full object-cover transition-all duration-500 hover:scale-105" loading="eager" />
         </div>
         <div className="space-y-6">
-          <h3 className="text-4xl font-display">{title}</h3>
+          <h3 className="font-display text-5xl font-light py-0 my-[47px]">{title}</h3>
           <p className="text-lg text-muted-foreground leading-relaxed">
             {description}
           </p>
