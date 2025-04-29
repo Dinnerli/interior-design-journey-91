@@ -1,6 +1,8 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
+
 interface ProjectCardProps {
   id: string;
   title: string;
@@ -10,6 +12,7 @@ interface ProjectCardProps {
   client?: string;
   index: number;
 }
+
 const ProjectCard = ({
   id,
   title,
@@ -22,21 +25,36 @@ const ProjectCard = ({
   const [isLoaded, setIsLoaded] = useState(false);
   // Use the project image or fallback to the shared background image
   const backgroundImage = image || "/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png";
-  return <Link to={`/projects/${id}`} className="project-card group relative block h-[400px] overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl" style={{
-    animationDelay: `${index * 0.1}s`
-  }}>
+
+  return (
+    <Link 
+      to={`/projects/${id}`} 
+      className="project-card group relative block h-[400px] overflow-hidden rounded-lg shadow-md transition-all duration-300 hover:shadow-xl" 
+      style={{
+        animationDelay: `${index * 0.1}s`
+      }}
+    >
       {/* Image with blur-up loading */}
       <div className="absolute inset-0 bg-gray-200 animate-pulse">
-        <img src={backgroundImage} alt={title} className={`w-full h-full object-cover transition-all duration-700 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} onLoad={() => setIsLoaded(true)} />
+        <img 
+          src={backgroundImage} 
+          alt={title} 
+          className={`w-full h-full object-cover transition-all duration-700 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} 
+          onLoad={() => setIsLoaded(true)} 
+        />
       </div>
 
       {/* Fixed background image overlay */}
       <div className="absolute inset-0 bg-black/30">
-        <img alt="Interior background" className="w-full h-full object-cover opacity-40 mix-blend-overlay" src="/lovable-uploads/ed108008-0c7a-4630-bf29-b2a8c7c18641.png" />
+        <img 
+          src="/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png"
+          alt="Interior background"
+          className="w-full h-full object-cover opacity-40 mix-blend-overlay"
+        />
       </div>
 
       {/* Gradient overlay for better text readability */}
-      
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-90"></div>
 
       {/* Content overlay */}
       <div className="absolute bottom-0 left-0 right-0 p-6 text-white z-10 bg-transparent">
@@ -56,7 +74,9 @@ const ProjectCard = ({
       </div>
 
       {/* Hover overlay with enhanced effect */}
-      
-    </Link>;
+      <div className="project-card-overlay absolute inset-0 bg-black/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+    </Link>
+  );
 };
+
 export default ProjectCard;
