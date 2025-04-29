@@ -11,7 +11,7 @@ const projects = Object.entries(projectsData).map(([id, project]) => ({
   id,
   title: project.title,
   location: project.location,
-  image: project.image,
+  image: project.image || '/lovable-uploads/897e652d-9318-42ec-8ddd-2361da3857af.png', // Use the new default image if none exists
   type: project.type,
   size: project.size,
   client: project.client,

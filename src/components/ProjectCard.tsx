@@ -23,9 +23,7 @@ const ProjectCard = ({
   index
 }: ProjectCardProps) => {
   const [isLoaded, setIsLoaded] = useState(false);
-  // Use the project image or fallback to the shared background image
-  const backgroundImage = image || "/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png";
-
+  
   return (
     <Link 
       to={`/projects/${id}`} 
@@ -34,22 +32,13 @@ const ProjectCard = ({
         animationDelay: `${index * 0.1}s`
       }}
     >
-      {/* Image with blur-up loading */}
+      {/* Primary project image with blur-up loading */}
       <div className="absolute inset-0 bg-gray-200 animate-pulse">
         <img 
-          src={backgroundImage} 
+          src={image} 
           alt={title} 
           className={`w-full h-full object-cover transition-all duration-700 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}`} 
           onLoad={() => setIsLoaded(true)} 
-        />
-      </div>
-
-      {/* Fixed background image overlay */}
-      <div className="absolute inset-0 bg-black/30">
-        <img 
-          src="/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png"
-          alt="Interior background"
-          className="w-full h-full object-cover opacity-40 mix-blend-overlay"
         />
       </div>
 
