@@ -6,14 +6,7 @@ import Footer from '@/components/Footer';
 import Navbar from '@/components/Navbar';
 import FeaturedProject from '@/components/FeaturedProject';
 import IntroSection from '@/components/IntroSection';
-
 const projects = [{
-  id: 'modern-tranquility',
-  title: 'Modern Tranquility',
-  location: 'Pelawatta',
-  image: '/lovable-uploads/eff774de-6686-4aad-848e-2d602d00903c.png',
-  type: 'Residential Renovation'
-}, {
   id: 'united-nations-rc-office',
   title: 'United Nations RC Office',
   location: 'Thunmulla',
@@ -32,7 +25,6 @@ const projects = [{
   image: '/lovable-uploads/15449c9f-314c-4587-b2e3-26942516db03.png',
   type: 'Office Space'
 }];
-
 const services = [{
   icon: <LayoutGrid className="h-6 w-6" />,
   title: 'Space Planning',
@@ -46,22 +38,17 @@ const services = [{
   title: 'Project Management',
   description: 'Overseeing every aspect of your project from concept to completion, ensuring quality and timeliness.'
 }];
-
 const Index = () => {
   const [currentProjectIndex, setCurrentProjectIndex] = useState(0);
-  
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  
   const handlePreviousProject = () => {
     setCurrentProjectIndex(prev => prev > 0 ? prev - 1 : projects.length - 1);
   };
-  
   const handleNextProject = () => {
     setCurrentProjectIndex(prev => prev < projects.length - 1 ? prev + 1 : 0);
   };
-  
   return <div className="min-h-screen bg-background">
       <Navbar />
       <Hero />
@@ -122,18 +109,7 @@ const Index = () => {
             </div>
           </div>
 
-          <FeaturedProject 
-            {...projects[currentProjectIndex]} 
-            description={
-              currentProjectIndex === 0 
-                ? "Once an old factory, this Pelawatta residence has been transformed into a serene, modern haven. The renovation embraces natural light and greenery, seamlessly blending indoor and outdoor spaces."
-                : "Design embraces the essence of the space by seamlessly integrating functionality with aesthetic appeal. The thoughtful layout and carefully selected materials create an environment that promotes both productivity and comfort."
-            }
-            onPrevious={handlePreviousProject} 
-            onNext={handleNextProject} 
-            showPrevious={currentProjectIndex > 0} 
-            showNext={currentProjectIndex < projects.length - 1} 
-          />
+          <FeaturedProject {...projects[currentProjectIndex]} description="Design embraces the essence of the space by seamlessly integrating functionality with aesthetic appeal. The thoughtful layout and carefully selected materials create an environment that promotes both productivity and comfort." onPrevious={handlePreviousProject} onNext={handleNextProject} showPrevious={currentProjectIndex > 0} showNext={currentProjectIndex < projects.length - 1} />
         </div>
       </section>
 
@@ -206,5 +182,4 @@ const Index = () => {
       <Footer />
     </div>;
 };
-
 export default Index;
