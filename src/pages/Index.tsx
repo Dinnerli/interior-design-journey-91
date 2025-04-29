@@ -161,7 +161,23 @@ const Index = () => {
       </section>
 
       {/* CTA Section */}
-      
+      <section className="relative py-24 px-4 sm:px-6 bg-design-dark text-white overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <img src="/lovable-uploads/0c2291eb-05da-4f0e-83a1-239a723f73bc.png" alt="Background" className="w-full h-full object-cover" />
+        </div>
+        <div className="relative max-w-7xl mx-auto text-center z-10">
+          <h2 className="text-3xl md:text-4xl font-display font-medium mb-6 animate-slide-up">
+            Ready to Transform Your Space?
+          </h2>
+          <p className="text-lg text-white/80 max-w-2xl mx-auto mb-10 animate-slide-up">
+            Let's collaborate to create interiors that reflect your vision and elevate your environment.
+          </p>
+          <Link to="/contact" className="px-8 py-4 bg-primary hover:bg-primary/90 text-white font-medium rounded-md transition-colors duration-300 inline-flex items-center animate-slide-up">
+            <span>Start Your Project</span>
+            <ArrowRight size={16} className="ml-2" />
+          </Link>
+        </div>
+      </section>
 
       <Footer />
     </div>;
