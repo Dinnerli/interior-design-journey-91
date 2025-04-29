@@ -17,7 +17,7 @@ export type ProjectsDataType = {
 };
 
 const projectsData: ProjectsDataType = {
-  'united-nations-rc-office': {
+  'public\lovable-uploads\Screenshot 2025-04-28 220924.png': {
     title: 'Resident Coordinator\'s Office',
     location: 'UN Compound, Sri Lanka',
     image: '/lovable-uploads/679ccbcc-92ee-41ab-955c-dcaf5f6b8a67.png',

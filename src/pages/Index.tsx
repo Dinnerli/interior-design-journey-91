@@ -10,7 +10,7 @@ const projects = [{
   id: 'united-nations-rc-office',
   title: 'United Nations RC Office',
   location: 'Thunmulla',
-  image: '/lovable-uploads/3372d304-83f6-4f63-881e-5f290429893e.png',
+  image: 'public\lovable-uploads\Screenshot 2025-04-28 220924.png',
   type: 'Office Space'
 }, {
   id: 'jat-holdings-stall',

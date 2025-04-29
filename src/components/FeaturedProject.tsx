@@ -24,7 +24,7 @@ const FeaturedProject = ({
   return <div className="relative w-full">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         <div className="relative rounded-2xl overflow-hidden aspect-[4/3] bg-gray-100">
-          <img src={image} alt={title} className="w-full h-full object-cover transition-all duration-500 hover:scale-105" loading="eager" />
+          <img src="/lovable-uploads/Screenshot 2025-04-28 220924.png" alt={title} className="w-full h-full object-cover transition-all duration-500 hover:scale-105" loading="eager" />
         </div>
         <div className="space-y-6">
           <h3 className="font-display text-5xl font-light py-0 my-[47px]">{title}</h3>
