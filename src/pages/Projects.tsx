@@ -7,16 +7,18 @@ import ProjectCard from '@/components/ProjectCard';
 import projectsData from '@/data/projectsData';
 import { Separator } from '@/components/ui/separator';
 
-// Convert the projectsData object to an array for the projects page
-const projects = Object.entries(projectsData).map(([id, project]) => ({
-  id,
-  title: project.title,
-  location: project.location,
-  image: project.image || '/lovable-uploads/897e652d-9318-42ec-8ddd-2361da3857af.png', // Use default image if none exists
-  type: project.type,
-  size: project.size,
-  client: project.client,
-}));
+// Convert the projectsData object to an array and limit to 6 projects
+const projects = Object.entries(projectsData)
+  .map(([id, project]) => ({
+    id,
+    title: project.title,
+    location: project.location,
+    image: project.image || '/lovable-uploads/897e652d-9318-42ec-8ddd-2361da3857af.png', // Use default image if none exists
+    type: project.type,
+    size: project.size,
+    client: project.client,
+  }))
+  .slice(0, 6); // Limit to 6 projects
 
 // Animation variants
 const fadeIn = {
@@ -62,8 +64,8 @@ const Projects = () => {
           </motion.p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-12">
+        {/* Projects Grid - Each card is independent */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-12">
           {projects.map((project, index) => (
             <motion.div
               key={project.id}
@@ -71,6 +73,7 @@ const Projects = () => {
               initial="hidden"
               animate="visible"
               variants={fadeIn}
+              className="flex flex-col"
             >
               <ProjectCard {...project} index={index} />
             </motion.div>
