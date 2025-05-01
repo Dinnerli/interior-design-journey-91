@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -52,7 +51,30 @@ const ProjectDetail = () => {
       <section className="py-16 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
           <ProjectMetadata project={project} />
-          <ProjectOverview description={project.description} />
+          <ProjectOverview 
+            description={project.description}
+            images={id === 'un-drivers-washroom' ? [
+              '/lovable-uploads/Screenshot 2025-05-01 153210.png',
+              '/lovable-uploads/Screenshot 2025-05-01 153058.png',
+              '/lovable-uploads/Screenshot 2025-05-01 153023.png',
+            ] : id === 'unicef-rooftop-lounge' ? [
+              '/lovable-uploads/8f4e2787-7f87-42de-ba85-efc31f8d9eae.png',
+              '/lovable-uploads/365ff580-8bb9-48e2-ad90-144069bfad6d.png',
+              '/lovable-uploads/69ee228e-2645-4900-ad10-280f93663bb4.png',
+            ] : id === 'un-canteen' ? [
+              '/lovable-uploads/wellawatta_Photo - 1.jpg',
+              '/lovable-uploads/wellawatta_Photo - 10.jpg',
+              '/lovable-uploads/wellawatta_Photo - 7.jpg',
+            ] : id === 'united-nations-conference-hall' ? [
+              '/lovable-uploads/Salon_render_Photo - 1.jpg',
+              '/lovable-uploads/Salon_render_Photo - 2.jpg',
+              '/lovable-uploads/Salon_render_Photo - 3.jpg',
+            ] : id === 'unops-office' ? [
+              '/lovable-uploads/WhatsApp Image 2025-04-12 at 16.30.08_0076a311.jpg',
+              '/lovable-uploads/WhatsApp Image 2025-04-12 at 16.30.08_485e5b73.jpg',
+              '/lovable-uploads/WhatsApp Image 2025-04-12 at 16.30.08_0f2d2426.jpg',
+            ] : undefined}
+          />
           <ProjectGallery project={project} />
           <ProjectNavigation />
         </div>
