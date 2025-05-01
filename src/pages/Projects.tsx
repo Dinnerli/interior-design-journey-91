@@ -5,13 +5,14 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProjectCard from '@/components/ProjectCard';
 import projectsData from '@/data/projectsData';
+import { Separator } from '@/components/ui/separator';
 
 // Convert the projectsData object to an array for the projects page
 const projects = Object.entries(projectsData).map(([id, project]) => ({
   id,
   title: project.title,
   location: project.location,
-  image: project.image || '/lovable-uploads/897e652d-9318-42ec-8ddd-2361da3857af.png', // Use the new default image if none exists
+  image: project.image || '/lovable-uploads/897e652d-9318-42ec-8ddd-2361da3857af.png', // Use default image if none exists
   type: project.type,
   size: project.size,
   client: project.client,
@@ -19,10 +20,9 @@ const projects = Object.entries(projectsData).map(([id, project]) => ({
 
 // Animation variants
 const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0 },
   visible: (i: number) => ({
     opacity: 1,
-    y: 0,
     transition: {
       delay: i * 0.1,
       duration: 0.5,
@@ -37,45 +37,46 @@ const Projects = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-white">
       <Navbar />
 
-      {/* Page Header */}
-      <section className="pt-32 pb-24 px-4 sm:px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <motion.div 
+      <div className="max-w-6xl mx-auto px-4 py-24">
+        {/* Page Header */}
+        <div className="text-center mb-16">
+          <motion.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="text-center"
+            className="text-4xl font-display font-medium mb-4"
           >
-            <h1 className="text-4xl md:text-5xl font-display font-medium mb-6">Our Projects</h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore our portfolio of completed interior design projects across various spaces
-              and industries. Each project reflects our commitment to excellence and innovation.
-            </p>
-          </motion.div>
+            Our Projects
+          </motion.h1>
+          <motion.p 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="text-neutral-600 max-w-2xl mx-auto"
+          >
+            Explore our portfolio of completed interior design projects across various spaces 
+            and industries. Each project reflects our commitment to excellence and innovation.
+          </motion.p>
         </div>
-      </section>
 
-      {/* Projects Grid */}
-      <section className="py-24 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                custom={index}
-                initial="hidden"
-                animate="visible"
-                variants={fadeIn}
-              >
-                <ProjectCard {...project} index={index} />
-              </motion.div>
-            ))}
-          </div>
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-x-6 gap-y-12">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.id}
+              custom={index}
+              initial="hidden"
+              animate="visible"
+              variants={fadeIn}
+            >
+              <ProjectCard {...project} index={index} />
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </div>
 
       <Footer />
     </div>
