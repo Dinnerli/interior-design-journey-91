@@ -16,38 +16,35 @@ export type ProjectsDataType = {
 };
 
 const projectsData: ProjectsDataType = {
-  'public\lovable-uploads\Screenshot 2025-04-28 220924.png': {
-    title: 'Resident Coordinator\'s Office',
-    location: 'UN Compound, Sri Lanka',
+  'forest-edge-retreat': {
+    title: 'Forest Edge Retreat',
+    location: 'Private Location',
     image: '/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png',
     secondaryImage: '/lovable-uploads/a68c833b-15fc-466a-9824-7267b0ee8ee4.png',
-    type: 'Office Space',
+    type: 'Nature Retreat',
     size: '1530sqft',
     year: '2022',
-    description: 'The office was a complete turn over from the state it was in. The moment you enter, you could see a lot of partitions and the space seemed small, cramped up and dark with the existing colour pallet. The design proposed was an open office concept and provided furniture, which staff get to sit around each other with their respective groups. The space eventually brightened up and a wall paper was also proposed on the white walls, which showed after removing the partitions.',
-    client: 'United Nations'
+    description: 'Set deep within a lush forest canopy, this serene retreat was designed to create a sense of immersion in nature. Floor-to-ceiling glass panels, neutral tones, and minimalist décor ensure that the landscape takes center stage. Perfect for restful escapes and mindful getaways.',
   },
-  'un-drivers-washroom': {
-    title: 'Driver\'s Washroom',
-    location: 'UN Compound, Sri Lanka',
+  'highland-view-villa': {
+    title: 'Highland View Villa',
+    location: 'Hill Country',
     image: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
     secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
-    type: 'Washroom',
-    size: '200sqft',
+    type: 'Villa',
+    size: '2000+ sqft',
     year: '2022',
-    description: 'A redesigned washroom facility for the drivers at the UN Compound, focusing on functionality and improved amenities.',
-    client: 'United Nations'
+    description: 'Perched with panoramic views of the hill country, this luxury villa blends contemporary design with natural textures. Expansive glass walls, earthy palettes, and curated interiors create a tranquil yet elevated experience. Ideal for short stays, long retreats, or premium getaways.',
   },
-  'unicef-rooftop-lounge': {
-    title: 'Rooftop Lounge',
-    location: 'Colombo 07, Sri Lanka',
+  'no66-residential-home': {
+    title: 'No 66',
+    location: 'Residential Area',
     image: '/lovable-uploads/Screenshot 2025-05-01 153922.png',
     secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
-    type: 'Lounge',
-    size: '800sqft',
-    year: '2021',
-    description: 'A rooftop lounge designed for relaxation and informal meetings for UNICEF staff, with comfortable seating and panoramic views of Colombo.',
-    client: 'United Nations International Children\'s Emergency Fund (UNICEF)'
+    type: 'Residential House',
+    size: '~1500 sqft',
+    year: '2022',
+    description: 'A modern residential home designed for warmth and flow. Natural wood finishes, open-concept living areas, and earthy tones lend a calm, grounded atmosphere. The house is crafted to harmonize indoor comfort with the surrounding greenery, offering a peaceful, everyday living experience.',
   },
   'un-canteen': {
     title: 'Canteen & Lunch Area',

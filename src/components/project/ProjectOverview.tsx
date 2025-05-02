@@ -1,9 +1,12 @@
+
 import { Project } from '@/data/projectsData';
 import { Separator } from '@/components/ui/separator';
+
 interface ProjectOverviewProps {
   description: string;
   images?: string[];
 }
+
 const ProjectOverview = ({
   description,
   images
@@ -14,15 +17,25 @@ const ProjectOverview = ({
     '/lovable-uploads/wmremove-transformed.png'
   ];
   const displayImages = images || defaultImages;
-  return <div className="mb-16">
+
+  return (
+    <div className="mb-16">
       <h2 className="text-2xl font-display font-medium mb-6">Project Overview</h2>
       <div className="section-divider mb-8"></div>
-      <p className="text-lg leading-relaxed">{description}</p>
-      <div className="flex flex-row justify-center gap-8 mt-10">
+      <p className="text-lg leading-relaxed mb-10">{description}</p>
+      <div className="flex flex-col md:flex-row justify-center gap-8 mt-6">
         {displayImages.map((img, idx) => (
-          <img key={img} src={img} alt={`Project Square ${idx + 1}`} className="w-96 h-96 object-cover rounded-lg shadow" />
+          <div key={idx} className="overflow-hidden rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
+            <img 
+              src={img} 
+              alt={`Project Image ${idx + 1}`} 
+              className="w-full h-64 md:w-80 md:h-80 object-cover transition-transform duration-500 hover:scale-105" 
+            />
+          </div>
         ))}
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default ProjectOverview;
