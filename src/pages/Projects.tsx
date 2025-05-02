@@ -5,7 +5,6 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ProjectCard from '@/components/ProjectCard';
 import projectsData from '@/data/projectsData';
-import { Separator } from '@/components/ui/separator';
 
 // Convert the projectsData object to an array and limit to 6 projects
 const projects = Object.entries(projectsData)

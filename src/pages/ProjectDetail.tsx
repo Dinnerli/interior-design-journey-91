@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -53,11 +54,11 @@ const ProjectDetail = () => {
           <ProjectMetadata project={project} />
           <ProjectOverview 
             description={project.description}
-            images={id === 'un-drivers-washroom' ? [
+            images={id === 'highland-view-villa' ? [
               '/lovable-uploads/Screenshot 2025-05-01 153210.png',
               '/lovable-uploads/Screenshot 2025-05-01 153058.png',
               '/lovable-uploads/Screenshot 2025-05-01 153023.png',
-            ] : id === 'unicef-rooftop-lounge' ? [
+            ] : id === 'no66-residential-home' ? [
               '/lovable-uploads/8f4e2787-7f87-42de-ba85-efc31f8d9eae.png',
               '/lovable-uploads/365ff580-8bb9-48e2-ad90-144069bfad6d.png',
               '/lovable-uploads/69ee228e-2645-4900-ad10-280f93663bb4.png',
@@ -73,6 +74,10 @@ const ProjectDetail = () => {
               '/lovable-uploads/WhatsApp Image 2025-04-12 at 16.30.08_0076a311.jpg',
               '/lovable-uploads/WhatsApp Image 2025-04-12 at 16.30.08_485e5b73.jpg',
               '/lovable-uploads/WhatsApp Image 2025-04-12 at 16.30.08_0f2d2426.jpg',
+            ] : id === 'forest-edge-retreat' ? [
+              '/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png',
+              '/lovable-uploads/a68c833b-15fc-466a-9824-7267b0ee8ee4.png',
+              '/lovable-uploads/ab1cbd66-f34e-46b2-bc4f-532e66083588.png',
             ] : undefined}
           />
           <ProjectGallery project={project} />

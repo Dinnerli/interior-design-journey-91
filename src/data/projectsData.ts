@@ -16,7 +16,7 @@ export type ProjectsDataType = {
 };
 
 const projectsData: ProjectsDataType = {
-  'public\lovable-uploads\Screenshot 2025-04-28 220924.png': {
+  'public\\lovable-uploads\\Screenshot 2025-04-28 220924.png': {
     title: 'No 66',
     location: 'Colombo, Sri Lanka',
     image: '/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png',
