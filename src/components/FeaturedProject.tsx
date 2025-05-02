@@ -32,7 +32,7 @@ const FeaturedProject = ({
             {description}
           </p>
           <div className="flex items-center gap-4">
-            <Link to={`/projects/${id}`} className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors duration-300">
+            <Link to="/projects/unicef-rooftop-lounge" className="inline-flex items-center text-primary hover:text-primary/80 font-medium transition-colors duration-300">
               View Project
               <ArrowRight className="ml-2 h-4 w-4" />
             </Link>

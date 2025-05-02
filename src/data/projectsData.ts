@@ -17,70 +17,64 @@ export type ProjectsDataType = {
 
 const projectsData: ProjectsDataType = {
   'public\lovable-uploads\Screenshot 2025-04-28 220924.png': {
-    title: 'Resident Coordinator\'s Office',
-    location: 'UN Compound, Sri Lanka',
+    title: 'No 66',
+    location: 'Colombo, Sri Lanka',
     image: '/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png',
     secondaryImage: '/lovable-uploads/a68c833b-15fc-466a-9824-7267b0ee8ee4.png',
-    type: 'Office Space',
-    size: '1530sqft',
+    type: 'Residential House',
+    size: '~1500 sqft',
     year: '2022',
-    description: 'The office was a complete turn over from the state it was in. The moment you enter, you could see a lot of partitions and the space seemed small, cramped up and dark with the existing colour pallet. The design proposed was an open office concept and provided furniture, which staff get to sit around each other with their respective groups. The space eventually brightened up and a wall paper was also proposed on the white walls, which showed after removing the partitions.',
-    client: 'United Nations'
+    description: 'A modern residential home designed for warmth and flow. Natural wood finishes, open-concept living areas, and earthy tones lend a calm, grounded atmosphere. The house is crafted to harmonize indoor comfort with the surrounding greenery, offering a peaceful, everyday living experience.'
   },
   'un-drivers-washroom': {
-    title: 'Driver\'s Washroom',
-    location: 'UN Compound, Sri Lanka',
+    title: 'Highland View Villa',
+    location: 'Weligama, Sri Lanka',
     image: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
     secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
-    type: 'Washroom',
-    size: '200sqft',
+    type: 'Villa',
+    size: '2000+ sqft',
     year: '2022',
-    description: 'A redesigned washroom facility for the drivers at the UN Compound, focusing on functionality and improved amenities.',
-    client: 'United Nations'
+    description: 'Perched with panoramic views of the hill country, this luxury villa blends contemporary design with natural textures. Expansive glass walls, earthy palettes, and curated interiors create a tranquil yet elevated experience. Ideal for short stays, long retreats, or premium getaways.'
   },
   'unicef-rooftop-lounge': {
-    title: 'Rooftop Lounge',
-    location: 'Colombo 07, Sri Lanka',
+    title: 'Forest Edge Retreat',
+    location: 'Knuckles, Sri Lanka',
     image: '/lovable-uploads/Screenshot 2025-05-01 153922.png',
     secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
-    type: 'Lounge',
-    size: '800sqft',
-    year: '2021',
-    description: 'A rooftop lounge designed for relaxation and informal meetings for UNICEF staff, with comfortable seating and panoramic views of Colombo.',
-    client: 'United Nations International Children\'s Emergency Fund (UNICEF)'
+    type: 'Nature Retreat',
+    size: '1530 sqft',
+    year: '2022',
+    description: 'Set deep within a lush forest canopy, this serene retreat was designed to create a sense of immersion in nature. Floor-to-ceiling glass panels, neutral tones, and minimalist décor ensure that the landscape takes center stage. Perfect for restful escapes and mindful getaways.'
   },
   'un-canteen': {
-    title: 'Canteen & Lunch Area',
-    location: 'UN Compound, Sri Lanka',
+    title: 'Warm Minimalist Home Renovation',
+    location: 'Wellawatta, Sri Lanka',
     image: '/lovable-uploads/wellawatta_Photo - 1.jpg',
     secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
-    type: 'Canteen',
-    size: '1200sqft',
+    type: 'Residential Renovation',
+    size: '1200 sqft',
     year: '2021',
-    description: 'A redesigned canteen and lunch area for UN staff, providing a comfortable dining experience with modern amenities.',
-    client: 'United Nations'
+    description: 'A complete residential transformation designed with earthy palettes, modern lighting, and natural textures. This renovation created a cozy yet contemporary environment, ideal for urban living with a focus on open spaces and serene finishes.'
   },
   'united-nations-conference-hall': {
-    title: 'New Conference Hall & Office Complex',
-    location: 'UN Compound, Sri Lanka',
+    title: 'Wellness Salon Interior',
+    location: 'Colombo, Sri Lanka',
     image: '/lovable-uploads/Salon_render_Photo - 2.jpg',
     secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
-    type: 'Conference Space',
-    size: '950sqft',
+    type: 'Salon',
+    size: '950 sqft',
     year: '2022',
-    description: 'A modern conference hall designed for the United Nations office. The space was transformed to accommodate large meetings while maintaining the professional aesthetic that represents the organization.',
-    client: 'United Nations'
+    description: 'A thoughtfully designed salon space that balances luxury with comfort. Featuring soft lighting, arched walls, and curated details, the layout enhances the customer experience while maintaining a clean, professional atmosphere.'
   },
   'unops-office': {
-    title: 'New Office Building',
-    location: 'Colombo 05, Sri Lanka',
+    title: 'Collage Recreation Hub',
+    location: 'Colombo, Sri Lanka',
     image: '/lovable-uploads/WhatsApp Image 2025-04-12 at 16.30.08_0076a311.jpg',
     secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
-    type: 'Office Space',
-    size: '1200sqft',
+    type: 'Campus Recreation Area / Showroom Renovation',
+    size: '1200 sqft',
     year: '2023',
-    description: 'A functional office space designed for the United Nations Operations team. The design prioritizes collaborative work while maintaining privacy for specialized tasks.',
-    client: 'United Nations Office for Project Services (UNOPS)'
+    description: 'An exciting renovation of the former Lamborghini showroom, this vibrant campus-style recreational space blends bold design with function. Featuring tiered seating, playful lighting, gaming areas, and tropical accents, it\'s built to energize and engage the next generation of students.'
   },
   'who-health-corner': {
     title: 'Model Health Corner',
@@ -145,7 +139,7 @@ const projectsData: ProjectsDataType = {
     type: 'Office Space',
     size: '850sqft',
     year: '2022',
-    description: 'An office space designed for the USAID Sri Lanka Energy Program, focused on functionality and collaborative work.',
+    description: 'A functional office space designed for the USAID Sri Lanka Energy Program, focused on functionality and collaborative work.',
     client: 'US AID Sri Lanka Energy Program'
   },
   'hsbc-nursing-room': {

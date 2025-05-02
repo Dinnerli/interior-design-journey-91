@@ -7,11 +7,11 @@ import Navbar from '@/components/Navbar';
 import FeaturedProject from '@/components/FeaturedProject';
 import IntroSection from '@/components/IntroSection';
 const projects = [{
-  id: 'united-nations-rc-office',
-  title: 'United Nations RC Office',
-  location: 'Thunmulla',
+  id: 'public\\lovable-uploads\\Screenshot 2025-04-28 220924.png',
+  title: 'Forest Edge Retreat',
+  location: 'Knuckles, Sri Lanka',
   image: 'public\lovable-uploads\Screenshot 2025-04-28 220924.png',
-  type: 'Office Space'
+  type: 'Nature Retreat'
 }, {
   id: 'jat-holdings-stall',
   title: 'JAT Holdings Stall',
@@ -109,7 +109,7 @@ const Index = () => {
             </div>
           </div>
 
-          <FeaturedProject {...projects[currentProjectIndex]} description="Design embraces the essence of the space by seamlessly integrating functionality with aesthetic appeal. The thoughtful layout and carefully selected materials create an environment that promotes both productivity and comfort." onPrevious={handlePreviousProject} onNext={handleNextProject} showPrevious={currentProjectIndex > 0} showNext={currentProjectIndex < projects.length - 1} />
+          <FeaturedProject {...projects[currentProjectIndex]} description="Set deep within a lush forest canopy, this serene retreat was designed to create a sense of immersion in nature. Floor-to-ceiling glass panels, neutral tones, and minimalist décor ensure that the landscape takes center stage. Perfect for restful escapes and mindful getaways." onPrevious={handlePreviousProject} onNext={handleNextProject} showPrevious={currentProjectIndex > 0} showNext={currentProjectIndex < projects.length - 1} />
         </div>
       </section>
 
