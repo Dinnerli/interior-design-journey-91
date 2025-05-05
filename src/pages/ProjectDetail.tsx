@@ -12,7 +12,7 @@ import ProjectNavigation from '@/components/project/ProjectNavigation';
 import ProjectNotFound from '@/components/project/ProjectNotFound';
 
 type ProjectId = keyof typeof projectsData;
-
+//ewufhowe
 const ProjectDetail = () => {
   const { id } = useParams<{ id: string }>();
   const [project, setProject] = useState<Project | null>(null);
