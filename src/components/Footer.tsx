@@ -1,3 +1,4 @@
+
 import { Link } from 'react-router-dom';
 import { Mail, Phone, MapPin, ArrowRight, Linkedin, Instagram, Facebook } from 'lucide-react';
 const Footer = () => {
@@ -57,8 +58,8 @@ const Footer = () => {
               </div>
               <div className="flex items-start">
                 <Mail className="text-design-accent mr-3 mt-1 flex-shrink-0" size={18} />
-                <a href="mailto:info@beurantdesign.com" className="text-gray-300 hover:text-design-accent transition-colors">
-                  info@beurantdesign.com
+                <a href="mailto:dinnerli.fer@gmail.com" className="text-gray-300 hover:text-design-accent transition-colors">
+                  dinnerli.fer@gmail.com
                 </a>
               </div>
               <div className="flex items-start">
