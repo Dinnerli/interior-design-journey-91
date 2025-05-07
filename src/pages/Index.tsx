@@ -114,51 +114,7 @@ const Index = () => {
       </section>
 
       {/* About Section */}
-      <section className="py-24 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-slide-up">
-              <div className="relative">
-                <img alt="Bevan Jonathan David" src="/lovable-uploads/05d90e49-3506-477b-a40f-d89e404be382.jpg" className="rounded-lg shadow-xl w-full h-auto object-none" />
-                <div className="absolute -bottom-5 -right-5 bg-white p-4 rounded-lg shadow-lg">
-                  <span className="block text-sm font-semibold text-primary mb-1">
-                    Experience
-                  </span>
-                  <span className="text-2xl font-display font-medium">3+ Years</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="animate-slide-up">
-              <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-3">
-                About Me
-              </span>
-              <h2 className="text-3xl md:text-4xl font-display font-medium mb-2">DinnerliFernando</h2>
-              <h3 className="text-xl text-primary mb-6">Bachelor of Architecture (Hons)</h3>
-
-              <div className="section-divider mb-8"></div>
-
-              <p className="text-lg text-muted-foreground mb-6">
-                Every project we undertake, we believe in the challenge given to us. We believe in meeting 
-                the expectations of everyone through design. The way we achieve the challenge is by creating 
-                an appealing and unique space, based on one's requirements, budget and time-frame.
-              </p>
-
-              <div className="mb-8 grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {['Innovative Design Concepts', 'Attention to Detail', 'Client-Focused Approach', 'Budget-Conscious Solutions'].map((item, i) => <div key={i} className="flex items-start">
-                    <CheckCircle size={18} className="text-primary mr-2 mt-1 flex-shrink-0" />
-                    <span>{item}</span>
-                  </div>)}
-              </div>
-
-              <Link to="/about" className="px-6 py-3 bg-primary hover:bg-primary/90 text-primary-foreground font-medium rounded-md transition-colors duration-300 inline-flex items-center">
-                <span>Learn More</span>
-                <ArrowRight size={16} className="ml-2" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* CTA Section */}
       
