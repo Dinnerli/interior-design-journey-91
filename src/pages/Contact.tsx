@@ -1,17 +1,13 @@
-
 import { useEffect } from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactForm from '@/components/ContactForm';
-
 const Contact = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  return (
-    <div className="min-h-screen bg-background">
+  return <div className="min-h-screen bg-background">
       <Navbar />
 
       {/* Page Header */}
@@ -106,20 +102,9 @@ const Contact = () => {
       </section>
 
       {/* Map Section */}
-      <section className="py-16 px-4 sm:px-6 bg-gray-50">
-        <div className="max-w-7xl mx-auto">
-          <div className="rounded-lg overflow-hidden shadow-md h-[400px] animate-slide-up">
-            {/* Placeholder for map - in a real implementation you'd use Google Maps or similar */}
-            <div className="w-full h-full bg-gray-200 flex items-center justify-center text-gray-500">
-              <span>Map will be displayed here</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       <Footer />
-    </div>
-  );
+    </div>;
 };
-
 export default Contact;
