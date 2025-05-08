@@ -1,3 +1,4 @@
+
 export interface Project {
   title: string;
   location: string;
@@ -16,31 +17,34 @@ export type ProjectsDataType = {
 };
 
 const projectsData: ProjectsDataType = {
-  'public\\lovable-uploads\\Screenshot 2025-04-28 220924.png': {
+  'no66-residential-home': {
     title: 'No 66',
     location: 'Colombo, Sri Lanka',
-    image: '/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png',
-    secondaryImage: '/lovable-uploads/a68c833b-15fc-466a-9824-7267b0ee8ee4.png',
+    image: '/lovable-uploads/8f4e2787-7f87-42de-ba85-efc31f8d9eae.png',
+    secondaryImage: '/lovable-uploads/365ff580-8bb9-48e2-ad90-144069bfad6d.png',
+    additionalImages: ['/lovable-uploads/69ee228e-2645-4900-ad10-280f93663bb4.png'],
     type: 'Residential House',
     size: '~1500 sqft',
     year: '2022',
     description: 'A modern residential home designed for warmth and flow. Natural wood finishes, open-concept living areas, and earthy tones lend a calm, grounded atmosphere. The house is crafted to harmonize indoor comfort with the surrounding greenery, offering a peaceful, everyday living experience.'
   },
-  'un-drivers-washroom': {
+  'highland-view-villa': {
     title: 'Highland View Villa',
     location: 'Weligama, Sri Lanka',
     image: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
-    secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
+    secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153058.png',
+    additionalImages: ['/lovable-uploads/Screenshot 2025-05-01 153210.png'],
     type: 'Villa',
     size: '2000+ sqft',
     year: '2022',
     description: 'Perched with panoramic views of the hill country, this luxury villa blends contemporary design with natural textures. Expansive glass walls, earthy palettes, and curated interiors create a tranquil yet elevated experience. Ideal for short stays, long retreats, or premium getaways.'
   },
-  'unicef-rooftop-lounge': {
+  'forest-edge-retreat': {
     title: 'Forest Edge Retreat',
     location: 'Knuckles, Sri Lanka',
     image: '/lovable-uploads/Screenshot 2025-05-01 153922.png',
-    secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
+    secondaryImage: '/lovable-uploads/ab1cbd66-f34e-46b2-bc4f-532e66083588.png',
+    additionalImages: ['/lovable-uploads/a68c833b-15fc-466a-9824-7267b0ee8ee4.png', '/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png'],
     type: 'Nature Retreat',
     size: '1530 sqft',
     year: '2022',

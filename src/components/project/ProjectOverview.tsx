@@ -1,5 +1,4 @@
 
-import { Project } from '@/data/projectsData';
 import { Separator } from '@/components/ui/separator';
 
 interface ProjectOverviewProps {
@@ -24,7 +23,7 @@ const ProjectOverview = ({
       <div className="section-divider mb-8"></div>
       <p className="text-lg leading-relaxed mb-10">{description}</p>
       <div className="flex flex-col md:flex-row justify-center gap-8 mt-6">
-        {displayImages.map((img, idx) => (
+        {displayImages.slice(0, 3).map((img, idx) => (
           <div key={idx} className="overflow-hidden rounded-lg shadow hover:shadow-lg transition-shadow duration-300">
             <img 
               src={img} 

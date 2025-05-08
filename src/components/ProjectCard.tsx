@@ -17,10 +17,16 @@ const ProjectCard = ({
   location,
   image
 }: ProjectCardProps) => {
+  // Map the old id format to the new one if needed
+  let projectId = id;
+  if (id === 'public\\lovable-uploads\\Screenshot 2025-04-28 220924.png') {
+    projectId = 'no66-residential-home';
+  }
+
   return (
     <div className="w-full">
       <Link 
-        to={`/projects/${id}`} 
+        to={`/projects/${projectId}`} 
         className="block group"
       >
         {/* Project Image */}
