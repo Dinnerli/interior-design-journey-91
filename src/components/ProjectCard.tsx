@@ -28,14 +28,14 @@ const ProjectCard = ({
           <img 
             src={image} 
             alt={title} 
-            className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-105" 
+            className="w-full h-48 sm:h-56 md:h-64 object-cover transition-transform duration-500 group-hover:scale-105" 
           />
         </div>
         
         {/* Project Info */}
         <div className="text-left">
-          <h3 className="text-neutral-900 font-medium mb-0.5">{title}</h3>
-          <p className="text-sm text-neutral-600">{location}</p>
+          <h3 className="text-neutral-900 font-medium mb-0.5 text-sm sm:text-base">{title}</h3>
+          <p className="text-xs sm:text-sm text-neutral-600">{location}</p>
         </div>
       </Link>
     </div>

@@ -1,15 +1,21 @@
 
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, ArrowRight, Linkedin, Instagram, Facebook } from 'lucide-react';
+import { Mail, Phone, MapPin, ArrowRight, Instagram, Facebook } from 'lucide-react';
+
 const Footer = () => {
-  return <footer className="text-white pt-16 pb-8 bg-black/[0.88]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-[#1c1d1c]">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+  return (
+    <footer className="text-white pt-16 pb-8 bg-black/[0.88]">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-12">
           {/* Column 1 - Logo and About */}
           <div className="space-y-5">
             <Link to="/" className="flex items-center">
-              <img alt="BEURANT DESIGN Logo" src="/lovable-uploads/ab1cbd66-f34e-46b2-bc4f-532e66083588.png" className="h-12 w-auto mr-3 " />
-              <span className="text-2xl font-display tracking-tight font-light">DESIGN ALCHEMY</span>
+              <img 
+                alt="BEURANT DESIGN Logo" 
+                src="/lovable-uploads/ab1cbd66-f34e-46b2-bc4f-532e66083588.png" 
+                className="h-10 sm:h-12 w-auto mr-3" 
+              />
+              <span className="text-xl sm:text-2xl font-display tracking-tight font-light">DESIGN ALCHEMY</span>
             </Link>
             <p className="text-gray-300 mt-4 max-w-md">
               Creating appealing and unique spaces based on client requirements, budget and timeline. 
@@ -58,7 +64,7 @@ const Footer = () => {
               </div>
               <div className="flex items-start">
                 <Mail className="text-design-accent mr-3 mt-1 flex-shrink-0" size={18} />
-                <a href="mailto:dinnerli.fer@gmail.com" className="text-gray-300 hover:text-design-accent transition-colors">
+                <a href="mailto:dinnerli.fer@gmail.com" className="text-gray-300 hover:text-design-accent transition-colors break-all">
                   dinnerli.fer@gmail.com
                 </a>
               </div>
@@ -76,6 +82,8 @@ const Footer = () => {
           <p>&copy; {new Date().getFullYear()} BEURANT DESIGN. All rights reserved.</p>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
+
 export default Footer;
