@@ -75,8 +75,9 @@ const projectsData: ProjectsDataType = {
   'unops-office': {
     title: 'Collage Recreation Hub',
     location: 'Colombo, Sri Lanka',
-    image: '/lovable-uploads/WhatsApp Image 2025-04-12 at 16.30.08_0076a311.jpg',
-    secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
+    image: '/lovable-uploads/49cc3576-c5bb-470d-a960-23ef613e5057.png',
+    secondaryImage: '/lovable-uploads/419a0089-28fc-420e-8a24-63f1f742b64f.png',
+    additionalImages: ['/lovable-uploads/ad4b9dd6-5c38-4142-9b52-b8249d4313aa.png'],
     type: 'Campus Recreation Area / Showroom Renovation',
     size: '1200 sqft',
     year: '2023',
