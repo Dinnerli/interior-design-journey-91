@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '@/components/Navbar';
@@ -59,6 +60,9 @@ const ProjectDetail = () => {
               ...(project.additionalImages || [])
             ].slice(0, 3) : undefined} 
           />
+          {project.additionalImages && project.additionalImages.length > 0 && (
+            <ProjectGallery project={project} />
+          )}
           <ProjectNavigation />
         </div>
       </section>
