@@ -1,3 +1,4 @@
+
 export interface Project {
   title: string;
   location: string;
@@ -65,11 +66,10 @@ const projectsData: ProjectsDataType = {
   'united-nations-conference-hall': {
     title: 'Wellness Salon Interior',
     location: 'Colombo, Sri Lanka',
-    image: '/lovable-uploads/Salon_render_Photo - 2.jpg',
-    secondaryImage: '/lovable-uploads/37b5b6a0-46ec-4dd7-a915-b01d691d4d0e.png',
+    image: '/lovable-uploads/593313ba-c2a0-49bd-8f4c-4767942a8756.png',
+    secondaryImage: '/lovable-uploads/e1a82d9c-02b5-4c30-b9fa-804b56fbf50e.png',
     additionalImages: [
-      '/lovable-uploads/7d05099d-9466-4dc3-8863-69a9cf40e3e6.png',
-      '/lovable-uploads/f109b805-06f7-4137-a39d-8477f0f2ad1f.png'
+      '/lovable-uploads/f8e6cb45-4f88-42ab-abe8-92f7796b0cb9.png'
     ],
     type: 'Salon',
     size: '950 sqft',
