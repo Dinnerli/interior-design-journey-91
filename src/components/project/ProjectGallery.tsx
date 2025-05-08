@@ -14,10 +14,8 @@ const ProjectGallery = ({
 }: ProjectGalleryProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  // Combine all project images into an array, filtering out duplicates
-  const allImages = [project.image, project.secondaryImage, ...(project.additionalImages || [])];
-  // Remove undefined values and duplicates
-  const images = [...new Set(allImages.filter(Boolean))];
+  // Combine all project images into an array
+  const images = [project.image, project.secondaryImage, ...(project.additionalImages || [])].filter(img => img && img !== project.image && img !== project.secondaryImage);
 
   const navigateGallery = (direction: 'prev' | 'next') => {
     if (direction === 'prev') {
