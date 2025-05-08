@@ -1,3 +1,4 @@
+
 export interface Project {
   title: string;
   location: string;
@@ -19,7 +20,7 @@ const projectsData: ProjectsDataType = {
   'no66-residential-home': {
     title: 'No 66',
     location: 'Colombo, Sri Lanka',
-    image: '/lovable-uploads/Screenshot 2025-05-01 153922.png',
+    image: '/lovable-uploads/ae9cdf3d-a281-4a0d-8930-69e649f500ac.png',
     secondaryImage: '/lovable-uploads/ab1cbd66-f34e-46b2-bc4f-532e66083588.png',
     additionalImages: ['/lovable-uploads/a68c833b-15fc-466a-9824-7267b0ee8ee4.png', '/lovable-uploads/18307451-b9dd-4802-9af5-7d7b1ec0ec44.png'],
     type: 'Residential House',
@@ -41,7 +42,7 @@ const projectsData: ProjectsDataType = {
   'forest-edge-retreat': {
     title: 'Forest Edge Retreat',
     location: 'Knuckles, Sri Lanka',
-    image: '/lovable-uploads/8f4e2787-7f87-42de-ba85-efc31f8d9eae.png',
+    image: '/lovable-uploads/ae9cdf3d-a281-4a0d-8930-69e649f500ac.png',
     secondaryImage: '/lovable-uploads/365ff580-8bb9-48e2-ad90-144069bfad6d.png',
     additionalImages: ['/lovable-uploads/69ee228e-2645-4900-ad10-280f93663bb4.png'],
     type: 'Nature Retreat',
