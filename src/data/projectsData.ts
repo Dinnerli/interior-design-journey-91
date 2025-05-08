@@ -43,7 +43,10 @@ const projectsData: ProjectsDataType = {
     location: 'Knuckles, Sri Lanka',
     image: '/lovable-uploads/8f4e2787-7f87-42de-ba85-efc31f8d9eae.png',
     secondaryImage: '/lovable-uploads/365ff580-8bb9-48e2-ad90-144069bfad6d.png',
-    additionalImages: ['/lovable-uploads/69ee228e-2645-4900-ad10-280f93663bb4.png'],
+    additionalImages: [
+      '/lovable-uploads/69ee228e-2645-4900-ad10-280f93663bb4.png',
+      '/lovable-uploads/3df25f7a-ac8d-4a3f-b0ba-33737e7de958.png'
+    ],
     type: 'Nature Retreat',
     size: '1530 sqft',
     year: '2022',
