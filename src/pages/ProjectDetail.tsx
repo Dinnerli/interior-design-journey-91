@@ -60,7 +60,9 @@ const ProjectDetail = () => {
               ...(project.additionalImages || [])
             ].slice(0, 3) : undefined} 
           />
-          <ProjectGallery project={project} />
+          {project.additionalImages && project.additionalImages.length > 0 && (
+            <ProjectGallery project={project} />
+          )}
           <ProjectNavigation />
         </div>
       </section>

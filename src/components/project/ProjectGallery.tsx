@@ -1,6 +1,9 @@
+
 import { useState } from 'react';
 import { Project } from '@/data/projectsData';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { AspectRatio } from '@/components/ui/aspect-ratio';
+import { Card } from '@/components/ui/card';
 
 interface ProjectGalleryProps {
   project: Project;
@@ -40,12 +43,14 @@ const ProjectGallery = ({ project }: ProjectGalleryProps) => {
       <div className="section-divider mb-8"></div>
       
       {/* Main Image */}
-      <div className="relative rounded-lg overflow-hidden shadow-md mb-6 h-[400px]">
-        <img 
-          src={images[activeIndex]} 
-          alt={`${project.title} - View ${activeIndex + 1}`} 
-          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-        />
+      <Card className="relative overflow-hidden shadow-md mb-6">
+        <AspectRatio ratio={16/9}>
+          <img 
+            src={images[activeIndex]} 
+            alt={`${project.title} - View ${activeIndex + 1}`} 
+            className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+          />
+        </AspectRatio>
         
         {images.length > 1 && (
           <>
@@ -79,24 +84,26 @@ const ProjectGallery = ({ project }: ProjectGalleryProps) => {
             </div>
           </>
         )}
-      </div>
+      </Card>
       
       {/* Thumbnail navigation */}
       {images.length > 1 && (
-        <div className="grid grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {images.map((img, idx) => (
             <button
               key={idx}
               onClick={() => setActiveIndex(idx)}
-              className={`rounded-md overflow-hidden h-20 transition-all ${
+              className={`rounded-md overflow-hidden transition-all ${
                 idx === activeIndex ? 'ring-2 ring-primary' : 'opacity-70 hover:opacity-100'
               }`}
             >
-              <img 
-                src={img} 
-                alt={`Thumbnail ${idx + 1}`} 
-                className="w-full h-full object-cover"
-              />
+              <AspectRatio ratio={1}>
+                <img 
+                  src={img} 
+                  alt={`Thumbnail ${idx + 1}`} 
+                  className="w-full h-full object-cover"
+                />
+              </AspectRatio>
             </button>
           ))}
         </div>
