@@ -41,7 +41,7 @@ const projectsData: ProjectsDataType = {
   'forest-edge-retreat': {
     title: 'Forest Edge Retreat',
     location: 'Knuckles, Sri Lanka',
-    image: '/lovable-uploads/8f4e2787-7f87-42de-ba85-efc31f8d9eae.png',
+    image: '/lovable-uploads/8152e265-4553-452a-b5e2-60219938a926.png',
     secondaryImage: '/lovable-uploads/365ff580-8bb9-48e2-ad90-144069bfad6d.png',
     additionalImages: [
       '/lovable-uploads/69ee228e-2645-4900-ad10-280f93663bb4.png',
