@@ -12,9 +12,9 @@ const ProjectOverview = ({
   images
 }: ProjectOverviewProps) => {
   const defaultImages = [
-    '/lovable-uploads/proj 2.1.png',
-    '/lovable-uploads/proj 2.2.png',
-    '/lovable-uploads/wmremove-transformed.png'
+    '/lovable-uploads/fcc0170a-b826-4e74-a289-f87454e8823e.png',
+    '/lovable-uploads/cb41bf5c-62bb-47e5-b38a-cf7c63d84f38.png',
+    '/lovable-uploads/3510c7cd-83ab-42a8-a4a4-34ed7adfebd2.png'
   ];
   const displayImages = images || defaultImages;
 
