@@ -7,7 +7,6 @@ import projectsData, { Project } from '@/data/projectsData';
 import ProjectHero from '@/components/project/ProjectHero';
 import ProjectMetadata from '@/components/project/ProjectMetadata';
 import ProjectOverview from '@/components/project/ProjectOverview';
-import ProjectGallery from '@/components/project/ProjectGallery';
 import ProjectNavigation from '@/components/project/ProjectNavigation';
 import ProjectNotFound from '@/components/project/ProjectNotFound';
 
@@ -60,9 +59,6 @@ const ProjectDetail = () => {
               ...(project.additionalImages || [])
             ].slice(0, 3) : undefined} 
           />
-          {project.additionalImages && project.additionalImages.length > 0 && (
-            <ProjectGallery project={project} />
-          )}
           <ProjectNavigation />
         </div>
       </section>
