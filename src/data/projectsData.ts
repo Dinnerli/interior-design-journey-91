@@ -66,7 +66,11 @@ const projectsData: ProjectsDataType = {
     title: 'Wellness Salon Interior',
     location: 'Colombo, Sri Lanka',
     image: '/lovable-uploads/Salon_render_Photo - 2.jpg',
-    secondaryImage: '/lovable-uploads/Screenshot 2025-05-01 153023.png',
+    secondaryImage: '/lovable-uploads/37b5b6a0-46ec-4dd7-a915-b01d691d4d0e.png',
+    additionalImages: [
+      '/lovable-uploads/7d05099d-9466-4dc3-8863-69a9cf40e3e6.png',
+      '/lovable-uploads/f109b805-06f7-4137-a39d-8477f0f2ad1f.png'
+    ],
     type: 'Salon',
     size: '950 sqft',
     year: '2022',
