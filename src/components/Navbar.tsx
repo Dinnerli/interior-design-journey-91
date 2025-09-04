@@ -28,7 +28,7 @@ const Navbar = () => {
     name: 'Projects',
     path: '/projects'
   }];
-  return <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'}`}>
+  return <nav className="fixed w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <div className="flex-shrink-0 flex items-center">
@@ -44,7 +44,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <div className="ml-10 flex items-center space-x-6 lg:space-x-8">
               {navItems.map(item => <Link key={item.name} to={item.path} className={`font-medium transition-all duration-200 hover:text-design-gold 
-                    ${location.pathname === item.path ? 'text-design-gold border-b border-design-gold pb-1' : scrolled ? 'text-design-softgold' : 'text-white'}`}>
+                    ${location.pathname === item.path ? 'text-design-gold border-b border-design-gold pb-1' : 'text-design-softgold'}`}>
                   {item.name}
                 </Link>)}
             </div>
@@ -52,8 +52,7 @@ const Navbar = () => {
           
           {/* Mobile menu button */}
           <div className="md:hidden flex items-center">
-            <button onClick={() => setIsOpen(!isOpen)} className={`inline-flex items-center justify-center p-2 rounded-md focus:outline-none
-                ${scrolled ? 'text-design-softgold hover:text-design-gold' : 'text-white hover:text-gray-200'}`} aria-expanded="false">
+            <button onClick={() => setIsOpen(!isOpen)} className="inline-flex items-center justify-center p-2 rounded-md focus:outline-none text-design-softgold hover:text-design-gold" aria-expanded="false">
               <span className="sr-only">{isOpen ? 'Close menu' : 'Open menu'}</span>
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>
