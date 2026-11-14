@@ -2,7 +2,6 @@
 //
 // Secrets to set in Supabase (Edge Functions > Secrets):
 //   GITHUB_PAT            fine-grained token for the repo with "Actions: read and write"
-//   PIPELINE_TRIGGER_KEY  a passphrase you choose; the page asks for it before running
 //   GITHUB_REPO           optional, defaults to Dinnerli/interior-design-journey-91
 //   GITHUB_REF            optional, defaults to main
 
@@ -14,25 +13,12 @@ const corsHeaders = {
 const json = (body: unknown, status = 200) =>
   new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
 
-// Compare without leaking where the strings first differ.
-function safeEqual(a: string, b: string) {
-  const x = new TextEncoder().encode(a);
-  const y = new TextEncoder().encode(b);
-  let diff = x.length ^ y.length;
-  for (let i = 0; i < x.length; i++) diff |= x[i] ^ (y[i] ?? 0);
-  return diff === 0;
-}
-
 Deno.serve(async (req) => {
   if (req.method === 'OPTIONS') return new Response(null, { headers: corsHeaders });
   if (req.method !== 'POST') return json({ error: 'Method not allowed' }, 405);
 
   const token = Deno.env.get('GITHUB_PAT');
-  const expectedKey = Deno.env.get('PIPELINE_TRIGGER_KEY');
-  if (!token || !expectedKey) return json({ error: 'The trigger is not configured yet.' }, 503);
-
-  const { key } = await req.json().catch(() => ({ key: '' }));
-  if (typeof key !== 'string' || !safeEqual(key, expectedKey)) return json({ error: 'Wrong passphrase.' }, 401);
+  if (!token) return json({ error: 'The trigger is not configured yet.' }, 503);
 
   const repo = Deno.env.get('GITHUB_REPO') ?? 'Dinnerli/interior-design-journey-91';
   const ref = Deno.env.get('GITHUB_REF') ?? 'main';

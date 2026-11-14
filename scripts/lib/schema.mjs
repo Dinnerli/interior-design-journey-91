@@ -1,7 +1,7 @@
 // One schema shared by the global datasets, the weekly Facebook-group and X collections, and the combined CSV.
 export const COLUMNS = [
-  'source', // "global", "facebook-group" or "x"
-  'dataset', // Hugging Face dataset id, "brightdata:<dataset_id>" or "x-api:v2"
+  'source', // "global", "facebook-group", "x", "reddit" or "bluesky"
+  'dataset', // Hugging Face dataset id, "brightdata:<dataset_id>", "x-api:v2", "reddit-api:v1", "reddit-feed:atom" or "bluesky-api:searchPosts"
   'post_id',
   'timestamp',
   'text',
@@ -31,4 +31,10 @@ export const PATHS = {
   summary: 'public/data/dataset-summary.json',
   status: 'public/data/pipeline-status.json',
   xStatus: 'public/data/x-pipeline-status.json',
+  redditConfig: 'data/reddit-sources.json',
+  redditCsv: 'public/data/reddit_posts.csv',
+  redditStatus: 'public/data/reddit-pipeline-status.json',
+  blueskyConfig: 'data/bluesky-sources.json',
+  blueskyCsv: 'public/data/bluesky_posts.csv',
+  blueskyStatus: 'public/data/bluesky-pipeline-status.json',
 };

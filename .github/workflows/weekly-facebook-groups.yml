@@ -2,7 +2,11 @@ name: Weekly Facebook groups pipeline
 
 # Collects new posts from the Sri Lankan and EPFS Facebook groups in
 # data/facebook-groups.json (repository secret BRIGHTDATA_API_KEY) and from the
-# X profiles in data/x-profiles.json (repository secret X_BEARER_TOKEN).
+# X profiles in data/x-profiles.json (repository secret X_BEARER_TOKEN), plus the
+# subreddits in data/reddit-sources.json and the Bluesky searches in
+# data/bluesky-sources.json. Reddit and Bluesky work without secrets; the optional
+# ones (REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, BLUESKY_HANDLE, BLUESKY_APP_PASSWORD)
+# add Reddit scores and make both less likely to be refused.
 on:
   schedule:
     - cron: '0 2 * * 1' # every Monday 02:00 UTC (07:30 Sri Lanka time)
@@ -12,7 +16,7 @@ on:
         description: How many days back to collect
         default: '8'
       max_posts_per_group:
-        description: Maximum posts per group or X profile
+        description: Maximum posts per group, profile, subreddit or search
         default: '100'
 
 permissions:
@@ -44,6 +48,22 @@ jobs:
           LOOKBACK_DAYS: ${{ inputs.lookback_days || '8' }}
           MAX_POSTS_PER_PROFILE: ${{ inputs.max_posts_per_group || '100' }}
         run: node scripts/fetch-x-posts.mjs
+      - name: Collect Reddit posts
+        if: always()
+        env:
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+          LOOKBACK_DAYS: ${{ inputs.lookback_days || '8' }}
+          MAX_POSTS_PER_SUBREDDIT: ${{ inputs.max_posts_per_group || '100' }}
+        run: node scripts/fetch-reddit-posts.mjs
+      - name: Collect Bluesky posts
+        if: always()
+        env:
+          BLUESKY_HANDLE: ${{ secrets.BLUESKY_HANDLE }}
+          BLUESKY_APP_PASSWORD: ${{ secrets.BLUESKY_APP_PASSWORD }}
+          LOOKBACK_DAYS: ${{ inputs.lookback_days || '8' }}
+          MAX_POSTS_PER_SEARCH: ${{ inputs.max_posts_per_group || '100' }}
+        run: node scripts/fetch-bluesky-posts.mjs
       - name: Rebuild combined dataset
         if: always()
         run: node scripts/build-combined.mjs
@@ -53,5 +73,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data
-          git diff --cached --quiet || git commit -m "data: weekly Facebook groups and X update"
+          git diff --cached --quiet || git commit -m "data: weekly social posts update"
           git push

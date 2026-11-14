@@ -1,4 +1,4 @@
-// Rebuilds public/data/combined_dataset.csv (global datasets + weekly Facebook-group and X posts)
+// Rebuilds public/data/combined_dataset.csv (global datasets + weekly Facebook-group, X, Reddit and Bluesky posts)
 // and public/data/dataset-summary.json, which the /datasets page reads.
 // Does not download anything: it only merges files already in the repo.
 
@@ -36,12 +36,19 @@ for (const ds of config.datasets ?? []) {
 
 const groupRows = await readRows(PATHS.groupsCsv);
 const xRows = await readRows(PATHS.xCsv);
+const redditRows = await readRows(PATHS.redditCsv);
+const blueskyRows = await readRows(PATHS.blueskyCsv);
 
-const combined = [...groupRows, ...xRows, ...globalRows];
+const combined = [...groupRows, ...xRows, ...redditRows, ...blueskyRows, ...globalRows];
 await writeFile(PATHS.combinedCsv, toCsv(combined, COLUMNS));
 
 const groupsConfig = await readJson(PATHS.groupsConfig);
 const xConfig = await readJson(PATHS.xConfig);
+const redditConfig = await readJson(PATHS.redditConfig);
+const blueskyConfig = await readJson(PATHS.blueskyConfig);
+const countBy = (rows, key) => rows.reduce((m, r) => m.set(r[key], (m.get(r[key]) ?? 0) + 1), new Map());
+const redditCounts = countBy(redditRows, 'group_name');
+const blueskyCounts = countBy(blueskyRows, 'group_name');
 const preview = ({ source, timestamp, text = '', category, sentiment, language, likes, group_name }) => ({
   source,
   timestamp,
@@ -63,6 +70,8 @@ await writeFile(
       globalRows: globalRows.length,
       facebookGroupRows: groupRows.length,
       xRows: xRows.length,
+      redditRows: redditRows.length,
+      blueskyRows: blueskyRows.length,
       datasets,
       groups: (groupsConfig.groups ?? []).map((g) => ({
         label: g.label ?? g.url,
@@ -79,7 +88,25 @@ await writeFile(
           rows: xRows.filter((r) => r.group_name.toLowerCase() === handle.toLowerCase()).length,
         };
       }),
-      preview: [...groupRows.slice(0, 4), ...xRows.slice(0, 4), ...globalRows.slice(0, 6)].map(preview),
+      subreddits: (redditConfig.subreddits ?? []).map((s) => ({
+        label: `r/${s.name}`,
+        category: s.category ?? '',
+        enabled: s.enabled !== false,
+        rows: redditCounts.get(`r/${s.name}`) ?? 0,
+      })),
+      blueskySearches: (blueskyConfig.searches ?? []).map((s) => ({
+        label: s.query,
+        category: s.category ?? '',
+        enabled: s.enabled !== false,
+        rows: blueskyCounts.get(`search: ${s.query}`) ?? 0,
+      })),
+      preview: [
+        ...groupRows.slice(0, 3),
+        ...xRows.slice(0, 3),
+        ...redditRows.slice(0, 3),
+        ...blueskyRows.slice(0, 3),
+        ...globalRows.slice(0, 4),
+      ].map(preview),
     },
     null,
     2,
@@ -87,5 +114,5 @@ await writeFile(
 );
 
 console.log(
-  `Combined dataset: ${combined.length} rows (${globalRows.length} global, ${groupRows.length} from Facebook groups, ${xRows.length} from X).`,
+  `Combined dataset: ${combined.length} rows (${globalRows.length} global, ${groupRows.length} from Facebook groups, ${xRows.length} from X, ${redditRows.length} from Reddit, ${blueskyRows.length} from Bluesky).`,
 );

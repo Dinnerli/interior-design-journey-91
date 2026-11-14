@@ -6,15 +6,6 @@ import { toast } from 'sonner';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { supabase } from '@/integrations/supabase/client';
 
@@ -25,6 +16,8 @@ const FILES = {
   combined: '/data/combined_dataset.csv',
   groups: '/data/sl_facebook_groups.csv',
   x: '/data/x_posts.csv',
+  reddit: '/data/reddit_posts.csv',
+  bluesky: '/data/bluesky_posts.csv',
 };
 
 interface PreviewRow {
@@ -51,9 +44,13 @@ interface DatasetSummary {
   globalRows: number;
   facebookGroupRows: number;
   xRows: number;
+  redditRows?: number;
+  blueskyRows?: number;
   datasets: { id: string; license: string; rows: number; missing?: boolean }[];
   groups: SourceEntry[];
   xProfiles: SourceEntry[];
+  subreddits?: SourceEntry[];
+  blueskySearches?: SourceEntry[];
   preview: PreviewRow[];
 }
 
@@ -123,8 +120,6 @@ const SourceList = ({ title, entries, emptyText }: { title: string; entries?: So
 );
 
 const Datasets = () => {
-  const [dialogOpen, setDialogOpen] = useState(false);
-  const [passphrase, setPassphrase] = useState('');
   const [triggering, setTriggering] = useState(false);
 
   useEffect(() => {
@@ -144,15 +139,12 @@ const Datasets = () => {
   const run = status.data;
   const count = (n?: number) => (n === undefined ? '—' : n.toLocaleString());
 
-  const triggerPipeline = async (event: React.FormEvent) => {
-    event.preventDefault();
+  const triggerPipeline = async () => {
     setTriggering(true);
-    const { error } = await supabase.functions.invoke('trigger-pipeline', { body: { key: passphrase } });
+    const { error } = await supabase.functions.invoke('trigger-pipeline', { body: {} });
     setTriggering(false);
 
     if (!error) {
-      setDialogOpen(false);
-      setPassphrase('');
       toast.success('Pipeline started', {
         description: 'New posts appear here once the run finishes, usually within 10–20 minutes.',
       });
@@ -178,7 +170,7 @@ const Datasets = () => {
             transition={{ duration: 0.5 }}
             className="text-3xl sm:text-4xl font-display font-medium mb-4"
           >
-            Facebook Posts Dataset
+            Social Posts Dataset
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -187,7 +179,7 @@ const Datasets = () => {
             className="text-neutral-600 max-w-2xl mx-auto px-4 text-sm sm:text-base"
           >
             A global Facebook text-classification dataset combined with posts collected every week from Sri Lankan
-            and EPFS Facebook groups and from X profiles.
+            and EPFS Facebook groups, X profiles, Reddit communities and Bluesky searches.
           </motion.p>
         </div>
 
@@ -203,7 +195,8 @@ const Datasets = () => {
             <h2 className="text-xl font-display font-medium">Download the dataset</h2>
             <p className="mt-2 text-sm text-neutral-600 flex-1">
               One CSV with every row: {count(data?.globalRows)} global posts, {count(data?.facebookGroupRows)}{' '}
-              from the Facebook groups and {count(data?.xRows)} from X. Facebook author names are not included.
+              from the Facebook groups, {count(data?.xRows)} from X, {count(data?.redditRows)} from Reddit and{' '}
+              {count(data?.blueskyRows)} from Bluesky. Author names are not included.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <Button asChild size="lg">
@@ -225,13 +218,27 @@ const Datasets = () => {
               >
                 X posts only
               </a>
+              <a
+                href={FILES.reddit}
+                download="reddit_posts.csv"
+                className="text-sm underline underline-offset-4 text-neutral-600 hover:text-neutral-900"
+              >
+                Reddit only
+              </a>
+              <a
+                href={FILES.bluesky}
+                download="bluesky_posts.csv"
+                className="text-sm underline underline-offset-4 text-neutral-600 hover:text-neutral-900"
+              >
+                Bluesky only
+              </a>
             </div>
           </div>
 
           <div className="border border-neutral-200 p-6 sm:p-8 flex flex-col">
             <h2 className="text-xl font-display font-medium">Weekly pipeline</h2>
             <p className="mt-2 text-sm text-neutral-600 flex-1">
-              Runs by itself every Monday and collects the Sri Lankan and EPFS Facebook groups and the X profiles. Run it now
+              Runs by itself every Monday and collects the Sri Lankan and EPFS Facebook groups, the X profiles, Reddit and Bluesky. Run it now
               if you don&apos;t want to wait.
             </p>
             <p className="mt-4 flex items-center gap-2 text-sm text-neutral-700">
@@ -239,8 +246,8 @@ const Datasets = () => {
               Next scheduled run: {formatDateTime(nextScheduledRun())}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
-              <Button size="lg" variant="outline" onClick={() => setDialogOpen(true)}>
-                <Play /> Run pipeline now
+              <Button size="lg" variant="outline" onClick={triggerPipeline} disabled={triggering}>
+                {triggering ? <Loader2 className="animate-spin" /> : <Play />} Run pipeline now
               </Button>
               <a
                 href={WORKFLOW_URL}
@@ -255,11 +262,13 @@ const Datasets = () => {
         </div>
 
         {/* Numbers */}
-        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
           <Stat label="Total rows" value={count(data?.totalRows)} hint={data ? `Built ${formatDateTime(data.builtAt)}` : undefined} />
           <Stat label="Global dataset rows" value={count(data?.globalRows)} />
           <Stat label="Facebook group rows" value={count(data?.facebookGroupRows)} />
           <Stat label="X post rows" value={count(data?.xRows)} />
+          <Stat label="Reddit rows" value={count(data?.redditRows)} />
+          <Stat label="Bluesky rows" value={count(data?.blueskyRows)} />
           <Stat
             label="Last pipeline run"
             value={run ? STATUS_LABEL[run.status] ?? run.status : '—'}
@@ -307,6 +316,16 @@ const Datasets = () => {
             entries={data?.xProfiles}
             emptyText={<>No profiles added yet. Add handles to <code>data/x-profiles.json</code>.</>}
           />
+          <SourceList
+            title="Reddit communities collected weekly"
+            entries={data?.subreddits}
+            emptyText={<>No subreddits added yet. Add them to <code>data/reddit-sources.json</code>.</>}
+          />
+          <SourceList
+            title="Bluesky searches collected weekly"
+            entries={data?.blueskySearches}
+            emptyText={<>No searches added yet. Add them to <code>data/bluesky-sources.json</code>.</>}
+          />
         </div>
 
         {/* Preview */}
@@ -347,38 +366,6 @@ const Datasets = () => {
           </Table>
         </div>
       </div>
-
-      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent>
-          <form onSubmit={triggerPipeline}>
-            <DialogHeader>
-              <DialogTitle>Run the pipeline now</DialogTitle>
-              <DialogDescription>
-                This collects the last week of posts from the Facebook groups and uses Bright Data credit. Enter the
-                pipeline passphrase to continue.
-              </DialogDescription>
-            </DialogHeader>
-            <Input
-              type="password"
-              autoFocus
-              required
-              aria-label="Pipeline passphrase"
-              placeholder="Pipeline passphrase"
-              value={passphrase}
-              onChange={(event) => setPassphrase(event.target.value)}
-              className="my-6"
-            />
-            <DialogFooter>
-              <Button type="button" variant="ghost" onClick={() => setDialogOpen(false)}>
-                Cancel
-              </Button>
-              <Button type="submit" disabled={triggering}>
-                {triggering ? <Loader2 className="animate-spin" /> : <Play />} Run pipeline
-              </Button>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
 
       <Footer />
     </div>
