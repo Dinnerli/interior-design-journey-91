@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-14T06:12:34.496Z",
+  "builtAt": "2026-11-14T06:24:41.561Z",
   "columns": [
     "source",
     "dataset",
@@ -30,7 +30,44 @@
       "rows": 5000
     }
   ],
-  "groups": [],
+  "groups": [
+    {
+      "label": "EPFS Community for Free",
+      "category": "epfs",
+      "enabled": true,
+      "rows": 0
+    },
+    {
+      "label": "EPFS Community Sri Lanka - 100% Free - Public Group",
+      "category": "epfs",
+      "enabled": true,
+      "rows": 0
+    },
+    {
+      "label": "EPFS Community Sri Lanka (private group - cannot be collected)",
+      "category": "epfs",
+      "enabled": false,
+      "rows": 0
+    },
+    {
+      "label": "Interior Design Sri Lanka",
+      "category": "sri-lanka",
+      "enabled": true,
+      "rows": 0
+    },
+    {
+      "label": "Architects in Sri Lanka",
+      "category": "sri-lanka",
+      "enabled": true,
+      "rows": 0
+    },
+    {
+      "label": "Sri Lankan Interior Design",
+      "category": "sri-lanka",
+      "enabled": true,
+      "rows": 0
+    }
+  ],
   "preview": [
     {
       "source": "global",

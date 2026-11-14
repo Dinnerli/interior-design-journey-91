@@ -153,7 +153,7 @@ const Datasets = () => {
             className="text-neutral-600 max-w-2xl mx-auto px-4 text-sm sm:text-base"
           >
             A global Facebook text-classification dataset combined with posts collected every week from Sri Lankan
-            and EPF/ETF Facebook groups.
+            and EPFS Facebook groups.
           </motion.p>
         </div>
 
@@ -190,7 +190,7 @@ const Datasets = () => {
           <div className="border border-neutral-200 p-6 sm:p-8 flex flex-col">
             <h2 className="text-xl font-display font-medium">Weekly pipeline</h2>
             <p className="mt-2 text-sm text-neutral-600 flex-1">
-              Runs by itself every Monday and collects only the Sri Lankan and EPF/ETF Facebook groups. Run it now
+              Runs by itself every Monday and collects only the Sri Lankan and EPFS Facebook groups. Run it now
               if you don&apos;t want to wait.
             </p>
             <p className="mt-4 flex items-center gap-2 text-sm text-neutral-700">

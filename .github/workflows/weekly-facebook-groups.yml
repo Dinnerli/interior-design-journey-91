@@ -1,6 +1,6 @@
 name: Weekly Facebook groups pipeline
 
-# Collects new posts from the Sri Lankan and EPF/ETF Facebook groups in
+# Collects new posts from the Sri Lankan and EPFS Facebook groups in
 # data/facebook-groups.json. Needs the repository secret BRIGHTDATA_API_KEY.
 on:
   schedule:

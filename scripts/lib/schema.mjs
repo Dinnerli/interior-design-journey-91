@@ -14,7 +14,7 @@ export const COLUMNS = [
   'shares',
   'is_spam',
   'group_name',
-  'group_category', // "sri-lanka" or "epf-etf"
+  'group_category', // "sri-lanka" or "epfs"
   'group_url',
   'post_url',
   'collected_at',
