@@ -1,0 +1,4 @@
+{
+  "_comment": "Groups the weekly pipeline scrapes through Bright Data. Only PUBLIC groups can be collected. Each entry: { \"url\": \"https://www.facebook.com/groups/...\", \"label\": \"Name\", \"category\": \"sri-lanka\" or \"epf-etf\", \"enabled\": true }",
+  "groups": []
+}
