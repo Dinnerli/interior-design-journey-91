@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-14T06:24:41.561Z",
+  "builtAt": "2026-11-14T08:43:25.745Z",
   "columns": [
     "source",
     "dataset",
@@ -20,9 +20,10 @@
     "post_url",
     "collected_at"
   ],
-  "totalRows": 5000,
+  "totalRows": 5095,
   "globalRows": 5000,
-  "facebookGroupRows": 0,
+  "facebookGroupRows": 95,
+  "xRows": 0,
   "datasets": [
     {
       "id": "haoxianc/kalashnikov1405_facebook-text-classification",
@@ -35,13 +36,13 @@
       "label": "EPFS Community for Free",
       "category": "epfs",
       "enabled": true,
-      "rows": 0
+      "rows": 20
     },
     {
       "label": "EPFS Community Sri Lanka - 100% Free - Public Group",
       "category": "epfs",
       "enabled": true,
-      "rows": 0
+      "rows": 18
     },
     {
       "label": "EPFS Community Sri Lanka (private group - cannot be collected)",
@@ -53,22 +54,63 @@
       "label": "Interior Design Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 0
+      "rows": 19
     },
     {
       "label": "Architects in Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 0
+      "rows": 19
     },
     {
       "label": "Sri Lankan Interior Design",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 0
+      "rows": 19
     }
   ],
+  "xProfiles": [],
   "preview": [
+    {
+      "source": "facebook-group",
+      "timestamp": "2026-11-14T07:38:56.000Z",
+      "text": "​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle!\n​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle!\nSeeking an experienced ...",
+      "category": "",
+      "sentiment": "",
+      "language": "",
+      "likes": "1",
+      "group_name": "Architects in Sri Lanka"
+    },
+    {
+      "source": "facebook-group",
+      "timestamp": "2026-11-14T07:35:34.000Z",
+      "text": "Hi, I'm looking for a 1-bedroom annex in Dehiwala, Mount Lavinia, or Ratmalana.\nHi, I'm looking for a 1-bedroom annex in Dehiwala, Mount Lavinia, or Ratmalan...",
+      "category": "",
+      "sentiment": "",
+      "language": "",
+      "likes": "0",
+      "group_name": "EPFS Community Sri Lanka - 100% Free - Public Group"
+    },
+    {
+      "source": "facebook-group",
+      "timestamp": "2026-11-14T07:32:27.000Z",
+      "text": "Package 2300   𝗢𝗙𝗙𝗘𝗥 ‼️\nFor Plant Collectors 🪴 \nවර්ග 10 ම - Rs. 990\n\nලබා දෙන පැළ අවසන් පින්තුරය බලන්න.\n\n 🛒 𝗢𝗿𝗱𝗲𝗿 𝗡𝗼𝘄\n\n🚚 𝗗𝗲𝗹𝗶𝘃𝗲𝗿𝘆 𝗠𝗲...",
+      "category": "",
+      "sentiment": "",
+      "language": "",
+      "likes": "0",
+      "group_name": "Interior Design Sri Lanka"
+    },
+    {
+      "source": "facebook-group",
+      "timestamp": "2026-11-14T07:27:32.000Z",
+      "text": "Package 2300   𝗢𝗙𝗙𝗘𝗥 ‼️\nFor Plant Collectors 🪴 \nවර්ග 10 ම - Rs. 990\n\nලබා දෙන පැළ අවසන් පින්තුරය බලන්න.\n\n 🛒 𝗢𝗿𝗱𝗲𝗿 𝗡𝗼𝘄\n\n🚚 𝗗𝗲𝗹𝗶𝘃𝗲𝗿𝘆 𝗠𝗲...",
+      "category": "",
+      "sentiment": "",
+      "language": "",
+      "likes": "1",
+      "group_name": "Interior Design Sri Lanka"
+    },
     {
       "source": "global",
       "timestamp": "2024-11-25 10:10:00",
@@ -122,24 +164,6 @@
       "sentiment": "negative",
       "language": "en",
       "likes": "10"
-    },
-    {
-      "source": "global",
-      "timestamp": "2023-09-29 20:34:00",
-      "text": "Tough loss for Warriors. Refs were wild.",
-      "category": "sports",
-      "sentiment": "negative",
-      "language": "en",
-      "likes": "40"
-    },
-    {
-      "source": "global",
-      "timestamp": "2023-10-25 10:14:00",
-      "text": "Matchday! Lions vs Tigers at 8pm. Predictions?",
-      "category": "sports",
-      "sentiment": "neutral",
-      "language": "en",
-      "likes": "86"
     }
   ]
 }

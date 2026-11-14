@@ -1,7 +1,8 @@
 name: Weekly Facebook groups pipeline
 
 # Collects new posts from the Sri Lankan and EPFS Facebook groups in
-# data/facebook-groups.json. Needs the repository secret BRIGHTDATA_API_KEY.
+# data/facebook-groups.json (repository secret BRIGHTDATA_API_KEY) and from the
+# X profiles in data/x-profiles.json (repository secret X_BEARER_TOKEN).
 on:
   schedule:
     - cron: '0 2 * * 1' # every Monday 02:00 UTC (07:30 Sri Lanka time)
@@ -11,7 +12,7 @@ on:
         description: How many days back to collect
         default: '8'
       max_posts_per_group:
-        description: Maximum posts per group
+        description: Maximum posts per group or X profile
         default: '100'
 
 permissions:
@@ -36,6 +37,13 @@ jobs:
           LOOKBACK_DAYS: ${{ inputs.lookback_days || '8' }}
           MAX_POSTS_PER_GROUP: ${{ inputs.max_posts_per_group || '100' }}
         run: node scripts/fetch-facebook-groups.mjs
+      - name: Collect X posts
+        if: always()
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          LOOKBACK_DAYS: ${{ inputs.lookback_days || '8' }}
+          MAX_POSTS_PER_PROFILE: ${{ inputs.max_posts_per_group || '100' }}
+        run: node scripts/fetch-x-posts.mjs
       - name: Rebuild combined dataset
         if: always()
         run: node scripts/build-combined.mjs
@@ -45,5 +53,5 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data
-          git diff --cached --quiet || git commit -m "data: weekly Facebook groups update"
+          git diff --cached --quiet || git commit -m "data: weekly Facebook groups and X update"
           git push

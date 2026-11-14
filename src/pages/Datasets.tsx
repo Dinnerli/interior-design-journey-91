@@ -24,6 +24,7 @@ const WORKFLOW_URL =
 const FILES = {
   combined: '/data/combined_dataset.csv',
   groups: '/data/sl_facebook_groups.csv',
+  x: '/data/x_posts.csv',
 };
 
 interface PreviewRow {
@@ -37,13 +38,22 @@ interface PreviewRow {
   group_name?: string;
 }
 
+interface SourceEntry {
+  label: string;
+  category: string;
+  enabled: boolean;
+  rows: number;
+}
+
 interface DatasetSummary {
   builtAt: string;
   totalRows: number;
   globalRows: number;
   facebookGroupRows: number;
+  xRows: number;
   datasets: { id: string; license: string; rows: number; missing?: boolean }[];
-  groups: { label: string; category: string; enabled: boolean; rows: number }[];
+  groups: SourceEntry[];
+  xProfiles: SourceEntry[];
   preview: PreviewRow[];
 }
 
@@ -85,6 +95,30 @@ const Stat = ({ label, value, hint }: { label: string; value: string; hint?: str
     <p className="text-xs uppercase tracking-wider text-neutral-500">{label}</p>
     <p className="mt-2 text-2xl font-display font-medium">{value}</p>
     {hint && <p className="mt-1 text-xs text-neutral-500">{hint}</p>}
+  </div>
+);
+
+const SourceList = ({ title, entries, emptyText }: { title: string; entries?: SourceEntry[]; emptyText: React.ReactNode }) => (
+  <div>
+    <h3 className="text-lg font-display font-medium mb-4">{title}</h3>
+    {entries && entries.length === 0 ? (
+      <p className="border border-dashed border-neutral-300 p-4 text-sm text-neutral-600">{emptyText}</p>
+    ) : (
+      <ul className="divide-y divide-neutral-200 border-y border-neutral-200">
+        {(entries ?? []).map((entry) => (
+          <li key={entry.label} className="py-3 flex items-start justify-between gap-4 text-sm">
+            <span>
+              {entry.label}
+              <span className="ml-2 text-xs uppercase tracking-wider text-neutral-500">
+                {entry.category}
+                {!entry.enabled && ' · paused'}
+              </span>
+            </span>
+            <span className="shrink-0 text-neutral-500">{entry.rows.toLocaleString()} rows</span>
+          </li>
+        ))}
+      </ul>
+    )}
   </div>
 );
 
@@ -153,7 +187,7 @@ const Datasets = () => {
             className="text-neutral-600 max-w-2xl mx-auto px-4 text-sm sm:text-base"
           >
             A global Facebook text-classification dataset combined with posts collected every week from Sri Lankan
-            and EPFS Facebook groups.
+            and EPFS Facebook groups and from X profiles.
           </motion.p>
         </div>
 
@@ -168,8 +202,8 @@ const Datasets = () => {
           <div className="border border-neutral-200 p-6 sm:p-8 flex flex-col">
             <h2 className="text-xl font-display font-medium">Download the dataset</h2>
             <p className="mt-2 text-sm text-neutral-600 flex-1">
-              One CSV with every row: {count(data?.globalRows)} global posts and {count(data?.facebookGroupRows)}{' '}
-              posts from the Facebook groups. Author names are not included.
+              One CSV with every row: {count(data?.globalRows)} global posts, {count(data?.facebookGroupRows)}{' '}
+              from the Facebook groups and {count(data?.xRows)} from X. Facebook author names are not included.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <Button asChild size="lg">
@@ -184,13 +218,20 @@ const Datasets = () => {
               >
                 Facebook groups only
               </a>
+              <a
+                href={FILES.x}
+                download="x_posts.csv"
+                className="text-sm underline underline-offset-4 text-neutral-600 hover:text-neutral-900"
+              >
+                X posts only
+              </a>
             </div>
           </div>
 
           <div className="border border-neutral-200 p-6 sm:p-8 flex flex-col">
             <h2 className="text-xl font-display font-medium">Weekly pipeline</h2>
             <p className="mt-2 text-sm text-neutral-600 flex-1">
-              Runs by itself every Monday and collects only the Sri Lankan and EPFS Facebook groups. Run it now
+              Runs by itself every Monday and collects the Sri Lankan and EPFS Facebook groups and the X profiles. Run it now
               if you don&apos;t want to wait.
             </p>
             <p className="mt-4 flex items-center gap-2 text-sm text-neutral-700">
@@ -214,10 +255,11 @@ const Datasets = () => {
         </div>
 
         {/* Numbers */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
           <Stat label="Total rows" value={count(data?.totalRows)} hint={data ? `Built ${formatDateTime(data.builtAt)}` : undefined} />
           <Stat label="Global dataset rows" value={count(data?.globalRows)} />
           <Stat label="Facebook group rows" value={count(data?.facebookGroupRows)} />
+          <Stat label="X post rows" value={count(data?.xRows)} />
           <Stat
             label="Last pipeline run"
             value={run ? STATUS_LABEL[run.status] ?? run.status : '—'}
@@ -234,7 +276,7 @@ const Datasets = () => {
         )}
 
         {/* Sources */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
           <div>
             <h3 className="text-lg font-display font-medium mb-4">Global datasets</h3>
             <ul className="divide-y divide-neutral-200 border-y border-neutral-200">
@@ -255,30 +297,16 @@ const Datasets = () => {
               ))}
             </ul>
           </div>
-          <div>
-            <h3 className="text-lg font-display font-medium mb-4">Facebook groups collected weekly</h3>
-            {data && data.groups.length === 0 ? (
-              <p className="border border-dashed border-neutral-300 p-4 text-sm text-neutral-600">
-                No groups added yet. Add public group URLs to <code>data/facebook-groups.json</code> and the next run
-                will collect them.
-              </p>
-            ) : (
-              <ul className="divide-y divide-neutral-200 border-y border-neutral-200">
-                {(data?.groups ?? []).map((group) => (
-                  <li key={group.label} className="py-3 flex items-start justify-between gap-4 text-sm">
-                    <span>
-                      {group.label}
-                      <span className="ml-2 text-xs uppercase tracking-wider text-neutral-500">
-                        {group.category}
-                        {!group.enabled && ' · paused'}
-                      </span>
-                    </span>
-                    <span className="shrink-0 text-neutral-500">{count(group.rows)} rows</span>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
+          <SourceList
+            title="Facebook groups collected weekly"
+            entries={data?.groups}
+            emptyText={<>No groups added yet. Add public group URLs to <code>data/facebook-groups.json</code>.</>}
+          />
+          <SourceList
+            title="X profiles collected weekly"
+            entries={data?.xProfiles}
+            emptyText={<>No profiles added yet. Add handles to <code>data/x-profiles.json</code>.</>}
+          />
         </div>
 
         {/* Preview */}
