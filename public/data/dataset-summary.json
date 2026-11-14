@@ -1,0 +1,108 @@
+{
+  "builtAt": "2026-11-14T06:12:34.496Z",
+  "columns": [
+    "source",
+    "dataset",
+    "post_id",
+    "timestamp",
+    "text",
+    "category",
+    "sentiment",
+    "language",
+    "has_link",
+    "likes",
+    "comments",
+    "shares",
+    "is_spam",
+    "group_name",
+    "group_category",
+    "group_url",
+    "post_url",
+    "collected_at"
+  ],
+  "totalRows": 5000,
+  "globalRows": 5000,
+  "facebookGroupRows": 0,
+  "datasets": [
+    {
+      "id": "haoxianc/kalashnikov1405_facebook-text-classification",
+      "license": "CC0-1.0",
+      "rows": 5000
+    }
+  ],
+  "groups": [],
+  "preview": [
+    {
+      "source": "global",
+      "timestamp": "2024-11-25 10:10:00",
+      "text": "Mental health matters. Take a break. 🎉",
+      "category": "health_wellness",
+      "sentiment": "negative",
+      "language": "hi",
+      "likes": "4"
+    },
+    {
+      "source": "global",
+      "timestamp": "2025-03-28 14:41:00",
+      "text": "Having trouble logging into my Stark account—any fix?",
+      "category": "customer_support",
+      "sentiment": "neutral",
+      "language": "en",
+      "likes": "8"
+    },
+    {
+      "source": "global",
+      "timestamp": "2025-05-20 02:31:00",
+      "text": "When you open the fridge and forget why you came: 🔥 #relatable",
+      "category": "meme_joke",
+      "sentiment": "positive",
+      "language": "en",
+      "likes": "74"
+    },
+    {
+      "source": "global",
+      "timestamp": "2025-01-31 16:39:00",
+      "text": "In-depth: What market rally means for New York.",
+      "category": "news",
+      "sentiment": "neutral",
+      "language": "en",
+      "likes": "10"
+    },
+    {
+      "source": "global",
+      "timestamp": "2024-02-25 04:12:00",
+      "text": "Transfer rumor: J. Smith to City?",
+      "category": "sports",
+      "sentiment": "positive",
+      "language": "en",
+      "likes": "53"
+    },
+    {
+      "source": "global",
+      "timestamp": "2023-05-19 16:56:00",
+      "text": "Opinion: privacy law will impact seniors the most.",
+      "category": "politics",
+      "sentiment": "negative",
+      "language": "en",
+      "likes": "10"
+    },
+    {
+      "source": "global",
+      "timestamp": "2023-09-29 20:34:00",
+      "text": "Tough loss for Warriors. Refs were wild.",
+      "category": "sports",
+      "sentiment": "negative",
+      "language": "en",
+      "likes": "40"
+    },
+    {
+      "source": "global",
+      "timestamp": "2023-10-25 10:14:00",
+      "text": "Matchday! Lions vs Tigers at 8pm. Predictions?",
+      "category": "sports",
+      "sentiment": "neutral",
+      "language": "en",
+      "likes": "86"
+    }
+  ]
+}

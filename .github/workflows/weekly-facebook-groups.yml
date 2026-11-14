@@ -1,0 +1,49 @@
+name: Weekly Facebook groups pipeline
+
+# Collects new posts from the Sri Lankan and EPF/ETF Facebook groups in
+# data/facebook-groups.json. Needs the repository secret BRIGHTDATA_API_KEY.
+on:
+  schedule:
+    - cron: '0 2 * * 1' # every Monday 02:00 UTC (07:30 Sri Lanka time)
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: How many days back to collect
+        default: '8'
+      max_posts_per_group:
+        description: Maximum posts per group
+        default: '100'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: weekly-facebook-groups
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Collect Facebook group posts
+        env:
+          BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
+          LOOKBACK_DAYS: ${{ inputs.lookback_days || '8' }}
+          MAX_POSTS_PER_GROUP: ${{ inputs.max_posts_per_group || '100' }}
+        run: node scripts/fetch-facebook-groups.mjs
+      - name: Rebuild combined dataset
+        if: always()
+        run: node scripts/build-combined.mjs
+      - name: Commit updated data
+        if: always()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/data
+          git diff --cached --quiet || git commit -m "data: weekly Facebook groups update"
+          git push
