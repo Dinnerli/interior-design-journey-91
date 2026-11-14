@@ -1,21 +1,21 @@
 {
-  "lastRunAt": "2026-11-14T11:37:06.610Z",
+  "lastRunAt": "2026-11-14T12:20:07.167Z",
   "searchesConfigured": 2,
   "status": "success",
   "signedIn": false,
-  "postsReturned": 500,
-  "newPosts": 500,
-  "totalPosts": 500,
+  "postsReturned": 200,
+  "newPosts": 4,
+  "totalPosts": 504,
   "perSearch": [
     {
       "query": "\"Sri Lanka\"",
       "category": "sri-lanka",
-      "postsThisRun": 250
+      "postsThisRun": 100
     },
     {
       "query": "\"interior design\"",
       "category": "interior-design",
-      "postsThisRun": 250
+      "postsThisRun": 100
     }
   ]
 }

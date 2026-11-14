@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-14T11:38:05.729Z",
+  "builtAt": "2026-11-14T12:20:07.932Z",
   "columns": [
     "source",
     "dataset",
@@ -20,12 +20,12 @@
     "post_url",
     "collected_at"
   ],
-  "totalRows": 5728,
+  "totalRows": 5735,
   "globalRows": 5000,
   "facebookGroupRows": 95,
   "xRows": 0,
-  "redditRows": 133,
-  "blueskyRows": 500,
+  "redditRows": 136,
+  "blueskyRows": 504,
   "datasets": [
     {
       "id": "haoxianc/kalashnikov1405_facebook-text-classification",
@@ -77,7 +77,7 @@
       "label": "r/srilanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 100
+      "rows": 103
     },
     {
       "label": "r/InteriorDesign",
@@ -91,20 +91,20 @@
       "label": "\"Sri Lanka\"",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 250
+      "rows": 252
     },
     {
       "label": "\"interior design\"",
       "category": "interior-design",
       "enabled": true,
-      "rows": 250
+      "rows": 252
     }
   ],
   "preview": [
     {
       "source": "facebook-group",
       "timestamp": "2026-11-14T07:38:56.000Z",
-      "text": "​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle!\r\n​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle!\r\nSeeking an experience...",
+      "text": "​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle!\n​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle!\nSeeking an experienced ...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -114,7 +114,7 @@
     {
       "source": "facebook-group",
       "timestamp": "2026-11-14T07:35:34.000Z",
-      "text": "Hi, I'm looking for a 1-bedroom annex in Dehiwala, Mount Lavinia, or Ratmalana.\r\nHi, I'm looking for a 1-bedroom annex in Dehiwala, Mount Lavinia, or Ratmala...",
+      "text": "Hi, I'm looking for a 1-bedroom annex in Dehiwala, Mount Lavinia, or Ratmalana.\nHi, I'm looking for a 1-bedroom annex in Dehiwala, Mount Lavinia, or Ratmalan...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -124,7 +124,7 @@
     {
       "source": "facebook-group",
       "timestamp": "2026-11-14T07:32:27.000Z",
-      "text": "Package 2300   𝗢𝗙𝗙𝗘𝗥 ‼️\r\nFor Plant Collectors 🪴 \r\nවර්ග 10 ම - Rs. 990\r\n\r\nලබා දෙන පැළ අවසන් පින්තුරය බලන්න.\r\n\r\n 🛒 𝗢𝗿𝗱𝗲𝗿 𝗡𝗼𝘄\r\n\r\n🚚 𝗗𝗲𝗹𝗶𝘃𝗲\ud835...",
+      "text": "Package 2300   𝗢𝗙𝗙𝗘𝗥 ‼️\nFor Plant Collectors 🪴 \nවර්ග 10 ම - Rs. 990\n\nලබා දෙන පැළ අවසන් පින්තුරය බලන්න.\n\n 🛒 𝗢𝗿𝗱𝗲𝗿 𝗡𝗼𝘄\n\n🚚 𝗗𝗲𝗹𝗶𝘃𝗲𝗿𝘆 𝗠𝗲...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -133,8 +133,8 @@
     },
     {
       "source": "reddit",
-      "timestamp": "2026-11-14T11:33:14Z",
-      "text": "Question About Working in Kuwait Without A Levels\n\nHello everyone,\n I am hoping someone here, particularly those familiar with Kuwait's Ministry of Education...",
+      "timestamp": "2026-11-14T12:06:20Z",
+      "text": "Does anyone know a basketball club near Kalutara?\n\n19M here. I finished school recently. I want to get myself to a sport, which I never did in school. (I reg...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -143,8 +143,8 @@
     },
     {
       "source": "reddit",
-      "timestamp": "2026-11-14T10:59:44Z",
-      "text": "Is it worth dropping out of uni if your side gig is doing well?\n\nHi guys as the title says I’m currently a 21 year old second year in uni doing a software en...",
+      "timestamp": "2026-11-14T11:51:09Z",
+      "text": "Is it financially possible to live alone on an 80K monthly salary in Sri Lanka?\n\nI'm a 28M earning around Rs. 80,000 per month, and I'm considering renting a...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -153,8 +153,8 @@
     },
     {
       "source": "reddit",
-      "timestamp": "2026-11-14T10:24:48Z",
-      "text": "Need Advice: Elderly Family Member with Serious Behavioural Issues — Looking for a Good Psychiatrist in Colombo\n\nI'm looking for genuine advice and recommend...",
+      "timestamp": "2026-11-14T11:38:23Z",
+      "text": "Advice to Youngsters from an 35 YO Unc - Part 02\n\nI recently posted a few advice to youngsters and it got a lot of positive feedback. A lit of you were askin...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -163,33 +163,33 @@
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-14T11:32:58.951Z",
-      "text": "Now in beta-preview - STRIPE coming soon!\n\n#AI #InteriorDesigns",
+      "timestamp": "2026-11-14T12:05:30.330740+00:00",
+      "text": "UNESCO World: Central Highlands of Sri Lanka\n\nSri Lanka's highlands are situated in the south-central part of the island. The property comprises the Peak Wil...",
       "category": "",
       "sentiment": "",
       "language": "en",
-      "likes": "1",
-      "group_name": "search: \"interior design\""
-    },
-    {
-      "source": "bluesky",
-      "timestamp": "2026-11-14T11:25:41.388Z",
-      "text": "A masterclass in why your own 'lived experience' (dread term) of European interior design aesthetics is going to be so utterly limited",
-      "category": "",
-      "sentiment": "",
-      "language": "en",
-      "likes": "0",
-      "group_name": "search: \"interior design\""
-    },
-    {
-      "source": "bluesky",
-      "timestamp": "2026-11-14T11:19:39Z",
-      "text": "Suprabhātaṃ\n\n\"Suprabhātaṃ\" dear people of the internet. Today, I say \"good morning\" in Pali. \"Pāli is the language of the scriptures of Theravada Buddhism .....",
-      "category": "",
-      "sentiment": "",
-      "language": "",
       "likes": "0",
       "group_name": "search: \"Sri Lanka\""
+    },
+    {
+      "source": "bluesky",
+      "timestamp": "2026-11-14T12:04:17.541065330Z",
+      "text": "Anuk Arudpragasam, sobre su novela ‘Pasaje al norte’: «Nació de un deseo tanto de castigarme por haber escapado del genocidio tamil como de curar, en el espa...",
+      "category": "",
+      "sentiment": "",
+      "language": "",
+      "likes": "1",
+      "group_name": "search: \"Sri Lanka\""
+    },
+    {
+      "source": "bluesky",
+      "timestamp": "2026-11-14T11:44:35.073Z",
+      "text": "The hardest interior design judge has arrived. Will she accept the changed placement of her bed on my desk?",
+      "category": "",
+      "sentiment": "",
+      "language": "en",
+      "likes": "4",
+      "group_name": "search: \"interior design\""
     },
     {
       "source": "global",
