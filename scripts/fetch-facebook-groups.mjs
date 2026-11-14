@@ -9,6 +9,9 @@ import { existsSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { parseCsv, toCsv } from './lib/csv.mjs';
 import { COLUMNS, PATHS } from './lib/schema.mjs';
+import { mergeRows } from './lib/rows.mjs';
+
+export { mergeRows };
 
 const DATASET_ID = 'gd_lz11l67o2cb3r0lkj3';
 const API = 'https://api.brightdata.com/datasets/v3';
@@ -24,7 +27,8 @@ const formatDate = (d) =>
 /** Turn one Bright Data record into a row of the shared schema. No author details are kept. */
 export function mapRecord(record, groupsByUrl, collectedAt) {
   const group = groupsByUrl.get(normaliseUrl(record.input?.url)) ?? groupsByUrl.get(normaliseUrl(record.group_url));
-  const text = String(record.content ?? '').trim();
+  // Shared posts carry no text of their own; use the text of the post they share.
+  const text = String(record.content ?? record.original_post?.content ?? '').trim();
   if (!record.post_id || !text) return null;
   return {
     source: 'facebook-group',
@@ -46,22 +50,6 @@ export function mapRecord(record, groupsByUrl, collectedAt) {
     post_url: record.url ?? '',
     collected_at: collectedAt,
   };
-}
-
-/** Merge new rows into existing ones by post_id. Re-seen posts get fresh engagement counts but keep their first collected_at. */
-export function mergeRows(existing, incoming) {
-  const byId = new Map(existing.map((r) => [r.post_id, r]));
-  let added = 0;
-  for (const row of incoming) {
-    const previous = byId.get(row.post_id);
-    if (previous) byId.set(row.post_id, { ...row, collected_at: previous.collected_at });
-    else {
-      byId.set(row.post_id, row);
-      added++;
-    }
-  }
-  const rows = [...byId.values()].sort((a, b) => String(b.timestamp).localeCompare(String(a.timestamp)));
-  return { rows, added };
 }
 
 function brightData(path, apiKey, init = {}) {
