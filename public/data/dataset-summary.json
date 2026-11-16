@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-14T12:20:07.932Z",
+  "builtAt": "2026-11-16T08:46:07.616Z",
   "columns": [
     "source",
     "dataset",
@@ -20,12 +20,12 @@
     "post_url",
     "collected_at"
   ],
-  "totalRows": 5735,
+  "totalRows": 5957,
   "globalRows": 5000,
   "facebookGroupRows": 95,
   "xRows": 0,
-  "redditRows": 136,
-  "blueskyRows": 504,
+  "redditRows": 200,
+  "blueskyRows": 662,
   "datasets": [
     {
       "id": "haoxianc/kalashnikov1405_facebook-text-classification",
@@ -77,13 +77,13 @@
       "label": "r/srilanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 103
+      "rows": 161
     },
     {
       "label": "r/InteriorDesign",
       "category": "interior-design",
       "enabled": true,
-      "rows": 33
+      "rows": 39
     }
   ],
   "blueskySearches": [
@@ -91,13 +91,13 @@
       "label": "\"Sri Lanka\"",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 252
+      "rows": 352
     },
     {
       "label": "\"interior design\"",
       "category": "interior-design",
       "enabled": true,
-      "rows": 252
+      "rows": 310
     }
   ],
   "preview": [
@@ -133,8 +133,8 @@
     },
     {
       "source": "reddit",
-      "timestamp": "2026-11-14T12:06:20Z",
-      "text": "Does anyone know a basketball club near Kalutara?\n\n19M here. I finished school recently. I want to get myself to a sport, which I never did in school. (I reg...",
+      "timestamp": "2026-11-16T07:41:05Z",
+      "text": "What do you think will happen to vehicle prices in Sri Lanka next year?\n\nNow that the budget has been announced, what do you think will happen to vehicle pri...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -143,8 +143,8 @@
     },
     {
       "source": "reddit",
-      "timestamp": "2026-11-14T11:51:09Z",
-      "text": "Is it financially possible to live alone on an 80K monthly salary in Sri Lanka?\n\nI'm a 28M earning around Rs. 80,000 per month, and I'm considering renting a...",
+      "timestamp": "2026-11-16T05:27:10Z",
+      "text": "Shouldn't car tax slabs be based on frame & size of the vehicle, not the engine size? This is screwing up the prices and make comparing cars very weird. How ...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -153,8 +153,8 @@
     },
     {
       "source": "reddit",
-      "timestamp": "2026-11-14T11:38:23Z",
-      "text": "Advice to Youngsters from an 35 YO Unc - Part 02\n\nI recently posted a few advice to youngsters and it got a lot of positive feedback. A lit of you were askin...",
+      "timestamp": "2026-11-16T05:20:39Z",
+      "text": "How to become a Lecturer at a Sri Lankan government university?\n\nHi all! I would love some advice from anyone in Sri Lankan academia on how to get on the lec...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -163,8 +163,8 @@
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-14T12:05:30.330740+00:00",
-      "text": "UNESCO World: Central Highlands of Sri Lanka\n\nSri Lanka's highlands are situated in the south-central part of the island. The property comprises the Peak Wil...",
+      "timestamp": "2026-11-16T08:45:25.392Z",
+      "text": "ya know, they were gonna film King Kong vs. Godzilla's Faro Island scenes on location in Sri Lanka, but a LOT of the budget went to getting Kong at all...\n\nh...",
       "category": "",
       "sentiment": "",
       "language": "en",
@@ -173,23 +173,23 @@
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-14T12:04:17.541065330Z",
-      "text": "Anuk Arudpragasam, sobre su novela ‘Pasaje al norte’: «Nació de un deseo tanto de castigarme por haber escapado del genocidio tamil como de curar, en el espa...",
+      "timestamp": "2026-11-16T08:06:57Z",
+      "text": "टीम इंडिया में खलबली! 1 खिलाड़ी को छोड़कर पूरा मैनेजमेंट पहुंचा श्रीलंका, उसको बेंगलुरु में क्यों छोड़ दिया?\n\n#IndiavsSrilanka #SaiSudarshan #करकट #खल\n\nhttps...",
       "category": "",
       "sentiment": "",
       "language": "",
-      "likes": "1",
+      "likes": "0",
       "group_name": "search: \"Sri Lanka\""
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-14T11:44:35.073Z",
-      "text": "The hardest interior design judge has arrived. Will she accept the changed placement of her bed on my desk?",
+      "timestamp": "2026-11-16T08:00:02.349Z",
+      "text": "Highest inflation in the world in 2022\n\n1. 🇿🇼 Zimbabwe: 193.4%\n2. 🇻🇪 Venezuela: 186.5%\n3. 🇱🇧 Lebanon: 171.2%\n4. 🇸🇩 Sudan: 138.8%\n5. 🇦🇷 Argentina: 7...",
       "category": "",
       "sentiment": "",
       "language": "en",
-      "likes": "4",
-      "group_name": "search: \"interior design\""
+      "likes": "0",
+      "group_name": "search: \"Sri Lanka\""
     },
     {
       "source": "global",
