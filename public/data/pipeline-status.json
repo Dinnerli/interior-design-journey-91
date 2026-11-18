@@ -1,5 +1,38 @@
 {
-  "status": "never",
-  "message": "The weekly pipeline has not run yet.",
-  "newPosts": 0
+  "lastRunAt": "2026-11-18T15:43:02.891Z",
+  "groupsConfigured": 5,
+  "status": "success",
+  "snapshotId": "sd_mwmaizz21or6xverdb",
+  "postsReturned": 439,
+  "newPosts": 419,
+  "totalPosts": 514,
+  "recordsWithErrors": 0,
+  "firstError": null,
+  "perGroup": [
+    {
+      "label": "EPFS Community for Free",
+      "category": "epfs",
+      "postsThisRun": 78
+    },
+    {
+      "label": "EPFS Community Sri Lanka - 100% Free - Public Group",
+      "category": "epfs",
+      "postsThisRun": 88
+    },
+    {
+      "label": "Interior Design Sri Lanka",
+      "category": "sri-lanka",
+      "postsThisRun": 94
+    },
+    {
+      "label": "Architects in Sri Lanka",
+      "category": "sri-lanka",
+      "postsThisRun": 82
+    },
+    {
+      "label": "Sri Lankan Interior Design",
+      "category": "sri-lanka",
+      "postsThisRun": 97
+    }
+  ]
 }

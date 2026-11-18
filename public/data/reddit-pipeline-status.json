@@ -1,7 +1,7 @@
 {
-  "lastRunAt": "2026-11-18T14:52:34.185Z",
+  "lastRunAt": "2026-11-18T15:49:40.640Z",
   "subredditsConfigured": 2,
-  "status": "failed",
-  "message": "Reddit feed r/srilanka failed (404); Reddit feed r/InteriorDesign failed (404)",
+  "status": "skipped",
+  "message": "REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET are not set - Reddit refuses requests without them. Add them as repository secrets to collect Reddit posts.",
   "newPosts": 0
 }

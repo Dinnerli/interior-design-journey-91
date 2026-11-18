@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-18T14:54:05.658Z",
+  "builtAt": "2026-11-18T15:49:41.845Z",
   "columns": [
     "source",
     "dataset",
@@ -20,12 +20,12 @@
     "post_url",
     "collected_at"
   ],
-  "totalRows": 6110,
+  "totalRows": 6532,
   "globalRows": 5000,
-  "facebookGroupRows": 95,
+  "facebookGroupRows": 514,
   "xRows": 0,
   "redditRows": 200,
-  "blueskyRows": 815,
+  "blueskyRows": 818,
   "datasets": [
     {
       "id": "haoxianc/kalashnikov1405_facebook-text-classification",
@@ -38,13 +38,13 @@
       "label": "EPFS Community for Free",
       "category": "epfs",
       "enabled": true,
-      "rows": 20
+      "rows": 78
     },
     {
       "label": "EPFS Community Sri Lanka - 100% Free - Public Group",
       "category": "epfs",
       "enabled": true,
-      "rows": 18
+      "rows": 106
     },
     {
       "label": "EPFS Community Sri Lanka (private group - cannot be collected)",
@@ -56,19 +56,19 @@
       "label": "Interior Design Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 19
+      "rows": 113
     },
     {
       "label": "Architects in Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 19
+      "rows": 101
     },
     {
       "label": "Sri Lankan Interior Design",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 19
+      "rows": 116
     }
   ],
   "xProfiles": [],
@@ -91,7 +91,7 @@
       "label": "\"Sri Lanka\"",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 452
+      "rows": 455
     },
     {
       "label": "\"interior design\"",
@@ -103,18 +103,8 @@
   "preview": [
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-14T07:38:56.000Z",
-      "text": "​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle!\n​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle!\nSeeking an experienced ...",
-      "category": "",
-      "sentiment": "",
-      "language": "",
-      "likes": "1",
-      "group_name": "Architects in Sri Lanka"
-    },
-    {
-      "source": "facebook-group",
-      "timestamp": "2026-11-14T07:35:34.000Z",
-      "text": "Hi, I'm looking for a 1-bedroom annex in Dehiwala, Mount Lavinia, or Ratmalana.\nHi, I'm looking for a 1-bedroom annex in Dehiwala, Mount Lavinia, or Ratmalan...",
+      "timestamp": "2026-11-18T15:43:34.000Z",
+      "text": "Register Now | https://forms.gle/i8AM9WB5Peszj3f9A",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -123,13 +113,23 @@
     },
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-14T07:32:27.000Z",
-      "text": "Package 2300   𝗢𝗙𝗙𝗘𝗥 ‼️\nFor Plant Collectors 🪴 \nවර්ග 10 ම - Rs. 990\n\nලබා දෙන පැළ අවසන් පින්තුරය බලන්න.\n\n 🛒 𝗢𝗿𝗱𝗲𝗿 𝗡𝗼𝘄\n\n🚚 𝗗𝗲𝗹𝗶𝘃𝗲𝗿𝘆 𝗠𝗲...",
+      "timestamp": "2026-11-18T15:43:30.000Z",
+      "text": "ඔබගේ දේපළ විකිණීමට හෝ කුලියට දීමට බලාපොරොත්තු වෙනවාද?\nඔබගේ දේපළ විකිණීමට හෝ කුලියට දීමට බලාපොරොත්තු වෙනවාද?\nඅප සතුව දැනටමත් දේපළ මිලදී ගැනීමට සහ කුලියට ගැනීම...",
       "category": "",
       "sentiment": "",
       "language": "",
       "likes": "0",
-      "group_name": "Interior Design Sri Lanka"
+      "group_name": "EPFS Community for Free"
+    },
+    {
+      "source": "facebook-group",
+      "timestamp": "2026-11-18T15:42:19.000Z",
+      "text": "ඔබගේ දේපළ විකිණීමට හෝ කුලියට දීමට බලාපොරොත්තු වෙනවාද?\nඔබගේ දේපළ විකිණීමට හෝ කුලියට දීමට බලාපොරොත්තු වෙනවාද?\nඅප සතුව දැනටමත් දේපළ මිලදී ගැනීමට සහ කුලියට ගැනීම...",
+      "category": "",
+      "sentiment": "",
+      "language": "",
+      "likes": "0",
+      "group_name": "EPFS Community Sri Lanka - 100% Free - Public Group"
     },
     {
       "source": "reddit",
@@ -163,33 +163,33 @@
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-18T14:37:23.697Z",
-      "text": "Saltan las alarmas por lo que pasa dentro de las manadas de elefantes\nwww.dw.com/es/un-estudi...",
-      "category": "",
-      "sentiment": "",
-      "language": "es",
-      "likes": "0",
-      "group_name": "search: \"Sri Lanka\""
-    },
-    {
-      "source": "bluesky",
-      "timestamp": "2026-11-18T14:35:05Z",
-      "text": "Pakistan eye series win after Sri Lanka slump in second Test\n\nRAWALPINDI: Pakistan's spirited pace attack brought them within sight of a series-clinching vic...",
-      "category": "",
-      "sentiment": "",
-      "language": "",
-      "likes": "0",
-      "group_name": "search: \"Sri Lanka\""
-    },
-    {
-      "source": "bluesky",
-      "timestamp": "2026-11-18T14:29:38.455Z",
-      "text": "I particularly like the winery design, but for the house I kept thinking that's a lot of glass to keep fingerprints off and who is going to clean it? And wha...",
+      "timestamp": "2026-11-18T15:22:37.991265+00:00",
+      "text": "Genomic signatures of recent human adaptation to the foraging-to-farming transition\n->Nature | More on \"Human adaptation to agricultural transition\" at BigEa...",
       "category": "",
       "sentiment": "",
       "language": "en",
       "likes": "0",
-      "group_name": "search: \"interior design\""
+      "group_name": "search: \"Sri Lanka\""
+    },
+    {
+      "source": "bluesky",
+      "timestamp": "2026-11-18T15:20:49.790Z",
+      "text": "RECORD HEAT ALLOVER OCEANIA AND SE ASIA\nNOVEMBER RECORDS\nMYANMAR\n38.2 Dawei\nTHAILAND\n36.6 Roi Et, 36.3 Chantaburi\nVIETNAM\n34.2 Rach Gia\nAUSTRALIA\n40.0 Weipa,...",
+      "category": "",
+      "sentiment": "",
+      "language": "en",
+      "likes": "3",
+      "group_name": "search: \"Sri Lanka\""
+    },
+    {
+      "source": "bluesky",
+      "timestamp": "2026-11-18T15:16:50.013Z",
+      "text": "INDEPENDENT INVESTIGATION REFUTES $250 MILLION X-PRESS PEARL BRIBERY ALLEGATION\n\nOn 17 November, Seatrade Maritime News reported an investigation into the si...",
+      "category": "",
+      "sentiment": "",
+      "language": "en",
+      "likes": "0",
+      "group_name": "search: \"Sri Lanka\""
     },
     {
       "source": "global",
