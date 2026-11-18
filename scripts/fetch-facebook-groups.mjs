@@ -2,8 +2,10 @@
 // data/facebook-groups.json through Bright Data's "Facebook - Posts by group URL"
 // scraper and merges them into public/data/sl_facebook_groups.csv.
 //
-// Env: BRIGHTDATA_API_KEY (required), LOOKBACK_DAYS (default 8), MAX_POSTS_PER_GROUP (default 100)
+// Env: BRIGHTDATA_API_KEY (required; locally it can also be Bright_Data_API in .env),
+//      LOOKBACK_DAYS (default 8), MAX_POSTS_PER_GROUP (default 100)
 
+import { envValue } from './lib/env.mjs';
 import { readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
@@ -120,7 +122,7 @@ async function main() {
     await writeStatus({ ...base, status: 'skipped', message: 'No Facebook groups configured yet.', newPosts: 0 });
     return;
   }
-  const apiKey = process.env.BRIGHTDATA_API_KEY;
+  const apiKey = envValue('BRIGHTDATA_API_KEY', 'Bright_Data_API');
   if (!apiKey) {
     const message = 'BRIGHTDATA_API_KEY is not set - add it as a repository secret to collect Facebook group posts.';
     console.log(`::warning::${message}`);
