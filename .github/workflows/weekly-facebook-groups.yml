@@ -3,10 +3,10 @@ name: Weekly Facebook groups pipeline
 # Collects new posts from the Sri Lankan and EPFS Facebook groups in
 # data/facebook-groups.json (repository secret BRIGHTDATA_API_KEY) and from the
 # X profiles in data/x-profiles.json (repository secret X_BEARER_TOKEN), plus the
-# subreddits in data/reddit-sources.json and the Bluesky searches in
-# data/bluesky-sources.json. Reddit and Bluesky work without secrets; the optional
-# ones (REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET, BLUESKY_HANDLE, BLUESKY_APP_PASSWORD)
-# add Reddit scores and make both less likely to be refused.
+# subreddits in data/reddit-sources.json (repository secrets REDDIT_CLIENT_ID and
+# REDDIT_CLIENT_SECRET) and the Bluesky searches in data/bluesky-sources.json
+# (optional secrets BLUESKY_HANDLE, BLUESKY_APP_PASSWORD). A source whose secret is
+# missing is skipped with a warning instead of failing the run.
 on:
   schedule:
     - cron: '0 2 * * 1' # every Monday 02:00 UTC (07:30 Sri Lanka time)

@@ -1,11 +1,11 @@
 // Weekly pipeline, Reddit part: collects recent posts from the subreddits listed in
 // data/reddit-sources.json and merges them into public/data/reddit_posts.csv.
 //
-// With REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET set it uses the official Reddit API
-// (scores and comment counts included). Without them it reads each subreddit's public
-// Atom feed, which has the text but no scores or comment counts.
+// Uses the official Reddit API, so REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET are needed.
+// Reddit refuses unauthenticated feed and JSON requests (404/403), so without them the
+// step is skipped with a warning rather than failing the whole pipeline.
 //
-// Env: REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET (optional),
+// Env: REDDIT_CLIENT_ID, REDDIT_CLIENT_SECRET,
 //      LOOKBACK_DAYS (default 8), MAX_POSTS_PER_SUBREDDIT (default 100)
 
 import { readFile, writeFile } from 'node:fs/promises';
@@ -15,7 +15,8 @@ import { parseCsv, toCsv } from './lib/csv.mjs';
 import { COLUMNS, PATHS } from './lib/schema.mjs';
 import { mergeRows } from './lib/rows.mjs';
 
-const USER_AGENT = 'datasets-pipeline/1.0';
+// Reddit asks API clients for a "<platform>:<app id>:<version>" user agent.
+const USER_AGENT = 'github-actions:interior-design-datasets-pipeline:v1.1';
 const cleanName = (n) => String(n || '').trim().replace(/^https?:\/\/(www\.)?reddit\.com/i, '').replace(/^\/?r\//i, '').replace(/\/.*$/, '');
 
 const baseRow = (subreddit, collectedAt) => ({
@@ -48,48 +49,9 @@ export function mapApiPost(post, subreddit, collectedAt) {
   };
 }
 
-const decodeEntities = (s) =>
-  s
-    .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(Number(n)))
-    .replace(/&#x([0-9a-f]+);/gi, (_, n) => String.fromCodePoint(parseInt(n, 16)))
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
-    .replace(/&quot;/g, '"')
-    .replace(/&apos;|&#39;/g, "'")
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&amp;/g, '&');
-
-const tag = (xml, name) => decodeEntities(xml.match(new RegExp(`<${name}[^>]*>([\\s\\S]*?)</${name}>`))?.[1] ?? '');
-
-/** Turn one <entry> of a subreddit's Atom feed into a row of the shared schema. */
-export function mapFeedEntry(entry, subreddit, collectedAt) {
-  const id = tag(entry, 'id');
-  const title = tag(entry, 'title').trim();
-  if (!id.startsWith('t3_') || !title) return null;
-  const html = tag(entry, 'content');
-  const body = html.match(/<div class="md">([\s\S]*?)<\/div>\s*<!-- SC_ON -->/)?.[1] ?? '';
-  const bodyText = decodeEntities(body.replace(/<\/p>|<br\s*\/?>/g, '\n').replace(/<[^>]+>/g, ''))
-    .replace(/\n{3,}/g, '\n\n')
-    .trim();
-  const postUrl = entry.match(/<link href="([^"]+)"/)?.[1] ?? '';
-  const target = html.match(/<a href="([^"]+)">\[link\]<\/a>/)?.[1] ?? postUrl;
-  return {
-    ...baseRow(subreddit, collectedAt),
-    dataset: 'reddit-feed:atom',
-    post_id: id,
-    timestamp: tag(entry, 'published').replace('+00:00', 'Z'),
-    text: [title, bodyText].filter(Boolean).join('\n\n'),
-    category: '',
-    has_link: target !== postUrl ? 1 : 0,
-    likes: '',
-    comments: '',
-    post_url: postUrl,
-  };
-}
-
 const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// Reddit rate-limits hard, above all without credentials: wait as long as it asks, then try again.
+// Reddit rate-limits hard: wait as long as it asks, then try again.
 async function redditFetch(url, headers) {
   for (let attempt = 1; ; attempt++) {
     const res = await fetch(url, { headers: { 'User-Agent': USER_AGENT, ...headers } });
@@ -133,16 +95,6 @@ async function collectViaApi(subreddit, token, { since, maxPosts }, collectedAt)
   return rows.slice(0, maxPosts);
 }
 
-async function collectViaFeed(subreddit, { since, maxPosts }, collectedAt) {
-  const res = await redditFetch(`https://www.reddit.com/r/${cleanName(subreddit.name)}/new.rss?limit=100`);
-  if (!res.ok) throw new Error(`Reddit feed r/${cleanName(subreddit.name)} failed (${res.status})`);
-  const entries = (await res.text()).split('<entry>').slice(1);
-  return entries
-    .map((e) => mapFeedEntry(e, subreddit, collectedAt))
-    .filter((r) => r && Date.parse(r.timestamp) >= since)
-    .slice(0, maxPosts);
-}
-
 const writeStatus = (status) => writeFile(PATHS.redditStatus, JSON.stringify(status, null, 2) + '\n');
 
 async function main() {
@@ -157,16 +109,23 @@ async function main() {
     return;
   }
 
+  const { REDDIT_CLIENT_ID: id, REDDIT_CLIENT_SECRET: secret } = process.env;
+  if (!id || !secret) {
+    const message =
+      'REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET are not set - Reddit refuses requests without them. Add them as repository secrets to collect Reddit posts.';
+    console.log(`::warning::${message}`);
+    await writeStatus({ ...base, status: 'skipped', message, newPosts: 0 });
+    return;
+  }
+
   try {
     const lookbackDays = Number(process.env.LOOKBACK_DAYS) || 8;
     const options = {
       since: Date.now() - lookbackDays * 86_400_000,
       maxPosts: Number(process.env.MAX_POSTS_PER_SUBREDDIT) || 100,
     };
-    const { REDDIT_CLIENT_ID: id, REDDIT_CLIENT_SECRET: secret } = process.env;
-    const token = id && secret ? await getToken(id, secret) : null;
-    const mode = token ? 'api' : 'feed';
-    if (!token) console.log('No Reddit API credentials - using public feeds (no scores or comment counts).');
+    const token = await getToken(id, secret);
+    const mode = 'api';
 
     const incoming = [];
     const perSubreddit = [];
@@ -175,9 +134,7 @@ async function main() {
       const entry = { name: cleanName(subreddit.name), category: subreddit.category ?? '', postsThisRun: 0 };
       perSubreddit.push(entry);
       try {
-        const rows = token
-          ? await collectViaApi(subreddit, token, options, startedAt)
-          : await collectViaFeed(subreddit, options, startedAt);
+        const rows = await collectViaApi(subreddit, token, options, startedAt);
         incoming.push(...rows);
         entry.postsThisRun = rows.length;
         console.log(`r/${entry.name}: ${rows.length} posts`);
@@ -187,7 +144,6 @@ async function main() {
         failures.push(entry.error);
         console.log(`::warning::${entry.error}`);
       }
-      if (!token) await sleep(5000);
     }
     if (failures.length === subreddits.length) throw new Error(failures.join('; '));
 

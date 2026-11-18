@@ -121,7 +121,12 @@ async function main() {
     return;
   }
   const apiKey = process.env.BRIGHTDATA_API_KEY;
-  if (!apiKey) throw new Error('BRIGHTDATA_API_KEY is not set');
+  if (!apiKey) {
+    const message = 'BRIGHTDATA_API_KEY is not set - add it as a repository secret to collect Facebook group posts.';
+    console.log(`::warning::${message}`);
+    await writeStatus({ ...base, status: 'skipped', message, newPosts: 0 });
+    return;
+  }
 
   try {
     const { snapshotId, records } = await collect(groups, apiKey, {
