@@ -1,21 +1,7 @@
 {
-  "lastRunAt": "2026-11-16T08:44:26.858Z",
+  "lastRunAt": "2026-11-18T14:52:34.185Z",
   "subredditsConfigured": 2,
-  "status": "success",
-  "mode": "feed",
-  "postsReturned": 126,
-  "newPosts": 64,
-  "totalPosts": 200,
-  "perSubreddit": [
-    {
-      "name": "srilanka",
-      "category": "sri-lanka",
-      "postsThisRun": 100
-    },
-    {
-      "name": "InteriorDesign",
-      "category": "interior-design",
-      "postsThisRun": 26
-    }
-  ]
+  "status": "failed",
+  "message": "Reddit feed r/srilanka failed (404); Reddit feed r/InteriorDesign failed (404)",
+  "newPosts": 0
 }

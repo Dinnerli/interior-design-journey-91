@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-16T08:46:07.616Z",
+  "builtAt": "2026-11-18T14:54:05.658Z",
   "columns": [
     "source",
     "dataset",
@@ -20,12 +20,12 @@
     "post_url",
     "collected_at"
   ],
-  "totalRows": 5957,
+  "totalRows": 6110,
   "globalRows": 5000,
   "facebookGroupRows": 95,
   "xRows": 0,
   "redditRows": 200,
-  "blueskyRows": 662,
+  "blueskyRows": 815,
   "datasets": [
     {
       "id": "haoxianc/kalashnikov1405_facebook-text-classification",
@@ -91,13 +91,13 @@
       "label": "\"Sri Lanka\"",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 352
+      "rows": 452
     },
     {
       "label": "\"interior design\"",
       "category": "interior-design",
       "enabled": true,
-      "rows": 310
+      "rows": 363
     }
   ],
   "preview": [
@@ -163,18 +163,18 @@
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-16T08:45:25.392Z",
-      "text": "ya know, they were gonna film King Kong vs. Godzilla's Faro Island scenes on location in Sri Lanka, but a LOT of the budget went to getting Kong at all...\n\nh...",
+      "timestamp": "2026-11-18T14:37:23.697Z",
+      "text": "Saltan las alarmas por lo que pasa dentro de las manadas de elefantes\nwww.dw.com/es/un-estudi...",
       "category": "",
       "sentiment": "",
-      "language": "en",
+      "language": "es",
       "likes": "0",
       "group_name": "search: \"Sri Lanka\""
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-16T08:06:57Z",
-      "text": "टीम इंडिया में खलबली! 1 खिलाड़ी को छोड़कर पूरा मैनेजमेंट पहुंचा श्रीलंका, उसको बेंगलुरु में क्यों छोड़ दिया?\n\n#IndiavsSrilanka #SaiSudarshan #करकट #खल\n\nhttps...",
+      "timestamp": "2026-11-18T14:35:05Z",
+      "text": "Pakistan eye series win after Sri Lanka slump in second Test\n\nRAWALPINDI: Pakistan's spirited pace attack brought them within sight of a series-clinching vic...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -183,13 +183,13 @@
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-16T08:00:02.349Z",
-      "text": "Highest inflation in the world in 2022\n\n1. 🇿🇼 Zimbabwe: 193.4%\n2. 🇻🇪 Venezuela: 186.5%\n3. 🇱🇧 Lebanon: 171.2%\n4. 🇸🇩 Sudan: 138.8%\n5. 🇦🇷 Argentina: 7...",
+      "timestamp": "2026-11-18T14:29:38.455Z",
+      "text": "I particularly like the winery design, but for the house I kept thinking that's a lot of glass to keep fingerprints off and who is going to clean it? And wha...",
       "category": "",
       "sentiment": "",
       "language": "en",
       "likes": "0",
-      "group_name": "search: \"Sri Lanka\""
+      "group_name": "search: \"interior design\""
     },
     {
       "source": "global",
