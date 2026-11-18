@@ -71,10 +71,17 @@ async function collect(groups, apiKey, { lookbackDays, maxPosts }) {
     end_date: formatDate(end),
   }));
 
-  const trigger = await brightData(`/trigger?dataset_id=${DATASET_ID}&include_errors=true`, apiKey, {
-    method: 'POST',
-    body: JSON.stringify(input),
-  });
+  // Bright Data's gateway sometimes answers 5xx for a moment; retry those before giving up.
+  let trigger;
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    trigger = await brightData(`/trigger?dataset_id=${DATASET_ID}&include_errors=true`, apiKey, {
+      method: 'POST',
+      body: JSON.stringify(input),
+    });
+    if (trigger.status < 500 || attempt === 4) break;
+    console.log(`Bright Data trigger returned ${trigger.status} - retrying in ${20 * attempt}s (attempt ${attempt} of 3).`);
+    await sleep(20_000 * attempt);
+  }
   if (!trigger.ok) throw new Error(`Bright Data trigger failed (${trigger.status}): ${await trigger.text()}`);
   const { snapshot_id: snapshotId } = await trigger.json();
   if (!snapshotId) throw new Error('Bright Data did not return a snapshot_id');
