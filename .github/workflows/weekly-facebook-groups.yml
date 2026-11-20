@@ -7,6 +7,8 @@ name: Weekly Facebook groups pipeline
 # REDDIT_CLIENT_SECRET) and the Bluesky searches in data/bluesky-sources.json
 # (optional secrets BLUESKY_HANDLE, BLUESKY_APP_PASSWORD). A source whose secret is
 # missing is skipped with a warning instead of failing the run.
+# After each run the Step 02 workbook is emailed when the SMTP_USERNAME, SMTP_PASSWORD and
+# REPORT_EMAIL_TO secrets are set (optional: SMTP_HOST, SMTP_PORT; default Gmail over SSL).
 on:
   schedule:
     - cron: '0 2 * * 1' # every Monday 02:00 UTC (07:30 Sri Lanka time)
@@ -85,3 +87,12 @@ jobs:
           # main may have moved while the run was collecting (e.g. a merged PR); rebase before pushing.
           git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
           git push
+      - name: Email the Step 02 workbook
+        if: always()
+        env:
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          REPORT_EMAIL_TO: ${{ secrets.REPORT_EMAIL_TO }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+        run: node scripts/send-step2-email.mjs
