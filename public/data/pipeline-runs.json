@@ -1,0 +1,93 @@
+{
+  "runs": [
+    {
+      "id": "44338799451-1",
+      "startedAt": "2026-11-18T15:42:51Z",
+      "finishedAt": "2026-11-18T15:49:46Z",
+      "trigger": "manual",
+      "result": "success",
+      "newPosts": 422,
+      "totalRows": 6532,
+      "serviceRequests": 5,
+      "serviceRequestsWithContact": 1,
+      "sources": {
+        "facebook": {
+          "status": "success",
+          "newPosts": 419
+        },
+        "x": {
+          "status": "skipped",
+          "newPosts": 0,
+          "message": "No X profiles configured yet."
+        },
+        "reddit": {
+          "status": "skipped",
+          "newPosts": 0,
+          "message": "REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET are not set - Reddit refuses requests without them. Add them as repository secrets to collect Reddit posts."
+        },
+        "bluesky": {
+          "status": "success",
+          "newPosts": 3
+        }
+      },
+      "url": "https://github.com/Dinnerli/interior-design-journey-91/actions/runs/44338799451"
+    },
+    {
+      "id": "44329074925-1",
+      "startedAt": "2026-11-18T14:52:25Z",
+      "finishedAt": "2026-11-18T14:54:09Z",
+      "trigger": "manual",
+      "result": "partial",
+      "newPosts": null,
+      "totalRows": null,
+      "serviceRequests": null,
+      "serviceRequestsWithContact": null,
+      "sources": null,
+      "note": "Ran before the run history was added; only the time and outcome are known.",
+      "url": "https://github.com/Dinnerli/interior-design-journey-91/actions/runs/44329074925"
+    },
+    {
+      "id": "43833668425-1",
+      "startedAt": "2026-11-16T08:44:18Z",
+      "finishedAt": "2026-11-16T08:46:10Z",
+      "trigger": "scheduled",
+      "result": "partial",
+      "newPosts": null,
+      "totalRows": null,
+      "serviceRequests": null,
+      "serviceRequestsWithContact": null,
+      "sources": null,
+      "note": "Ran before the run history was added; only the time and outcome are known.",
+      "url": "https://github.com/Dinnerli/interior-design-journey-91/actions/runs/43833668425"
+    },
+    {
+      "id": "43594173005-1",
+      "startedAt": "2026-11-14T12:18:38Z",
+      "finishedAt": "2026-11-14T12:21:12Z",
+      "trigger": "manual",
+      "result": "failed",
+      "newPosts": null,
+      "totalRows": null,
+      "serviceRequests": null,
+      "serviceRequestsWithContact": null,
+      "sources": null,
+      "note": "Ran before the run history was added; only the time and outcome are known.",
+      "url": "https://github.com/Dinnerli/interior-design-journey-91/actions/runs/43594173005"
+    },
+    {
+      "id": "43594127649-1",
+      "startedAt": "2026-11-14T12:18:04Z",
+      "finishedAt": "2026-11-14T12:20:13Z",
+      "trigger": "manual",
+      "result": "partial",
+      "newPosts": null,
+      "totalRows": null,
+      "serviceRequests": null,
+      "serviceRequestsWithContact": null,
+      "sources": null,
+      "note": "Ran before the run history was added; only the time and outcome are known.",
+      "url": "https://github.com/Dinnerli/interior-design-journey-91/actions/runs/43594127649"
+    }
+  ],
+  "updatedAt": "2026-11-18T15:49:46Z"
+}

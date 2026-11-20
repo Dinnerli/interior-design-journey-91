@@ -45,7 +45,60 @@ interface ExcelSummary {
   };
 }
 
-const StepLabel = ({ step }: { step: string }) => (
+type SourceKey = 'facebook' | 'x' | 'reddit' | 'bluesky';
+
+interface PipelineRun {
+  id: string;
+  startedAt: string;
+  finishedAt: string;
+  trigger: 'scheduled' | 'manual' | 'local';
+  result: 'success' | 'partial' | 'failed' | 'skipped';
+  newPosts: number | null;
+  totalRows: number | null;
+  serviceRequests: number | null;
+  serviceRequestsWithContact: number | null;
+  sources: Record<SourceKey, { status: string; newPosts: number; message?: string }> | null;
+  note?: string;
+  url: string | null;
+}
+
+const RUN_RESULT_LABEL: Record<PipelineRun['result'], string> = {
+  success: 'Succeeded',
+  partial: 'Partly failed',
+  failed: 'Failed',
+  skipped: 'Nothing collected',
+};
+
+const RUN_RESULT_DOT: Record<PipelineRun['result'], string> = {
+  success: 'bg-emerald-600',
+  partial: 'bg-amber-500',
+  failed: 'bg-red-600',
+  skipped: 'bg-neutral-400',
+};
+
+const SOURCE_COLUMNS: { key: SourceKey; label: string }[] = [
+  { key: 'facebook', label: 'Facebook' },
+  { key: 'x', label: 'X' },
+  { key: 'reddit', label: 'Reddit' },
+  { key: 'bluesky', label: 'Bluesky' },
+];
+
+const formatDuration = (from: string, to: string) => {
+  const seconds = Math.max(0, Math.round((Date.parse(to) - Date.parse(from)) / 1000));
+  return seconds < 60 ? `${seconds}s` : `${Math.floor(seconds / 60)}m ${seconds % 60}s`;
+};
+
+const sourceCell = (source?: { status: string; newPosts: number; message?: string }) => {
+  if (!source) return <span className="text-neutral-400">—</span>;
+  if (source.status === 'success') return <span className="tabular-nums">+{source.newPosts.toLocaleString()}</span>;
+  return (
+    <span className={source.status === 'failed' ? 'text-red-700' : 'text-neutral-500'} title={source.message}>
+      {source.status === 'failed' ? 'Failed' : source.status === 'skipped' ? 'Skipped' : 'Not run'}
+    </span>
+  );
+};
+
+const StepLabel =({ step }: { step: string }) => (
   <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">Step {step}</p>
 );
 
@@ -85,14 +138,6 @@ interface DatasetSummary {
   preview: PreviewRow[];
 }
 
-interface PipelineStatus {
-  status: 'never' | 'success' | 'failed' | 'skipped';
-  lastRunAt?: string;
-  message?: string;
-  newPosts?: number;
-  groupsConfigured?: number;
-}
-
 async function fetchJson<T>(url: string): Promise<T> {
   const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) throw new Error(`${url} returned ${res.status}`);
@@ -111,12 +156,6 @@ function nextScheduledRun(now = new Date()) {
 const formatDateTime = (value?: string | Date) =>
   value ? new Date(value).toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' }) : '—';
 
-const STATUS_LABEL: Record<PipelineStatus['status'], string> = {
-  never: 'Not run yet',
-  success: 'Succeeded',
-  failed: 'Failed',
-  skipped: 'Skipped',
-};
 
 const Stat = ({ label, value, hint }: { label: string; value: string; hint?: string }) => (
   <div className="border border-neutral-200 p-5">
@@ -161,20 +200,21 @@ const Datasets = () => {
     queryKey: ['dataset-summary'],
     queryFn: () => fetchJson<DatasetSummary>('/data/dataset-summary.json'),
   });
-  const status = useQuery({
-    queryKey: ['pipeline-status'],
-    queryFn: () => fetchJson<PipelineStatus>('/data/pipeline-status.json'),
-  });
   const excel = useQuery({
     queryKey: ['excel-summary'],
     queryFn: () => fetchJson<ExcelSummary>('/data/excel-summary.json'),
   });
+  const history = useQuery({
+    queryKey: ['pipeline-runs'],
+    queryFn: () => fetchJson<{ runs: PipelineRun[] }>('/data/pipeline-runs.json'),
+  });
 
   const data = summary.data;
   const workbooks = excel.data;
+  const runs = history.data?.runs ?? [];
+  const lastRun = runs[0];
   const runDates = workbooks?.step1.runs.map((r) => r.date) ?? [];
-  const run = status.data;
-  const count = (n?: number) => (n === undefined ? '—' : n.toLocaleString());
+  const count = (n?: number | null) => (n === undefined || n === null ? '—' : n.toLocaleString());
 
   const triggerPipeline = async () => {
     setTriggering(true);
@@ -334,18 +374,111 @@ const Datasets = () => {
           <Stat label="Bluesky rows" value={count(data?.blueskyRows)} />
           <Stat
             label="Last pipeline run"
-            value={run ? STATUS_LABEL[run.status] ?? run.status : '—'}
+            value={lastRun ? RUN_RESULT_LABEL[lastRun.result] : history.isLoading ? '—' : 'Not run yet'}
             hint={
-              run?.lastRunAt
-                ? `${formatDateTime(run.lastRunAt)} · ${count(run.newPosts ?? 0)} new posts`
+              lastRun
+                ? `${formatDateTime(lastRun.startedAt)}${lastRun.newPosts !== null ? ` · ${count(lastRun.newPosts)} new posts` : ''}`
                 : undefined
             }
           />
+          <Stat
+            label="Pipeline runs"
+            value={count(history.data ? runs.length : undefined)}
+            hint={lastRun ? 'Listed below with date and time' : undefined}
+          />
         </div>
 
-        {run?.message && run.status !== 'success' && (
-          <p className="mb-12 border border-neutral-200 bg-neutral-50 p-4 text-sm text-neutral-700">{run.message}</p>
-        )}
+        {/* Run history */}
+        <h3 className="text-lg font-display font-medium mb-1">Pipeline run history</h3>
+        <p className="mb-4 text-sm text-neutral-600">
+          Every run, scheduled or started by hand, newest first. Each run also rebuilds the Step 01 and Step 02 Excel
+          files. Times are shown in your time zone.
+        </p>
+        <div className="mb-12 border border-neutral-200 overflow-x-auto">
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead className="whitespace-nowrap">Date &amp; time</TableHead>
+                <TableHead>Trigger</TableHead>
+                <TableHead>Result</TableHead>
+                {SOURCE_COLUMNS.map((s) => (
+                  <TableHead key={s.key} className="text-right">
+                    {s.label}
+                  </TableHead>
+                ))}
+                <TableHead className="text-right whitespace-nowrap">Step 02 requests</TableHead>
+                <TableHead className="text-right">Took</TableHead>
+                <TableHead />
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {runs.map((r) => (
+                <TableRow key={r.id}>
+                  <TableCell className="whitespace-nowrap">{formatDateTime(r.startedAt)}</TableCell>
+                  <TableCell className="capitalize">{r.trigger}</TableCell>
+                  <TableCell className="whitespace-nowrap">
+                    <span className="inline-flex items-center gap-2">
+                      <span className={`h-2 w-2 rounded-full ${RUN_RESULT_DOT[r.result]}`} />
+                      {RUN_RESULT_LABEL[r.result]}
+                    </span>
+                  </TableCell>
+                  {r.sources ? (
+                    SOURCE_COLUMNS.map((s) => (
+                      <TableCell key={s.key} className="text-right whitespace-nowrap">
+                        {sourceCell(r.sources?.[s.key])}
+                      </TableCell>
+                    ))
+                  ) : (
+                    <TableCell colSpan={SOURCE_COLUMNS.length} className="text-xs text-neutral-500">
+                      {r.note ?? 'No details recorded.'}
+                    </TableCell>
+                  )}
+                  <TableCell className="text-right tabular-nums whitespace-nowrap">
+                    {r.serviceRequests === null ? (
+                      <span className="text-neutral-400">—</span>
+                    ) : (
+                      <>
+                        {r.serviceRequests.toLocaleString()}
+                        {r.serviceRequestsWithContact ? (
+                          <span className="ml-1 text-xs text-neutral-500">({r.serviceRequestsWithContact} with phone)</span>
+                        ) : null}
+                      </>
+                    )}
+                  </TableCell>
+                  <TableCell className="text-right tabular-nums whitespace-nowrap text-neutral-500">
+                    {formatDuration(r.startedAt, r.finishedAt)}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    {r.url && (
+                      <a
+                        href={r.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs underline underline-offset-4 text-neutral-600 hover:text-neutral-900 whitespace-nowrap"
+                      >
+                        Log <ExternalLink className="h-3 w-3" />
+                      </a>
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))}
+              {history.isLoading && (
+                <TableRow>
+                  <TableCell colSpan={9} className="text-center text-neutral-500 py-8">
+                    Loading…
+                  </TableCell>
+                </TableRow>
+              )}
+              {!history.isLoading && runs.length === 0 && (
+                <TableRow>
+                  <TableCell colSpan={9} className="text-center text-neutral-500 py-8">
+                    No runs recorded yet.
+                  </TableCell>
+                </TableRow>
+              )}
+            </TableBody>
+          </Table>
+        </div>
 
         {/* Sources */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">

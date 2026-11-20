@@ -35,6 +35,8 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+      - name: Note when this run started
+        run: echo "RUN_STARTED_AT=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> "$GITHUB_ENV"
       - name: Collect Facebook group posts
         env:
           BRIGHTDATA_API_KEY: ${{ secrets.BRIGHTDATA_API_KEY }}
@@ -70,6 +72,9 @@ jobs:
       - name: Build Step 01 and Step 02 Excel workbooks
         if: always()
         run: node scripts/build-excel.mjs
+      - name: Record this run in the run history
+        if: always()
+        run: node scripts/record-run.mjs
       - name: Commit updated data
         if: always()
         run: |
@@ -77,4 +82,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add public/data
           git diff --cached --quiet || git commit -m "data: weekly social posts update"
+          # main may have moved while the run was collecting (e.g. a merged PR); rebase before pushing.
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
           git push
