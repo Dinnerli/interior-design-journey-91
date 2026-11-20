@@ -1,11 +1,11 @@
 {
-  "lastRunAt": "2026-11-18T15:49:40.698Z",
+  "lastRunAt": "2026-11-20T17:46:32.723Z",
   "searchesConfigured": 2,
   "status": "success",
   "signedIn": false,
   "postsReturned": 200,
-  "newPosts": 3,
-  "totalPosts": 818,
+  "newPosts": 181,
+  "totalPosts": 999,
   "perSearch": [
     {
       "query": "\"Sri Lanka\"",

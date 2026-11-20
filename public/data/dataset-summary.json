@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-18T15:49:41.845Z",
+  "builtAt": "2026-11-20T17:46:33.701Z",
   "columns": [
     "source",
     "dataset",
@@ -20,12 +20,12 @@
     "post_url",
     "collected_at"
   ],
-  "totalRows": 6532,
+  "totalRows": 7074,
   "globalRows": 5000,
-  "facebookGroupRows": 514,
+  "facebookGroupRows": 875,
   "xRows": 0,
   "redditRows": 200,
-  "blueskyRows": 818,
+  "blueskyRows": 999,
   "datasets": [
     {
       "id": "haoxianc/kalashnikov1405_facebook-text-classification",
@@ -38,13 +38,13 @@
       "label": "EPFS Community for Free",
       "category": "epfs",
       "enabled": true,
-      "rows": 78
+      "rows": 91
     },
     {
       "label": "EPFS Community Sri Lanka - 100% Free - Public Group",
       "category": "epfs",
       "enabled": true,
-      "rows": 106
+      "rows": 195
     },
     {
       "label": "EPFS Community Sri Lanka (private group - cannot be collected)",
@@ -56,19 +56,19 @@
       "label": "Interior Design Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 113
+      "rows": 205
     },
     {
       "label": "Architects in Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 101
+      "rows": 172
     },
     {
       "label": "Sri Lankan Interior Design",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 116
+      "rows": 212
     }
   ],
   "xProfiles": [],
@@ -91,45 +91,45 @@
       "label": "\"Sri Lanka\"",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 455
+      "rows": 555
     },
     {
       "label": "\"interior design\"",
       "category": "interior-design",
       "enabled": true,
-      "rows": 363
+      "rows": 444
     }
   ],
   "preview": [
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-18T15:43:34.000Z",
-      "text": "Register Now | https://forms.gle/i8AM9WB5Peszj3f9A",
+      "timestamp": "2026-11-20T17:28:30.000Z",
+      "text": "🏗️ FROM GOVERNMENT PROJECTS TO RESTAURANTS – WE'VE BUILT IT ALL!\n\nTake a look at some of our successfully completed projects!\n\nFrom government tenders to re...",
       "category": "",
       "sentiment": "",
       "language": "",
       "likes": "0",
-      "group_name": "EPFS Community Sri Lanka - 100% Free - Public Group"
+      "group_name": "Interior Design Sri Lanka"
     },
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-18T15:43:30.000Z",
-      "text": "ඔබගේ දේපළ විකිණීමට හෝ කුලියට දීමට බලාපොරොත්තු වෙනවාද?\nඔබගේ දේපළ විකිණීමට හෝ කුලියට දීමට බලාපොරොත්තු වෙනවාද?\nඅප සතුව දැනටමත් දේපළ මිලදී ගැනීමට සහ කුලියට ගැනීම...",
+      "timestamp": "2026-11-20T17:28:17.000Z",
+      "text": "Luxury, Elegance and Lmited edition..\n\nWe are back in creating our unique cement engrave crafts and you can own your special piece now. This will elevate the...",
       "category": "",
       "sentiment": "",
       "language": "",
       "likes": "0",
-      "group_name": "EPFS Community for Free"
+      "group_name": "Interior Design Sri Lanka"
     },
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-18T15:42:19.000Z",
-      "text": "ඔබගේ දේපළ විකිණීමට හෝ කුලියට දීමට බලාපොරොත්තු වෙනවාද?\nඔබගේ දේපළ විකිණීමට හෝ කුලියට දීමට බලාපොරොත්තු වෙනවාද?\nඅප සතුව දැනටමත් දේපළ මිලදී ගැනීමට සහ කුලියට ගැනීම...",
+      "timestamp": "2026-11-20T17:28:14.000Z",
+      "text": "Luxury, Elegance and Lmited edition..\n\nWe are back in creating our unique cement engrave crafts and you can own your special piece now. This will elevate the...",
       "category": "",
       "sentiment": "",
       "language": "",
-      "likes": "0",
-      "group_name": "EPFS Community Sri Lanka - 100% Free - Public Group"
+      "likes": "1",
+      "group_name": "Sri Lankan Interior Design"
     },
     {
       "source": "reddit",
@@ -163,33 +163,33 @@
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-18T15:22:37.991265+00:00",
-      "text": "Genomic signatures of recent human adaptation to the foraging-to-farming transition\n->Nature | More on \"Human adaptation to agricultural transition\" at BigEa...",
+      "timestamp": "2026-11-20T17:44:02.169Z",
+      "text": "Aacamp.no\nGlue on steinless steel splash on wall, cover trimmings with plastic and tape.\n\n#Interior-design  #architecture   #Treehouse   #tree-house   #OffGr...",
       "category": "",
       "sentiment": "",
       "language": "en",
       "likes": "0",
-      "group_name": "search: \"Sri Lanka\""
+      "group_name": "search: \"interior design\""
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-18T15:20:49.790Z",
-      "text": "RECORD HEAT ALLOVER OCEANIA AND SE ASIA\nNOVEMBER RECORDS\nMYANMAR\n38.2 Dawei\nTHAILAND\n36.6 Roi Et, 36.3 Chantaburi\nVIETNAM\n34.2 Rach Gia\nAUSTRALIA\n40.0 Weipa,...",
-      "category": "",
-      "sentiment": "",
-      "language": "en",
-      "likes": "3",
-      "group_name": "search: \"Sri Lanka\""
-    },
-    {
-      "source": "bluesky",
-      "timestamp": "2026-11-18T15:16:50.013Z",
-      "text": "INDEPENDENT INVESTIGATION REFUTES $250 MILLION X-PRESS PEARL BRIBERY ALLEGATION\n\nOn 17 November, Seatrade Maritime News reported an investigation into the si...",
+      "timestamp": "2026-11-20T17:38:22.165Z",
+      "text": "Aacamp.no\nPaint the plywood with a bathroom membrane system \n\n#Interior-design  #architecture   #Treehouse   #tree-house   #OffGridLiving   #Ecotourism  #Sca...",
       "category": "",
       "sentiment": "",
       "language": "en",
       "likes": "0",
-      "group_name": "search: \"Sri Lanka\""
+      "group_name": "search: \"interior design\""
+    },
+    {
+      "source": "bluesky",
+      "timestamp": "2026-11-20T17:35:15.639Z",
+      "text": "Aacamp.no\nVarnish a few times with an oil based varnish \n\n#Interior-design  #architecture   #Treehouse   #tree-house   #OffGridLiving   #Ecotourism  #Scandin...",
+      "category": "",
+      "sentiment": "",
+      "language": "en",
+      "likes": "0",
+      "group_name": "search: \"interior design\""
     },
     {
       "source": "global",
