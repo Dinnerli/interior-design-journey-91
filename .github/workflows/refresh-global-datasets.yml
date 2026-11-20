@@ -21,6 +21,7 @@ jobs:
       - run: pip install datasets pandas
       - run: python scripts/build_global_dataset.py
       - run: node scripts/build-combined.mjs
+      - run: node scripts/build-excel.mjs
       - name: Commit updated data
         run: |
           git config user.name "github-actions[bot]"

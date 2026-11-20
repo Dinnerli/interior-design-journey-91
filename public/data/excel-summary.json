@@ -1,0 +1,91 @@
+{
+  "builtAt": "2026-11-20T17:20:15.575Z",
+  "step1": {
+    "file": "/data/step01_all_posts.xlsx",
+    "totalRows": 6532,
+    "globalRows": 5000,
+    "runs": [
+      {
+        "date": "2026-11-18",
+        "facebook": 419,
+        "x": 0,
+        "reddit": 0,
+        "bluesky": 156,
+        "total": 575
+      },
+      {
+        "date": "2026-11-16",
+        "facebook": 0,
+        "x": 0,
+        "reddit": 64,
+        "bluesky": 158,
+        "total": 222
+      },
+      {
+        "date": "2026-11-14",
+        "facebook": 95,
+        "x": 0,
+        "reddit": 136,
+        "bluesky": 504,
+        "total": 735
+      }
+    ]
+  },
+  "step2": {
+    "file": "/data/step02_service_requests.xlsx",
+    "rows": 5,
+    "withContact": 1,
+    "top": [
+      {
+        "rank": 1,
+        "hasContact": true,
+        "service": "පේන්ටර් (painter)",
+        "source": "Facebook group",
+        "postedIn": "Interior Design Sri Lanka",
+        "timestamp": "2026-11-17T18:55:35.000Z",
+        "text": "ස්ප්‍රේ පේන්ටර්වරයෙකු අවශ්‍යයි! ස්ප්‍රේ පේන්ටර්වරයෙකු අවශ්‍යයි! Ratmalana ප්‍රදේශයේ පිහිටි අපගේ ආයතනයේ අලංකාර භාණ්ඩ (Decor Items) සඳහා ස්ප්‍රේ පේන්ටින් කටයුත...",
+        "postUrl": "https://www.facebook.com/groups/175162353823750/posts/1873308394009129/"
+      },
+      {
+        "rank": 2,
+        "hasContact": false,
+        "service": "architect, landscaping",
+        "source": "Facebook group",
+        "postedIn": "Architects in Sri Lanka",
+        "timestamp": "2026-11-14T07:38:56.000Z",
+        "text": "​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle! ​🚨 Looking for an Architect for an Eco-Cabana Project in Kegalle! Seeking an experienced ...",
+        "postUrl": "https://www.facebook.com/groups/111390542318487/posts/26994260523604791/"
+      },
+      {
+        "rank": 3,
+        "hasContact": false,
+        "service": "interior designer",
+        "source": "Facebook group",
+        "postedIn": "Interior Design Sri Lanka",
+        "timestamp": "2026-11-18T14:01:21.000Z",
+        "text": "Looking for a good And experienced designer to get a office redesigned. Location - Kandy",
+        "postUrl": "https://www.facebook.com/groups/175162353823750/posts/1874041570602478/"
+      },
+      {
+        "rank": 4,
+        "hasContact": false,
+        "service": "plumber",
+        "source": "Facebook group",
+        "postedIn": "EPFS Community Sri Lanka - 100% Free - Public Group",
+        "timestamp": "2026-11-18T10:48:45.000Z",
+        "text": "Need a plumbers contact number in and around Dehiwala area",
+        "postUrl": "https://www.facebook.com/groups/479111125955377/posts/2468910670308736/"
+      },
+      {
+        "rank": 5,
+        "hasContact": false,
+        "service": "architect",
+        "source": "Facebook group",
+        "postedIn": "Architects in Sri Lanka",
+        "timestamp": "2026-11-16T10:43:43.000Z",
+        "text": "Looking for a **talented, experienced, and creative architect** for an upcoming villa project near **Ahangama, Sri Lanka**. Ideally, someone with experience ...",
+        "postUrl": "https://www.facebook.com/groups/111390542318487/posts/27021173914246785/"
+      }
+    ]
+  }
+}
