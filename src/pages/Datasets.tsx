@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { motion } from 'framer-motion';
-import { CalendarClock, Download, ExternalLink, Loader2, Play } from 'lucide-react';
+import { CalendarClock, Download, ExternalLink, FileSpreadsheet, Loader2, Phone, Play } from 'lucide-react';
 import { toast } from 'sonner';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -18,7 +18,38 @@ const FILES = {
   x: '/data/x_posts.csv',
   reddit: '/data/reddit_posts.csv',
   bluesky: '/data/bluesky_posts.csv',
+  step1: '/data/step01_all_posts.xlsx',
+  step2: '/data/step02_service_requests.xlsx',
 };
+
+interface ExcelSummary {
+  builtAt: string;
+  step1: {
+    totalRows: number;
+    globalRows: number;
+    runs: { date: string; facebook: number; x: number; reddit: number; bluesky: number; total: number }[];
+  };
+  step2: {
+    rows: number;
+    withContact: number;
+    top: {
+      rank: number;
+      hasContact: boolean;
+      service: string;
+      source: string;
+      postedIn: string;
+      timestamp: string;
+      text: string;
+      postUrl: string;
+    }[];
+  };
+}
+
+const StepLabel = ({ step }: { step: string }) => (
+  <p className="text-xs uppercase tracking-[0.2em] text-neutral-500">Step {step}</p>
+);
+
+const linkClass = 'text-sm underline underline-offset-4 text-neutral-600 hover:text-neutral-900';
 
 interface PreviewRow {
   source: string;
@@ -134,8 +165,14 @@ const Datasets = () => {
     queryKey: ['pipeline-status'],
     queryFn: () => fetchJson<PipelineStatus>('/data/pipeline-status.json'),
   });
+  const excel = useQuery({
+    queryKey: ['excel-summary'],
+    queryFn: () => fetchJson<ExcelSummary>('/data/excel-summary.json'),
+  });
 
   const data = summary.data;
+  const workbooks = excel.data;
+  const runDates = workbooks?.step1.runs.map((r) => r.date) ?? [];
   const run = status.data;
   const count = (n?: number) => (n === undefined ? '—' : n.toLocaleString());
 
@@ -189,52 +226,78 @@ const Datasets = () => {
           </p>
         )}
 
-        {/* Calls to action */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        {/* Step 01 and Step 02 downloads */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           <div className="border border-neutral-200 p-6 sm:p-8 flex flex-col">
-            <h2 className="text-xl font-display font-medium">Download the dataset</h2>
-            <p className="mt-2 text-sm text-neutral-600 flex-1">
-              One CSV with every row: {count(data?.globalRows)} global posts, {count(data?.facebookGroupRows)}{' '}
-              from the Facebook groups, {count(data?.xRows)} from X, {count(data?.redditRows)} from Reddit and{' '}
-              {count(data?.blueskyRows)} from Bluesky. Author names are not included.
+            <StepLabel step="01" />
+            <h2 className="mt-2 text-xl font-display font-medium">Download the dataset</h2>
+            <p className="mt-2 text-sm text-neutral-600">
+              Every row: {count(data?.globalRows)} global posts, {count(data?.facebookGroupRows)} from the Facebook
+              groups, {count(data?.xRows)} from X, {count(data?.redditRows)} from Reddit and {count(data?.blueskyRows)}{' '}
+              from Bluesky. Author names are not included.
+            </p>
+            <p className="mt-3 text-sm text-neutral-600 flex-1">
+              The Excel workbook has an <span className="text-neutral-900">All rows</span> tab, then one tab per
+              pipeline run with the posts that run collected
+              {runDates.length > 0 && (
+                <>
+                  {' '}
+                  ({runDates.length} so far: {runDates.join(', ')})
+                </>
+              )}
+              .
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <Button asChild size="lg">
-                <a href={FILES.combined} download="combined_dataset.csv">
-                  <Download /> Download CSV
+                <a href={FILES.step1} download="step01_all_posts.xlsx">
+                  <FileSpreadsheet /> Download Excel
                 </a>
               </Button>
-              <a
-                href={FILES.groups}
-                download="sl_facebook_groups.csv"
-                className="text-sm underline underline-offset-4 text-neutral-600 hover:text-neutral-900"
-              >
+              <a href={FILES.combined} download="combined_dataset.csv" className={linkClass}>
+                CSV
+              </a>
+              <a href={FILES.groups} download="sl_facebook_groups.csv" className={linkClass}>
                 Facebook groups only
               </a>
-              <a
-                href={FILES.x}
-                download="x_posts.csv"
-                className="text-sm underline underline-offset-4 text-neutral-600 hover:text-neutral-900"
-              >
+              <a href={FILES.x} download="x_posts.csv" className={linkClass}>
                 X posts only
               </a>
-              <a
-                href={FILES.reddit}
-                download="reddit_posts.csv"
-                className="text-sm underline underline-offset-4 text-neutral-600 hover:text-neutral-900"
-              >
+              <a href={FILES.reddit} download="reddit_posts.csv" className={linkClass}>
                 Reddit only
               </a>
-              <a
-                href={FILES.bluesky}
-                download="bluesky_posts.csv"
-                className="text-sm underline underline-offset-4 text-neutral-600 hover:text-neutral-900"
-              >
+              <a href={FILES.bluesky} download="bluesky_posts.csv" className={linkClass}>
                 Bluesky only
               </a>
             </div>
           </div>
 
+          <div className="border border-neutral-200 p-6 sm:p-8 flex flex-col">
+            <StepLabel step="02" />
+            <h2 className="mt-2 text-xl font-display font-medium">Architecture &amp; construction requests</h2>
+            <p className="mt-2 text-sm text-neutral-600">
+              Step 01 filtered down to posts where someone is asking for an architect, contractor, builder, house plan,
+              renovation or a trade such as a mason, carpenter or plumber. Adverts and job posts are left out.
+            </p>
+            <p className="mt-3 text-sm text-neutral-600 flex-1">
+              {workbooks
+                ? `${count(workbooks.step2.rows)} requests found, ${count(workbooks.step2.withContact)} with a contact number. Those are ranked at the top.`
+                : 'Requests with a contact number are ranked at the top.'}{' '}
+              Matching is keyword based, so check each lead.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center gap-4">
+              <Button asChild size="lg">
+                <a href={FILES.step2} download="step02_service_requests.xlsx">
+                  <Download /> Download Excel
+                </a>
+              </Button>
+              {workbooks && (
+                <span className="text-xs text-neutral-500">Built {formatDateTime(workbooks.builtAt)}</span>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div className="mb-10">
           <div className="border border-neutral-200 p-6 sm:p-8 flex flex-col">
             <h2 className="text-xl font-display font-medium">Weekly pipeline</h2>
             <p className="mt-2 text-sm text-neutral-600 flex-1">
@@ -327,6 +390,46 @@ const Datasets = () => {
             emptyText={<>No searches added yet. Add them to <code>data/bluesky-sources.json</code>.</>}
           />
         </div>
+
+        {/* Step 02 preview (phone numbers stay in the download) */}
+        <h3 className="text-lg font-display font-medium mb-4">Top requests from Step 02</h3>
+        {workbooks && workbooks.step2.top.length === 0 ? (
+          <p className="mb-12 border border-dashed border-neutral-300 p-4 text-sm text-neutral-600">
+            No architecture or construction requests in the collected posts yet.
+          </p>
+        ) : (
+          <ol className="mb-12 divide-y divide-neutral-200 border-y border-neutral-200">
+            {(workbooks?.step2.top ?? []).map((lead) => (
+              <li key={lead.rank} className="py-4 flex gap-4 text-sm">
+                <span className="w-6 shrink-0 tabular-nums text-neutral-400">{lead.rank}</span>
+                <div className="min-w-0 flex-1">
+                  <p className="text-neutral-900 break-words">{lead.text}</p>
+                  <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500">
+                    <span className="uppercase tracking-wider">{lead.service}</span>
+                    <span>{lead.postedIn}</span>
+                    <span>{lead.timestamp?.slice(0, 10)}</span>
+                    {lead.hasContact && (
+                      <span className="inline-flex items-center gap-1 text-neutral-900">
+                        <Phone className="h-3 w-3" /> Contact number in download
+                      </span>
+                    )}
+                    {lead.postUrl && (
+                      <a
+                        href={lead.postUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 underline underline-offset-4 hover:text-neutral-900"
+                      >
+                        View post <ExternalLink className="h-3 w-3" />
+                      </a>
+                    )}
+                  </p>
+                </div>
+              </li>
+            ))}
+            {excel.isLoading && <li className="py-6 text-center text-sm text-neutral-500">Loading…</li>}
+          </ol>
+        )}
 
         {/* Preview */}
         <h3 className="text-lg font-display font-medium mb-4">Preview</h3>

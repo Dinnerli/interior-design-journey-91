@@ -67,6 +67,9 @@ jobs:
       - name: Rebuild combined dataset
         if: always()
         run: node scripts/build-combined.mjs
+      - name: Build Step 01 and Step 02 Excel workbooks
+        if: always()
+        run: node scripts/build-excel.mjs
       - name: Commit updated data
         if: always()
         run: |
