@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-20T17:46:33.701Z",
+  "builtAt": "2026-11-21T11:29:25.902Z",
   "columns": [
     "source",
     "dataset",
@@ -20,12 +20,12 @@
     "post_url",
     "collected_at"
   ],
-  "totalRows": 7074,
+  "totalRows": 8154,
   "globalRows": 5000,
-  "facebookGroupRows": 875,
+  "facebookGroupRows": 1581,
   "xRows": 0,
   "redditRows": 200,
-  "blueskyRows": 999,
+  "blueskyRows": 1373,
   "datasets": [
     {
       "id": "haoxianc/kalashnikov1405_facebook-text-classification",
@@ -38,13 +38,13 @@
       "label": "EPFS Community for Free",
       "category": "epfs",
       "enabled": true,
-      "rows": 91
+      "rows": 96
     },
     {
       "label": "EPFS Community Sri Lanka - 100% Free - Public Group",
       "category": "epfs",
       "enabled": true,
-      "rows": 195
+      "rows": 522
     },
     {
       "label": "EPFS Community Sri Lanka (private group - cannot be collected)",
@@ -56,19 +56,19 @@
       "label": "Interior Design Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 205
+      "rows": 259
     },
     {
       "label": "Architects in Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 172
+      "rows": 272
     },
     {
       "label": "Sri Lankan Interior Design",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 212
+      "rows": 432
     }
   ],
   "xProfiles": [],
@@ -91,40 +91,40 @@
       "label": "\"Sri Lanka\"",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 555
+      "rows": 897
     },
     {
       "label": "\"interior design\"",
       "category": "interior-design",
       "enabled": true,
-      "rows": 444
+      "rows": 476
     }
   ],
   "preview": [
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-20T17:28:30.000Z",
-      "text": "🏗️ FROM GOVERNMENT PROJECTS TO RESTAURANTS – WE'VE BUILT IT ALL!\n\nTake a look at some of our successfully completed projects!\n\nFrom government tenders to re...",
+      "timestamp": "2026-11-21T11:07:17.000Z",
+      "text": "#නිවසකවිකිනීමට\n#කොට්ටාව\n#මහල්වරාපාර \n\n✅තෙමහල් නිවසක්  \n✅පර්චස්  9 යි \n✅ලක්ෂ  780/=\n✅මිලියන 78/=👇\n\n🏡️♦️අලුතින් නිමවූ නිවසකි \n 🏡️♦️නිදන කාමර 7 යි\n\n \n📌️හෝල්...",
       "category": "",
       "sentiment": "",
       "language": "",
       "likes": "0",
-      "group_name": "Interior Design Sri Lanka"
+      "group_name": "EPFS Community Sri Lanka - 100% Free - Public Group"
     },
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-20T17:28:17.000Z",
-      "text": "Luxury, Elegance and Lmited edition..\n\nWe are back in creating our unique cement engrave crafts and you can own your special piece now. This will elevate the...",
+      "timestamp": "2026-11-21T10:57:22.000Z",
+      "text": "වෙනසක් වෙනුවෙන් ඔබත් එක්වන්න!\nවෙනසක් වෙනුවෙන් ඔබත් එක්වන්න!\nඅලුත් ගමනක ආරම්භය ළඟදීම…!\n\nපිරිසිදු වාතය, සුරක්ෂිත පරිසරය සහ හරිතවත් අනාගතයක් යනු අප සැමගේ අයිතිය...",
       "category": "",
       "sentiment": "",
       "language": "",
       "likes": "0",
-      "group_name": "Interior Design Sri Lanka"
+      "group_name": "EPFS Community Sri Lanka - 100% Free - Public Group"
     },
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-20T17:28:14.000Z",
-      "text": "Luxury, Elegance and Lmited edition..\n\nWe are back in creating our unique cement engrave crafts and you can own your special piece now. This will elevate the...",
+      "timestamp": "2026-11-21T10:46:49.000Z",
+      "text": "\"To hear your voice\nis pomegranate wine to me:\nI draw life from hearing it.\nCould I see you with every glance,\nIt would be better for me;\nThan to eat or to d...",
       "category": "",
       "sentiment": "",
       "language": "",
@@ -163,33 +163,33 @@
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-20T17:44:02.169Z",
-      "text": "Aacamp.no\nGlue on steinless steel splash on wall, cover trimmings with plastic and tape.\n\n#Interior-design  #architecture   #Treehouse   #tree-house   #OffGr...",
+      "timestamp": "2026-11-21T11:16:09+00:00",
+      "text": "Sri Lanka Raises Rates as Inflation Forecast Nears 9% #SriLanka #Economy",
       "category": "",
       "sentiment": "",
       "language": "en",
       "likes": "0",
-      "group_name": "search: \"interior design\""
+      "group_name": "search: \"Sri Lanka\""
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-20T17:38:22.165Z",
-      "text": "Aacamp.no\nPaint the plywood with a bathroom membrane system \n\n#Interior-design  #architecture   #Treehouse   #tree-house   #OffGridLiving   #Ecotourism  #Sca...",
+      "timestamp": "2026-11-21T11:02:52.956Z",
+      "text": "I remember discussing with some older American bloke in Sri Lanka how absurd it was that the view of St Paul's and beyond must be unobstructed from a certain...",
       "category": "",
       "sentiment": "",
       "language": "en",
-      "likes": "0",
-      "group_name": "search: \"interior design\""
+      "likes": "1",
+      "group_name": "search: \"Sri Lanka\""
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-20T17:35:15.639Z",
-      "text": "Aacamp.no\nVarnish a few times with an oil based varnish \n\n#Interior-design  #architecture   #Treehouse   #tree-house   #OffGridLiving   #Ecotourism  #Scandin...",
+      "timestamp": "2026-11-21T10:30:30.262Z",
+      "text": "alldailyplush.blogspot.com/2026/11/sri-...\nSri lanka national Cricket team vs Pakistan",
       "category": "",
       "sentiment": "",
       "language": "en",
       "likes": "0",
-      "group_name": "search: \"interior design\""
+      "group_name": "search: \"Sri Lanka\""
     },
     {
       "source": "global",

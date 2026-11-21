@@ -1,5 +1,5 @@
 {
-  "lastRunAt": "2026-11-20T17:46:32.689Z",
+  "lastRunAt": "2026-11-21T11:29:23.080Z",
   "subredditsConfigured": 2,
   "status": "skipped",
   "message": "REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET are not set - Reddit refuses requests without them. Add them as repository secrets to collect Reddit posts.",
