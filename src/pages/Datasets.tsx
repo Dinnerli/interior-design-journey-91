@@ -30,10 +30,12 @@ interface ExcelSummary {
     runs: { date: string; facebook: number; x: number; reddit: number; bluesky: number; total: number }[];
   };
   step2: {
+    industries?: { key: string; label: string; rows: number; withContact: number }[];
     rows: number;
     withContact: number;
     top: {
       rank: number;
+      industry?: string;
       hasContact: boolean;
       service: string;
       source: string;
@@ -214,6 +216,7 @@ const Datasets = () => {
   const runs = history.data?.runs ?? [];
   const lastRun = runs[0];
   const runDates = workbooks?.step1.runs.map((r) => r.date) ?? [];
+  const industries = workbooks?.step2.industries ?? [];
   const count = (n?: number | null) => (n === undefined || n === null ? '—' : n.toLocaleString());
 
   const triggerPipeline = async () => {
@@ -313,14 +316,31 @@ const Datasets = () => {
 
           <div className="border border-neutral-200 p-6 sm:p-8 flex flex-col">
             <StepLabel step="02" />
-            <h2 className="mt-2 text-xl font-display font-medium">Architecture &amp; construction requests</h2>
+            <h2 className="mt-2 text-xl font-display font-medium">
+              {industries.length ? `${industries.map((i) => i.label).join(' & ')} requests` : 'Service requests'}
+            </h2>
             <p className="mt-2 text-sm text-neutral-600">
-              Step 01 filtered down to posts where someone is asking for an architect, contractor, builder, house plan,
-              renovation or a trade such as a mason, carpenter or plumber. Adverts and job posts are left out.
+              Step 01 filtered down to posts where someone is asking for{' '}
+              {industries.length
+                ? `${industries.map((i) => i.label.toLowerCase()).join(', ')} services`
+                : 'a service'}
+              , with one tab per industry. Adverts and job posts are left out.
             </p>
+            {industries.length > 1 && (
+              <ul className="mt-3 text-sm text-neutral-600">
+                {industries.map((i) => (
+                  <li key={i.key} className="flex justify-between gap-4 border-b border-neutral-100 py-1">
+                    <span>{i.label}</span>
+                    <span className="tabular-nums text-neutral-500">
+                      {count(i.rows)} ({count(i.withContact)} with phone)
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
             <p className="mt-3 text-sm text-neutral-600 flex-1">
               {workbooks
-                ? `${count(workbooks.step2.rows)} requests found, ${count(workbooks.step2.withContact)} with a contact number. Those are ranked at the top.`
+                ? `${count(workbooks.step2.rows)} request${workbooks.step2.rows === 1 ? '' : 's'} found, ${count(workbooks.step2.withContact)} with a contact number. Those are ranked at the top.`
                 : 'Requests with a contact number are ranked at the top.'}{' '}
               Matching is keyword based, so check each lead.
             </p>
@@ -528,7 +548,8 @@ const Datasets = () => {
         <h3 className="text-lg font-display font-medium mb-4">Top requests from Step 02</h3>
         {workbooks && workbooks.step2.top.length === 0 ? (
           <p className="mb-12 border border-dashed border-neutral-300 p-4 text-sm text-neutral-600">
-            No architecture or construction requests in the collected posts yet.
+            No {industries.length ? industries.map((i) => i.label.toLowerCase()).join(' or ') : 'service'} requests in
+            the collected posts yet.
           </p>
         ) : (
           <ol className="mb-12 divide-y divide-neutral-200 border-y border-neutral-200">
@@ -538,6 +559,9 @@ const Datasets = () => {
                 <div className="min-w-0 flex-1">
                   <p className="text-neutral-900 break-words">{lead.text}</p>
                   <p className="mt-1 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-neutral-500">
+                    {industries.length > 1 && lead.industry && (
+                      <span className="border border-neutral-300 px-1.5 py-0.5 text-neutral-700">{lead.industry}</span>
+                    )}
                     <span className="uppercase tracking-wider">{lead.service}</span>
                     <span>{lead.postedIn}</span>
                     <span>{lead.timestamp?.slice(0, 10)}</span>

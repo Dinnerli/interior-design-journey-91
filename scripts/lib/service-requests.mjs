@@ -1,44 +1,56 @@
-// Step 02 filter: picks posts where someone is asking for an architectural or construction
-// service, and pulls out any phone numbers so those leads can be ranked first.
+// Step 02 filter: picks posts where someone is asking for a service in one of the industries in
+// data/step2-industries.json (architecture, construction, ...), and pulls out any phone numbers so
+// those leads can be ranked first.
 //
-// A post qualifies when a request phrase (looking for, need, anyone recommend, අවශ්‍යයි...) points
-// at a service (architect, contractor, house plan, mason...) in the same sentence - "looking for an
-// architect", "ස්ප්‍රේ පේන්ටර්වරයෙකු අවශ්‍යයි" - and that outweighs advert/job-post wording
+// A post qualifies for an industry when a request phrase (looking for, need, anyone recommend,
+// අවශ්‍යයි...) points at one of that industry's services in the same sentence - "looking for an
+// architect", "ගෘහ නිර්මාණ ශිල්පියෙකු අවශ්‍යයි" - and that outweighs advert/job-post wording
 // (we offer, for sale, we're hiring...) and ideas/advice-only wording.
-// Matching is keyword based, in English, Singlish and Sinhala; tune the lists below.
+// The request, advert and phone rules below are shared by every industry; the service terms live in
+// the settings file, so a new industry needs no code change.
 
-const SERVICE_TERMS = [
-  ['architect', /\barchitect(?:s|ural\s+(?:design|services?|firm|plans?|drawings?))?\b/i],
-  ['contractor/builder', /\b(?:contractors?|builders?|building\s+company|construction\s+company)\b/i],
-  ['construction', /\bconstruct(?:ion|ing)?\b/i],
-  ['house/building plan', /\b(?:house|home|building|approval|2d|3d)\s+plans?\b|\bplan\s+(?:approval|drawings?)\b/i],
-  ['build a house', /\bbuild(?:ing)?\s+(?:a|an|my|our)?\s*(?:new\s+)?(?:house|home|annex|villa|cabana|building|shop|office)\b/i],
-  ['renovation', /\b(?:renovat\w*|remodel\w*|refurbish\w*|house\s+extension)\b/i],
-  ['interior designer', /\b(?:interior\s+)?designers?\b|\binterior\s+design\s+(?:services?|company|firm|work)\b|\b(?:office|house|home|shop|showroom)\s+(?:re)?design(?:ed)?\b/i],
-  ['engineer', /\b(?:structural|civil)\s+engineers?\b/i],
-  ['quantity surveyor/estimate', /\bquantity\s+surveyors?\b|\bBOQ\b|\bcost\s+estimate\b/i],
-  ['mason', /\bmasons?\b|\bmasonry\b|\bbaas\b/i],
-  ['carpenter', /\bcarpent\w*|\bjoinery\b/i],
-  ['plumber', /\bplumb(?:er|ers|ing)\b/i],
-  ['electrician', /\belectricians?\b|\bhouse\s+wiring\b/i],
-  ['painter', /\b(?:house\s+|wall\s+|spray\s+)?painters?\b/i],
-  ['roof/ceiling', /\broof(?:ing|s)?\b|\bceilings?\b/i],
-  ['tiling', /\btil(?:er|ers|ing)\b|\btile\s+work\b/i],
-  ['waterproofing', /\bwater\s*proof\w*/i],
-  ['aluminium/steel work', /\balumini?um\s+(?:work|fabricat\w*|windows?|doors?)|\bsteel\s+(?:work|fabricat\w*)|\bwelding\b/i],
-  ['landscaping', /\blandscap\w*/i],
-  ['ගෘහ නිර්මාණ (architecture)', /ගෘහ\s*නිර්මාණ/],
-  ['ඉදිකිරීම් (construction)', /ඉදිකිරීම|ඉදි\s*කිරීම|ඉදිකරන/],
-  ['කොන්ත්‍රාත් (contract)', /කොන්ත්‍රාත්|කොන්ට්‍රැක්ට/],
-  ['බාස් (mason)', /බාස්/],
-  ['වඩු (carpenter)', /වඩු/],
-  ['පේන්ටර් (painter)', /පේන්ටර්/],
-  ['ප්ලම්බර් (plumber)', /ප්ලම්බ/],
-  ['සැලසුම් (plan)', /නිවාස\s*සැලසුම|ගෙයක\s*ප්ලෑන්|ප්ලෑන්|සැලැස්ම/],
-  ['ගෙයක් හදන්න (build a house)', /ගෙයක්\s*හද|ගෙදර\s*හද|නිවසක්\s*ඉදි/],
-  ['ටයිල් (tiling)', /ටයිල්/],
-  ['වහල (roof)', /වහල/],
-];
+import { readFileSync } from 'node:fs';
+
+export const INDUSTRIES_FILE = 'data/step2-industries.json';
+
+const escapeRe = (s) => s.replace(/[.+?^${}()|[\]\\]/g, '\\$&');
+
+/** Turn a settings-file term ("architect*", "house plan*", "ගෘහ නිර්මාණ") into [label, RegExp]. */
+export function compileTerm(term) {
+  const { match, label } = typeof term === 'string' ? { match: term, label: term } : term;
+  const text = String(match ?? '').trim();
+  if (!text) throw new Error(`Empty term in ${INDUSTRIES_FILE}`);
+  const latin = /^[\x20-\x7e]+$/.test(text);
+  const body = text
+    .split(/\s+/)
+    .map((word) => word.split('*').map(escapeRe).join(latin ? '\\w*' : '\\S*'))
+    .join(latin ? '\\s+' : '\\s*');
+  // English terms match whole words; Sinhala/Tamil terms also match inside longer words (පේන්ටර්වරයෙකු).
+  const source = latin ? `\\b${body}${text.endsWith('*') ? '' : '\\b'}` : body;
+  return [label ?? text.replace(/\*/g, ''), new RegExp(source, 'i')];
+}
+
+/** Read the industries settings and compile the active ones, in the order they are listed. */
+export function loadIndustries(file = INDUSTRIES_FILE) {
+  const config = JSON.parse(readFileSync(file, 'utf8'));
+  const active = config.active ?? Object.keys(config.industries ?? {});
+  if (!active.length) throw new Error(`${file}: 'active' lists no industries`);
+  return active.map((key) => {
+    const industry = config.industries?.[key];
+    if (!industry) throw new Error(`${file}: '${key}' is in 'active' but has no entry under 'industries'`);
+    if (!industry.services?.length) throw new Error(`${file}: industry '${key}' has no 'services' terms`);
+    return {
+      key,
+      label: industry.label ?? key,
+      services: industry.services.map(compileTerm),
+      requests: (industry.requests ?? []).map((t) => {
+        const [label, re] = compileTerm(t);
+        return [label, new RegExp(re.source, 'gi'), 'after'];
+      }),
+      exclude: (industry.exclude ?? []).map(compileTerm),
+    };
+  });
+}
 
 // English phrases come before the service they ask for ("looking for an architect");
 // Sinhala puts the verb last ("බාස් කෙනෙක් අවශ්‍යයි"), so the service is searched before it.
@@ -124,23 +136,24 @@ export function extractPhones(text) {
 }
 
 /**
- * Classify one post. Returns null when it is not an architectural/construction service request,
- * otherwise the matched terms, a relevance score and any phone numbers.
+ * Classify one post for one industry (from loadIndustries()). Returns null when it is not a request
+ * for that industry's services, otherwise the matched terms, a relevance score and any phone numbers.
  */
-export function classifyServiceRequest(text) {
+export function classifyServiceRequest(text, industry) {
   const t = String(text ?? '').normalize('NFKC');
   if (t.trim().length < 15) return null;
-  const service = matches(t, SERVICE_TERMS);
+  const services = industry.services;
+  const service = matches(t, services);
   if (!service.length) return null;
 
   // Only count request phrases that point at a service in the same sentence.
   const request = new Set();
   const asked = new Set();
   let advice = false;
-  for (const [label, re, direction] of REQUEST_TERMS) {
+  for (const [label, re, direction] of [...REQUEST_TERMS, ...industry.requests]) {
     for (const m of t.matchAll(re)) {
       const window = requestWindow(t, m.index, m.index + m[0].length, direction);
-      const linked = matches(window, SERVICE_TERMS);
+      const linked = matches(window, services);
       if (!linked.length) continue;
       request.add(label);
       linked.forEach((s) => asked.add(s));
@@ -149,7 +162,7 @@ export function classifyServiceRequest(text) {
   }
   if (!request.size) return null;
 
-  const offer = matches(t, OFFER_TERMS);
+  const offer = [...matches(t, OFFER_TERMS), ...matches(t, industry.exclude)];
   const score = request.size * 3 + service.length - offer.length * 3 - (advice ? 2 : 0);
   if (score < 3) return null;
   return {

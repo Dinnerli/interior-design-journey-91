@@ -50,7 +50,9 @@ const day = colombo(when, { day: 'numeric', month: 'short', year: 'numeric' });
 const fileDate = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Colombo' }).format(new Date(when));
 
 const step2 = excel.step2 ?? { rows: 0, withContact: 0, top: [] };
-const subject = `Step 02 service requests - ${day} (${step2.rows} request${step2.rows === 1 ? '' : 's'}, ${step2.withContact} with phone)`;
+const industryList = (step2.industries ?? []).map((i) => i.label);
+const industryName = industryList.length ? industryList.join(' & ') : 'Service';
+const subject = `Step 02 ${industryName} requests - ${day} (${step2.rows} request${step2.rows === 1 ? '' : 's'}, ${step2.withContact} with phone)`;
 
 const sourceLine = (name, s) =>
   !s ? null : `  ${name}: ${s.status === 'success' ? `+${s.newPosts} new posts` : s.status}${s.message ? ` (${s.message})` : ''}`;
@@ -61,7 +63,10 @@ const body = [
   '',
   `The pipeline ran on ${colombo(when, { dateStyle: 'medium', timeStyle: 'short' })} (Sri Lanka time). The Step 02 workbook is attached.`,
   '',
-  `Step 02: ${step2.rows} architecture/construction request${step2.rows === 1 ? '' : 's'}, ${step2.withContact} with a contact number (ranked first in the sheet).`,
+  `Step 02: ${step2.rows} ${industryName.toLowerCase()} request${step2.rows === 1 ? '' : 's'}, ${step2.withContact} with a contact number (ranked first in each tab).`,
+  ...((step2.industries ?? []).length > 1
+    ? step2.industries.map((i) => `  ${i.label}: ${i.rows} (${i.withContact} with phone)`)
+    : []),
   ...(run
     ? [
         '',
