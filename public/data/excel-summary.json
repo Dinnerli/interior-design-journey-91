@@ -1,10 +1,18 @@
 {
-  "builtAt": "2026-11-21T11:29:26.927Z",
+  "builtAt": "2026-11-23T10:04:24.642Z",
   "step1": {
     "file": "/data/step01_all_posts.xlsx",
-    "totalRows": 8154,
+    "totalRows": 8669,
     "globalRows": 5000,
     "runs": [
+      {
+        "date": "2026-11-23",
+        "facebook": 354,
+        "x": 0,
+        "reddit": 0,
+        "bluesky": 161,
+        "total": 515
+      },
       {
         "date": "2026-11-21",
         "facebook": 706,
@@ -49,7 +57,7 @@
   },
   "step2": {
     "file": "/data/step02_service_requests.xlsx",
-    "rows": 9,
+    "rows": 10,
     "withContact": 2,
     "top": [
       {
@@ -95,12 +103,12 @@
       {
         "rank": 5,
         "hasContact": false,
-        "service": "interior designer",
-        "source": "Bluesky",
-        "postedIn": "search: \"Sri Lanka\"",
-        "timestamp": "2026-11-21T05:20:00.291Z",
-        "text": "IFS is looking for a Senior UX Designer - Research-Led (IGT1) in Colombo, Sri Lanka https://weloveproduct.co/jobs/senior-ux-designer-research-led-igt1-ifs-tp...",
-        "postUrl": "https://bsky.app/profile/did:plc:bhxygagjarq64jsio7mey3ci/post/3n2se3mctf62e"
+        "service": "architect",
+        "source": "Facebook group",
+        "postedIn": "Architects in Sri Lanka",
+        "timestamp": "2026-11-23T04:20:06.000Z",
+        "text": "Hello looking for a architect for a gym interior design for a very budget price Comment below 👇",
+        "postUrl": "https://www.facebook.com/groups/111390542318487/posts/27104397092591133/"
       }
     ]
   }

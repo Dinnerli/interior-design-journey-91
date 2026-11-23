@@ -1,5 +1,5 @@
 {
-  "builtAt": "2026-11-21T11:29:25.902Z",
+  "builtAt": "2026-11-23T10:04:23.038Z",
   "columns": [
     "source",
     "dataset",
@@ -20,12 +20,12 @@
     "post_url",
     "collected_at"
   ],
-  "totalRows": 8154,
+  "totalRows": 8669,
   "globalRows": 5000,
-  "facebookGroupRows": 1581,
+  "facebookGroupRows": 1935,
   "xRows": 0,
   "redditRows": 200,
-  "blueskyRows": 1373,
+  "blueskyRows": 1534,
   "datasets": [
     {
       "id": "haoxianc/kalashnikov1405_facebook-text-classification",
@@ -38,13 +38,13 @@
       "label": "EPFS Community for Free",
       "category": "epfs",
       "enabled": true,
-      "rows": 96
+      "rows": 119
     },
     {
       "label": "EPFS Community Sri Lanka - 100% Free - Public Group",
       "category": "epfs",
       "enabled": true,
-      "rows": 522
+      "rows": 608
     },
     {
       "label": "EPFS Community Sri Lanka (private group - cannot be collected)",
@@ -56,19 +56,19 @@
       "label": "Interior Design Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 259
+      "rows": 352
     },
     {
       "label": "Architects in Sri Lanka",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 272
+      "rows": 329
     },
     {
       "label": "Sri Lankan Interior Design",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 432
+      "rows": 527
     }
   ],
   "xProfiles": [],
@@ -91,45 +91,45 @@
       "label": "\"Sri Lanka\"",
       "category": "sri-lanka",
       "enabled": true,
-      "rows": 897
+      "rows": 997
     },
     {
       "label": "\"interior design\"",
       "category": "interior-design",
       "enabled": true,
-      "rows": 476
+      "rows": 537
     }
   ],
   "preview": [
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-21T11:07:17.000Z",
-      "text": "#නිවසකවිකිනීමට\n#කොට්ටාව\n#මහල්වරාපාර \n\n✅තෙමහල් නිවසක්  \n✅පර්චස්  9 යි \n✅ලක්ෂ  780/=\n✅මිලියන 78/=👇\n\n🏡️♦️අලුතින් නිමවූ නිවසකි \n 🏡️♦️නිදන කාමර 7 යි\n\n \n📌️හෝල්...",
+      "timestamp": "2026-11-23T09:42:22.000Z",
+      "text": "Wheat Plants  පැල සැපයීමට හැක . Call :- 075 637 6177\nWheat Plants  පැල සැපයීමට හැක . Call :- 075 637 6177",
       "category": "",
       "sentiment": "",
       "language": "",
       "likes": "0",
-      "group_name": "EPFS Community Sri Lanka - 100% Free - Public Group"
+      "group_name": "Interior Design Sri Lanka"
     },
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-21T10:57:22.000Z",
-      "text": "වෙනසක් වෙනුවෙන් ඔබත් එක්වන්න!\nවෙනසක් වෙනුවෙන් ඔබත් එක්වන්න!\nඅලුත් ගමනක ආරම්භය ළඟදීම…!\n\nපිරිසිදු වාතය, සුරක්ෂිත පරිසරය සහ හරිතවත් අනාගතයක් යනු අප සැමගේ අයිතිය...",
+      "timestamp": "2026-11-23T09:41:54.000Z",
+      "text": "WhatsApp 076 5492625 \nSailing ship wooden",
       "category": "",
       "sentiment": "",
       "language": "",
       "likes": "0",
-      "group_name": "EPFS Community Sri Lanka - 100% Free - Public Group"
+      "group_name": "Interior Design Sri Lanka"
     },
     {
       "source": "facebook-group",
-      "timestamp": "2026-11-21T10:46:49.000Z",
-      "text": "\"To hear your voice\nis pomegranate wine to me:\nI draw life from hearing it.\nCould I see you with every glance,\nIt would be better for me;\nThan to eat or to d...",
+      "timestamp": "2026-11-23T09:38:17.000Z",
+      "text": "Palm Grass ( බිංපොල් )පැල අවශ්‍ය තරම් සැපයිය හැක . Call :- 075 637 6177.\nPalm Grass ( බිංපොල් )පැල අවශ්‍ය තරම් සැපයිය හැක . Call :- 075 637 6177.",
       "category": "",
       "sentiment": "",
       "language": "",
-      "likes": "1",
-      "group_name": "Sri Lankan Interior Design"
+      "likes": "0",
+      "group_name": "Interior Design Sri Lanka"
     },
     {
       "source": "reddit",
@@ -163,31 +163,31 @@
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-21T11:16:09+00:00",
-      "text": "Sri Lanka Raises Rates as Inflation Forecast Nears 9% #SriLanka #Economy",
+      "timestamp": "2026-11-23T14:44:15Z",
+      "text": "🔴Live: Sri Lanka vs Bangladesh | 10th Match | Live Cricket Score & Commentary\n\n#Cricket #LatestVideos",
       "category": "",
       "sentiment": "",
-      "language": "en",
+      "language": "",
       "likes": "0",
       "group_name": "search: \"Sri Lanka\""
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-21T11:02:52.956Z",
-      "text": "I remember discussing with some older American bloke in Sri Lanka how absurd it was that the view of St Paul's and beyond must be unobstructed from a certain...",
+      "timestamp": "2026-11-23T09:45:01+00:00",
+      "text": "España, el tercer país del mundo que más sufrió fenómenos extremos en el último año ver.tw/o95na5",
       "category": "",
       "sentiment": "",
-      "language": "en",
-      "likes": "1",
+      "language": "es",
+      "likes": "0",
       "group_name": "search: \"Sri Lanka\""
     },
     {
       "source": "bluesky",
-      "timestamp": "2026-11-21T10:30:30.262Z",
-      "text": "alldailyplush.blogspot.com/2026/11/sri-...\nSri lanka national Cricket team vs Pakistan",
+      "timestamp": "2026-11-23T09:18:18.000Z",
+      "text": "Retiros de invierno 2026-2027: el placer de dedicarte tiempo www.traveler.es/galerias/mej…",
       "category": "",
       "sentiment": "",
-      "language": "en",
+      "language": "es",
       "likes": "0",
       "group_name": "search: \"Sri Lanka\""
     },

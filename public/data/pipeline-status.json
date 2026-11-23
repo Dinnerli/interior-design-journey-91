@@ -1,38 +1,38 @@
 {
-  "lastRunAt": "2026-11-21T11:09:25.530Z",
+  "lastRunAt": "2026-11-23T09:58:14.135Z",
   "groupsConfigured": 5,
   "status": "success",
-  "snapshotId": "sd_mwqb2offblrx7x03k",
-  "postsReturned": 1392,
-  "newPosts": 706,
-  "totalPosts": 1581,
+  "snapshotId": "sd_mwt3etpo1d2bf5c5bf",
+  "postsReturned": 426,
+  "newPosts": 354,
+  "totalPosts": 1935,
   "recordsWithErrors": 0,
   "firstError": null,
   "perGroup": [
     {
       "label": "EPFS Community for Free",
       "category": "epfs",
-      "postsThisRun": 63
+      "postsThisRun": 74
     },
     {
       "label": "EPFS Community Sri Lanka - 100% Free - Public Group",
       "category": "epfs",
-      "postsThisRun": 520
+      "postsThisRun": 86
     },
     {
       "label": "Interior Design Sri Lanka",
       "category": "sri-lanka",
-      "postsThisRun": 109
+      "postsThisRun": 93
     },
     {
       "label": "Architects in Sri Lanka",
       "category": "sri-lanka",
-      "postsThisRun": 270
+      "postsThisRun": 78
     },
     {
       "label": "Sri Lankan Interior Design",
       "category": "sri-lanka",
-      "postsThisRun": 430
+      "postsThisRun": 95
     }
   ]
 }

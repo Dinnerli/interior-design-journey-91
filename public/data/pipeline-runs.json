@@ -1,6 +1,38 @@
 {
   "runs": [
     {
+      "id": "45151656997-1",
+      "startedAt": "2026-11-23T09:58:14Z",
+      "finishedAt": "2026-11-23T10:04:24.687Z",
+      "trigger": "scheduled",
+      "result": "success",
+      "newPosts": 515,
+      "totalRows": 8669,
+      "serviceRequests": 10,
+      "serviceRequestsWithContact": 2,
+      "sources": {
+        "facebook": {
+          "status": "success",
+          "newPosts": 354
+        },
+        "x": {
+          "status": "skipped",
+          "newPosts": 0,
+          "message": "No X profiles configured yet."
+        },
+        "reddit": {
+          "status": "skipped",
+          "newPosts": 0,
+          "message": "REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET are not set - Reddit refuses requests without them. Add them as repository secrets to collect Reddit posts."
+        },
+        "bluesky": {
+          "status": "success",
+          "newPosts": 161
+        }
+      },
+      "url": "https://github.com/Dinnerli/interior-design-journey-91/actions/runs/45151656997"
+    },
+    {
       "id": "44897732773-1",
       "startedAt": "2026-11-21T11:09:25Z",
       "finishedAt": "2026-11-21T11:29:26.983Z",
@@ -153,5 +185,5 @@
       "url": "https://github.com/Dinnerli/interior-design-journey-91/actions/runs/43594127649"
     }
   ],
-  "updatedAt": "2026-11-21T11:29:26.983Z"
+  "updatedAt": "2026-11-23T10:04:24.687Z"
 }
