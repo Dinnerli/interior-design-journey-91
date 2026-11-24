@@ -26,6 +26,7 @@ interface ExcelSummary {
   builtAt: string;
   step1: {
     totalRows: number;
+    leadRows?: number;
     globalRows: number;
     runs: { date: string; facebook: number; x: number; reddit: number; bluesky: number; total: number }[];
   };
@@ -285,7 +286,9 @@ const Datasets = () => {
                   ({runDates.length} so far: {runDates.join(', ')})
                 </>
               )}
-              .
+              . Every row has an <span className="text-neutral-900">is_lead</span> column (Yes/No) marking posts
+              that ask for an architectural or construction service
+              {workbooks?.step1.leadRows !== undefined && <> ({count(workbooks.step1.leadRows)} so far)</>}.
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-4">
               <Button asChild size="lg">

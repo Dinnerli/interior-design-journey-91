@@ -2,7 +2,7 @@
 // (run scripts/build-combined.mjs first):
 //
 //   Step 01 - public/data/step01_all_posts.xlsx
-//     Every row, plus one tab per pipeline run date (Sri Lanka time) holding the posts that run
+//     Every row, labelled is_lead = Yes/No (the same rule Step 02 uses), plus one tab per pipeline run date (Sri Lanka time) holding the posts that run
 //     collected, and a tab for the global dataset, which is not collected by the weekly runs.
 //
 //   Step 02 - public/data/step02_service_requests.xlsx
@@ -33,6 +33,7 @@ const WIDTHS = { text: 80, post_url: 45, group_url: 40, group_name: 28, dataset:
 const NUMBER_COLUMNS = new Set(['likes', 'comments', 'shares']);
 const ROW_COLUMNS = [
   { header: 'run_date', key: 'run_date', width: 12 },
+  { header: 'is_lead', key: 'is_lead', width: 9 },
   ...COLUMNS.map((key) => ({
     header: key,
     key,
@@ -41,7 +42,13 @@ const ROW_COLUMNS = [
   })),
 ];
 
-const rows = parseCsv(await readFile(PATHS.combinedCsv, 'utf8')).map((r) => ({ ...r, run_date: r.source === 'global' ? '' : runDateOf(r.collected_at) }));
+// A lead is a post asking for an architectural/construction service - the same test that picks Step 02's rows.
+const rows = parseCsv(await readFile(PATHS.combinedCsv, 'utf8')).map((r) => ({
+  ...r,
+  run_date: r.source === 'global' ? '' : runDateOf(r.collected_at),
+  is_lead: classifyServiceRequest(r.text) ? 'Yes' : 'No',
+}));
+const leadRows = rows.filter((r) => r.is_lead === 'Yes').length;
 
 // ---- Step 01 -------------------------------------------------------------------------------
 const collected = rows.filter((r) => r.source !== 'global');
@@ -57,7 +64,8 @@ const runDates = [...byRun.keys()].sort().reverse(); // newest first
 const runs = runDates.map((date) => {
   const list = byRun.get(date);
   const count = (source) => list.filter((r) => r.source === source).length;
-  return { date, facebook: count('facebook-group'), x: count('x'), reddit: count('reddit'), bluesky: count('bluesky'), total: list.length };
+  const leads = list.filter((r) => r.is_lead === 'Yes').length;
+  return { date, facebook: count('facebook-group'), x: count('x'), reddit: count('reddit'), bluesky: count('bluesky'), total: list.length, leads };
 });
 
 await writeXlsx(OUT.step1, [
@@ -70,11 +78,12 @@ await writeXlsx(OUT.step1, [
       { header: 'Reddit', key: 'reddit', width: 10, type: 'number' },
       { header: 'Bluesky', key: 'bluesky', width: 10, type: 'number' },
       { header: 'Total rows', key: 'total', width: 12, type: 'number' },
+      { header: 'Leads', key: 'leads', width: 10, type: 'number' },
     ],
     rows: [
       ...runs,
-      { date: 'Global dataset', total: globalRows.length },
-      { date: 'All rows', total: rows.length },
+      { date: 'Global dataset', total: globalRows.length, leads: globalRows.filter((r) => r.is_lead === 'Yes').length },
+      { date: 'All rows', total: rows.length, leads: leadRows },
     ],
   },
   { name: 'All rows', columns: ROW_COLUMNS, rows },
@@ -170,7 +179,7 @@ await writeFile(
   JSON.stringify(
     {
       builtAt: new Date().toISOString(),
-      step1: { file: '/data/step01_all_posts.xlsx', totalRows: rows.length, globalRows: globalRows.length, runs },
+      step1: { file: '/data/step01_all_posts.xlsx', totalRows: rows.length, globalRows: globalRows.length, leadRows, runs },
       step2: {
         file: '/data/step02_service_requests.xlsx',
         rows: ranked.length,
@@ -194,5 +203,5 @@ await writeFile(
 );
 
 console.log(
-  `Step 01: ${rows.length} rows in ${runDates.length} run tab(s) (${runDates.join(', ')}). Step 02: ${ranked.length} service requests, ${ranked.filter((r) => r.has_contact === 'Yes').length} with a contact number.`,
+  `Step 01: ${rows.length} rows (${leadRows} leads) in ${runDates.length} run tab(s) (${runDates.join(', ')}). Step 02: ${ranked.length} service requests, ${ranked.filter((r) => r.has_contact === 'Yes').length} with a contact number.`,
 );
